@@ -19,7 +19,13 @@ const SEARCH_QUERIES = [
 
 function httpsGet(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    const options = {
+      headers: {
+        'User-Agent': 'YamanakaFactors/1.0 (info@yamanakafactors.com)',
+        'Accept': 'application/json',
+      }
+    };
+    https.get(url, options, (res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
