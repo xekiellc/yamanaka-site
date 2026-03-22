@@ -642,9 +642,8 @@ function showPage(name, btn) {
 function nlSubscribe() {
   const email = document.getElementById('nl-email').value.trim();
   if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-  window.open('mailto:info@yamanakafactors.com?subject=Subscribe&body=Please add me to the newsletter: ' + email, '_blank');
+  window.open('https://yamanakafactors.beehiiv.com/subscribe?email=' + encodeURIComponent(email), '_blank');
   document.getElementById('nl-email').value = '';
-  alert('Thanks! We\'ll add you to the list.');
 }
 const PLACEHOLDER = [
   { title: "SITE LAUNCHING SOON — FIRST AUTOMATED REFRESH COMING MONDAY", url: "#", source: "yamanakafactors.com", publishedAt: new Date().toISOString() },
