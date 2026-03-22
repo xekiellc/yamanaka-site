@@ -15,256 +15,100 @@
     --gold: #9a7c2b;
     --muted: #5a5247;
     --border: #ccc5b5;
-    --hover: #b22222;
     --visited: #6b4c9a;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'EB Garamond', serif;
-    font-size: 17px;
-    line-height: 1.55;
-    min-height: 100vh;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.35;
-  }
+  body { background: var(--paper); color: var(--ink); font-family: 'EB Garamond', serif; font-size: 17px; line-height: 1.55; min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.35; }
   .page-wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
-  nav {
-    border-bottom: 2px solid var(--ink);
-    padding: 10px 0 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+
+  /* NAV */
+  nav { border-bottom: 2px solid var(--ink); padding: 10px 0 8px; display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
   .nav-left { color: var(--muted); }
   .nav-right { display: flex; gap: 20px; }
-  .nav-right button {
-    background: none;
-    border: 1px solid transparent;
-    cursor: pointer;
-    color: var(--ink);
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    transition: all 0.15s;
-  }
-  .nav-right button:hover, .nav-right button.active {
-    border-color: var(--ink);
-    background: var(--ink);
-    color: var(--paper);
-  }
-  header {
-    text-align: center;
-    padding: 32px 0 20px;
-    border-bottom: 3px double var(--ink);
-  }
+  .nav-right button { background: none; border: 1px solid transparent; cursor: pointer; color: var(--ink); font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; transition: all 0.15s; }
+  .nav-right button:hover, .nav-right button.active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+
+  /* HEADER */
+  header { text-align: center; padding: 32px 0 20px; border-bottom: 3px double var(--ink); }
   .dna-line { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 10px; }
   .helix-icon { width: 44px; height: 44px; flex-shrink: 0; }
-  .logo-text {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: clamp(2rem, 7vw, 4.8rem);
-    line-height: 1;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .logo-sub {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 6px;
-  }
+  .logo-text { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; }
+  .logo-sub { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
   .logo-tagline { font-style: italic; font-size: 15px; color: var(--muted); margin-top: 4px; }
-  .refresh-badge {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    background: var(--red);
-    color: white;
-    padding: 3px 10px;
-    display: inline-block;
-    margin-top: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
+  .refresh-badge { font-family: 'Courier Prime', monospace; font-size: 11px; background: var(--red); color: white; padding: 3px 10px; display: inline-block; margin-top: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* PAGES */
   .page { display: none; }
   .page.active { display: block; animation: fadeIn 0.4s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-  .timestamp-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 20px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .live-dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    background: var(--red);
-    border-radius: 50%;
-    margin-right: 6px;
-    animation: pulse 2s infinite;
-  }
+
+  /* TIMESTAMP */
+  .timestamp-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 6px; }
+  .live-dot { display: inline-block; width: 7px; height: 7px; background: var(--red); border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  .headline-block {
-    text-align: center;
-    padding: 22px 0 18px;
-    border-bottom: 2px solid var(--ink);
-    margin-bottom: 22px;
-  }
-  .kicker {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 8px;
-  }
-  .headline-block a {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: clamp(1.4rem, 4vw, 2.4rem);
-    line-height: 1.2;
-    color: var(--ink);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
+
+  /* HEADLINE */
+  .headline-block { text-align: center; padding: 22px 0 18px; border-bottom: 2px solid var(--ink); margin-bottom: 22px; }
+  .kicker { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+  .headline-block a { display: block; font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.4rem, 4vw, 2.4rem); line-height: 1.2; color: var(--ink); text-decoration: none; transition: color 0.15s; }
   .headline-block a:hover { color: var(--red); }
-  .source-tag {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 8px;
-    letter-spacing: 0.06em;
-  }
-  .columns {
-    display: grid;
-    grid-template-columns: 1fr 2px 1fr 2px 1fr;
-    gap: 0 18px;
-    margin-bottom: 28px;
-  }
+  .source-tag { font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--muted); margin-top: 8px; letter-spacing: 0.06em; }
+
+  /* COLUMNS */
+  .columns { display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr; gap: 0 18px; margin-bottom: 28px; }
   .col-divider { background: var(--border); }
-  .col-header {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 6px;
-    margin-bottom: 12px;
-  }
-  .article-link {
-    display: block;
-    margin-bottom: 13px;
-    padding-bottom: 13px;
-    border-bottom: 1px dotted var(--border);
-  }
+  .col-header { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px; }
+  .article-link { display: block; margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px dotted var(--border); }
   .article-link:last-child { border-bottom: none; }
-  .article-link a {
-    font-size: 16px;
-    line-height: 1.4;
-    color: var(--ink);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
+  .article-link a { font-size: 16px; line-height: 1.4; color: var(--ink); text-decoration: none; transition: color 0.15s; }
   .article-link a:hover { color: var(--red); text-decoration: underline; }
   .article-link a:visited { color: var(--visited); }
-  .article-meta {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 3px;
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .tag {
-    padding: 1px 5px;
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--ink);
-    color: var(--paper);
-  }
+  .article-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--muted); margin-top: 3px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .tag { padding: 1px 5px; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--ink); color: var(--paper); }
   .tag.red { background: var(--red); }
   .tag.gold { background: var(--gold); }
+
+  /* BOTTOM LINKS */
   .bottom-links { border-top: 2px solid var(--ink); padding-top: 16px; margin-top: 4px; }
-  .section-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 10px;
-  }
+  .section-label { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
   .bottom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px 24px; }
-  .bottom-grid a {
-    font-size: 15px;
-    color: var(--ink);
-    text-decoration: none;
-    line-height: 1.35;
-    display: block;
-  }
+  .bottom-grid a { font-size: 15px; color: var(--ink); text-decoration: none; line-height: 1.35; display: block; }
   .bottom-grid a::before { content: '›› '; color: var(--red); font-weight: 700; }
   .bottom-grid a:hover { color: var(--red); text-decoration: underline; }
-  .loading {
-    text-align: center;
-    padding: 60px 20px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-  .loading::after {
-    content: '';
-    display: inline-block;
-    width: 8px; height: 8px;
-    background: var(--red);
-    border-radius: 50%;
-    margin-left: 8px;
-    animation: pulse 1s infinite;
-  }
-  .error-msg {
-    text-align: center;
-    padding: 40px 20px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    color: var(--red);
-    border: 1px solid var(--border);
-    margin: 20px 0;
-  }
+
+  /* LOADING / ERROR */
+  .loading { text-align: center; padding: 60px 20px; font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--muted); letter-spacing: 0.1em; }
+  .loading::after { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--red); border-radius: 50%; margin-left: 8px; animation: pulse 1s infinite; }
+  .error-msg { text-align: center; padding: 40px 20px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--red); border: 1px solid var(--border); margin: 20px 0; }
+
+  /* ===== VIDEOS PAGE ===== */
+  .videos-page { padding: 28px 0; }
+  .videos-page h1 { font-family: 'Playfair Display', serif; font-size: 2rem; border-bottom: 3px double var(--ink); padding-bottom: 12px; margin-bottom: 6px; }
+  .videos-page .page-intro { font-style: italic; color: var(--muted); font-size: 15px; margin-bottom: 28px; margin-top: 8px; }
+
+  .podcast-section { margin-bottom: 40px; }
+  .podcast-section h2 { font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 18px; }
+
+  .video-card { display: flex; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dotted var(--border); }
+  .video-card:last-child { border-bottom: none; }
+  .video-thumb { flex-shrink: 0; width: 160px; height: 90px; background: var(--ink); position: relative; overflow: hidden; }
+  .video-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .video-thumb .play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.2s; }
+  .video-thumb .play-btn svg { width: 36px; height: 36px; }
+  .video-thumb:hover .play-btn { background: rgba(192,57,43,0.7); }
+  .video-info { flex: 1; }
+  .video-info .v-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; line-height: 1.3; margin-bottom: 5px; }
+  .video-info .v-title a { color: var(--ink); text-decoration: none; transition: color 0.15s; }
+  .video-info .v-title a:hover { color: var(--red); }
+  .video-info .v-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 6px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .video-info .v-desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .v-timestamp { font-family: 'Courier Prime', monospace; font-size: 10px; background: var(--ink); color: var(--paper); padding: 2px 6px; text-decoration: none; transition: background 0.15s; }
+  .v-timestamp:hover { background: var(--red); }
+
+  /* INFO PAGE */
   .info-page { max-width: 720px; margin: 32px auto; padding: 0 12px; }
-  .info-page h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
-    margin-bottom: 6px;
-    border-bottom: 3px double var(--ink);
-    padding-bottom: 12px;
-  }
+  .info-page h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 6px; border-bottom: 3px double var(--ink); padding-bottom: 12px; }
   .info-page .intro { font-size: 19px; font-style: italic; color: var(--muted); margin: 16px 0 22px; line-height: 1.6; }
   .info-page h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 24px 0 8px; }
   .info-page p { margin-bottom: 14px; line-height: 1.7; }
@@ -278,34 +122,33 @@
   .timeline-item::before { content: ''; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: absolute; left: -25px; top: 6px; }
   .timeline-item .year { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--gold); font-weight: 700; letter-spacing: 0.1em; }
   .timeline-item p { margin: 2px 0 0; font-size: 15px; }
-  footer {
-    border-top: 2px solid var(--ink);
-    padding: 14px 0 24px;
-    margin-top: 30px;
-    text-align: center;
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
+
+  /* FOOTER */
+  footer { border-top: 2px solid var(--ink); padding: 14px 0 24px; margin-top: 30px; text-align: center; font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+
   @media (max-width: 640px) {
     .columns { grid-template-columns: 1fr; }
     .col-divider { display: none; }
     .factor-box { grid-template-columns: 1fr; }
     .bottom-grid { grid-template-columns: 1fr; }
     .timestamp-bar { flex-direction: column; }
+    .video-card { flex-direction: column; }
+    .video-thumb { width: 100%; height: 180px; }
   }
 </style>
 </head>
 <body>
 <div class="page-wrap">
+
   <nav>
     <span class="nav-left">YAMANAKAFACTORS.COM</span>
     <div class="nav-right">
       <button class="active" onclick="showPage('articles', this)">NEWS</button>
+      <button onclick="showPage('videos', this)">VIDEOS</button>
       <button onclick="showPage('info', this)">ABOUT</button>
     </div>
   </nav>
+
   <header>
     <div class="dna-line">
       <svg class="helix-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,12 +176,98 @@
     <div class="refresh-badge">⟳ Refreshed Every Monday &amp; Thursday at Dawn</div>
   </header>
 
+  <!-- ===== ARTICLES PAGE ===== -->
   <div id="page-articles" class="page active">
     <div id="articles-content">
       <div class="loading">FETCHING LATEST INTELLIGENCE</div>
     </div>
   </div>
 
+  <!-- ===== VIDEOS PAGE ===== -->
+  <div id="page-videos" class="page">
+    <div class="videos-page">
+      <h1>Yamanaka Factors in the Wild</h1>
+      <p class="page-intro">Every time the world's biggest podcasts stopped to talk about cellular reprogramming — collected here.</p>
+
+      <!-- ALL IN PODCAST -->
+      <div class="podcast-section">
+        <h2>🎙 All-In Podcast — Science Corner</h2>
+
+        <div class="video-card">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=your-e262-id&t=3838s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/xvqsFTlX9_Y/mqdefault.jpg" alt="All In E262">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=xvqsFTlX9_Y&t=3838s" target="_blank" rel="noopener">E262: Science Corner — Can Yamanaka Factors Cure Blindness?</a></div>
+            <div class="v-meta"><span class="tag gold">ALL-IN</span> FEB 27, 2026 · DAVID FRIEDBERG</div>
+            <div class="v-desc">Friedberg's Science Corner dives into how Yamanaka factors are being used to restore vision — and what it means for the future of regenerative medicine. <a class="v-timestamp" href="https://www.youtube.com/watch?v=xvqsFTlX9_Y&t=3838s" target="_blank">▶ Jump to 1:03:58</a></div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=b4sfVn8BQ9Q&t=209s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/b4sfVn8BQ9Q/mqdefault.jpg" alt="All In Andrew Schulz">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=b4sfVn8BQ9Q&t=209s" target="_blank" rel="noopener">Science Corner: Yamanaka Factors Could Revolutionize IVF</a></div>
+            <div class="v-meta"><span class="tag gold">ALL-IN</span> MAR 15, 2025 · CHAMATH PALIHAPITIYA</div>
+            <div class="v-desc">Chamath explains how skin cells can be converted into egg cells using Yamanaka factors — potentially making IVF accessible to anyone at any age. <a class="v-timestamp" href="https://www.youtube.com/watch?v=b4sfVn8BQ9Q&t=209s" target="_blank">▶ Jump to 3:29</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOE ROGAN -->
+      <div class="podcast-section">
+        <h2>🎙 The Joe Rogan Experience</h2>
+
+        <div class="video-card">
+          <a class="video-thumb" href="https://open.spotify.com/episode/55UlxYWPfV46f7puMkZPeD" target="_blank" rel="noopener">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Joe_Rogan_2019_cropped.jpg/320px-Joe_Rogan_2019_cropped.jpg" alt="JRE 1670 David Sinclair">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://open.spotify.com/episode/55UlxYWPfV46f7puMkZPeD" target="_blank" rel="noopener">#1670 — David Sinclair: Reversing Aging, Reprogramming Cells</a></div>
+            <div class="v-meta"><span class="tag red">JRE</span> JUNE 2021 · DAVID SINCLAIR, HARVARD</div>
+            <div class="v-desc">Sinclair walks Rogan through his landmark research using Yamanaka factors (OSK) to restore vision in old mice — and what it means for human aging reversal. One of the most-cited longevity episodes in podcast history.</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <a class="video-thumb" href="https://open.spotify.com/episode/0Gifr7mhEsQBI5oGzJomz2" target="_blank" rel="noopener">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Joe_Rogan_2019_cropped.jpg/320px-Joe_Rogan_2019_cropped.jpg" alt="JRE 1349 David Sinclair">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://open.spotify.com/episode/0Gifr7mhEsQBI5oGzJomz2" target="_blank" rel="noopener">#1349 — David Sinclair: Is Aging a Disease We Can Treat?</a></div>
+            <div class="v-meta"><span class="tag red">JRE</span> SEPT 2019 · DAVID SINCLAIR, HARVARD</div>
+            <div class="v-desc">The episode that introduced millions to the concept of reprogramming factors as an anti-aging tool. Sinclair explains how Yamanaka factors are being used to repair eyesight and what a "biological age reset" could look like.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEX FRIDMAN -->
+      <div class="podcast-section">
+        <h2>🎙 Lex Fridman Podcast</h2>
+
+        <div class="video-card">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=jhKZIq3SlYE&t=2630s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/jhKZIq3SlYE/mqdefault.jpg" alt="Lex Fridman David Sinclair">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=jhKZIq3SlYE&t=2630s" target="_blank" rel="noopener">#189 — David Sinclair: Extending the Human Lifespan Beyond 100 Years</a></div>
+            <div class="v-meta"><span class="tag">LEX FRIDMAN</span> JUNE 2021 · DAVID SINCLAIR, HARVARD</div>
+            <div class="v-desc">At timestamp 43:50, Sinclair and Fridman discuss the "genetic reset switch that reverses aging" — a deep dive into how three embryonic genes (the OSK subset of Yamanaka factors) can reset the age of tissues. <a class="v-timestamp" href="https://www.youtube.com/watch?v=jhKZIq3SlYE&t=2630s" target="_blank">▶ Jump to 43:50</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== INFO PAGE ===== -->
   <div id="page-info" class="page">
     <div class="info-page">
       <h1>What Are Yamanaka Factors?</h1>
