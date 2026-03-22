@@ -4,7 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YAMANAKA FACTORS — The Cellular Reprogramming Report</title>
-<meta name="description" content="AI-curated news on Yamanaka factors, partial reprogramming, and longevity science. Updated every Monday and Thursday.">
+<meta name="description" content="AI-curated news on Yamanaka factors, partial reprogramming, and cellular rejuvenation science. Updated every Monday and Thursday.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://yamanakafactors.com/">
+
+<!-- Open Graph / Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yamanakafactors.com/">
+<meta property="og:title" content="Yamanaka Factors — The Cellular Reprogramming Report">
+<meta property="og:description" content="AI-curated news on Yamanaka factors, partial reprogramming, and cellular rejuvenation science. Updated every Monday and Thursday.">
+<meta property="og:image" content="https://yamanakafactors.com/og-image.png">
+<meta property="og:site_name" content="YamanakaFactors.com">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://yamanakafactors.com/">
+<meta name="twitter:title" content="Yamanaka Factors — The Cellular Reprogramming Report">
+<meta name="twitter:description" content="AI-curated news on Yamanaka factors, partial reprogramming, and cellular rejuvenation science. Updated every Monday and Thursday.">
+<meta name="twitter:image" content="https://yamanakafactors.com/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "Yamanaka Factors",
+  "alternateName": "YamanakaFactors.com",
+  "url": "https://yamanakafactors.com",
+  "description": "AI-curated news on Yamanaka factors, partial reprogramming, and cellular rejuvenation science.",
+  "foundingDate": "2025",
+  "email": "info@yamanakafactors.com",
+  "sameAs": [],
+  "publishingPrinciples": "https://yamanakafactors.com"
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MC8JBFJH4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MC8JBFJH4Y');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -133,6 +176,18 @@
   .timeline-item .year { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--gold); font-weight: 700; letter-spacing: 0.1em; }
   .timeline-item p { margin: 2px 0 0; font-size: 15px; }
 
+  /* ── NEWSLETTER BAR ── */
+  .newsletter-bar { background: var(--ink); color: var(--paper); padding: 18px 24px; margin-top: 30px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .newsletter-bar .nl-text { font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .newsletter-bar .nl-text strong { font-size: 14px; display: block; margin-bottom: 3px; color: var(--paper); }
+  .newsletter-bar .nl-text span { color: #aaa; }
+  .nl-form { display: flex; gap: 8px; flex-wrap: wrap; }
+  .nl-form input { font-family: 'Courier Prime', monospace; font-size: 12px; padding: 7px 12px; border: 1px solid #444; background: #1a1a1a; color: var(--paper); letter-spacing: 0.05em; width: 220px; }
+  .nl-form input::placeholder { color: #666; }
+  .nl-form input:focus { outline: none; border-color: var(--gold); }
+  .nl-form button { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--red); color: white; border: none; padding: 7px 16px; cursor: pointer; transition: background 0.15s; }
+  .nl-form button:hover { background: #a93226; }
+
   /* ── CONTACT ── */
   .contact-page { max-width: 600px; margin: 40px auto; padding: 0 12px; }
   .contact-page h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; border-bottom: 3px double var(--ink); padding-bottom: 12px; margin-bottom: 20px; }
@@ -146,7 +201,7 @@
   .contact-uses ul li { font-size: 15px; color: var(--muted); padding: 5px 0; border-bottom: 1px dotted var(--border); }
   .contact-uses ul li::before { content: '›› '; color: var(--red); font-weight: 700; }
 
-  footer { border-top: 2px solid var(--ink); padding: 14px 0 24px; margin-top: 30px; text-align: center; font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; line-height: 1.8; }
+  footer { border-top: 2px solid var(--ink); padding: 14px 0 24px; margin-top: 0; text-align: center; font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; line-height: 1.8; }
   footer a { color: var(--muted); text-decoration: none; }
   footer a:hover { color: var(--red); }
 
@@ -161,6 +216,8 @@
     .nav-right { gap: 6px; }
     .edition-row { flex-direction: column; align-items: flex-start; gap: 4px; }
     .edition-meta { text-align: left; }
+    .newsletter-bar { flex-direction: column; align-items: flex-start; }
+    .nl-form input { width: 100%; }
   }
 </style>
 </head>
@@ -415,6 +472,18 @@
     </div>
   </div>
 
+  <!-- ═══ NEWSLETTER BAR ═══ -->
+  <div class="newsletter-bar">
+    <div class="nl-text">
+      <strong>The Yamanaka Factors Report</strong>
+      <span>Get the Monday & Thursday edition in your inbox — free.</span>
+    </div>
+    <div class="nl-form">
+      <input type="email" id="nl-email" placeholder="your@email.com">
+      <button onclick="nlSubscribe()">Subscribe →</button>
+    </div>
+  </div>
+
   <footer>
     <strong>YAMANAKAFACTORS.COM</strong> &nbsp;·&nbsp; AI-CURATED SCIENCE NEWS &nbsp;·&nbsp; REFRESHED MON &amp; THU &nbsp;·&nbsp; EST. 2025
     <br>
@@ -422,6 +491,7 @@
   </footer>
 
 </div>
+
 <script>
 const COLUMNS = [
   { label: '🔬 Longevity & Rejuvenation', keys: ['longevity','rejuvenation','aging','reprogramming','epigenetic'] },
@@ -568,6 +638,14 @@ function showPage(name, btn) {
   document.getElementById('page-' + name).classList.add('active');
   btn.classList.add('active');
   if (name === 'archive') { showArchiveIndex(); loadArchiveIndex(); }
+}
+function nlSubscribe() {
+  const email = document.getElementById('nl-email').value.trim();
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  // TODO: replace this href with your Beehiiv subscribe link once set up
+  window.open('mailto:info@yamanakafactors.com?subject=Subscribe&body=Please add me to the newsletter: ' + email, '_blank');
+  document.getElementById('nl-email').value = '';
+  alert('Thanks! We\'ll add you to the list.');
 }
 const PLACEHOLDER = [
   { title: "SITE LAUNCHING SOON — FIRST AUTOMATED REFRESH COMING MONDAY", url: "#", source: "yamanakafactors.com", publishedAt: new Date().toISOString() },
