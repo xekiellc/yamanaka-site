@@ -22,16 +22,12 @@
   body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.35; }
   .page-wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
 
-  /* NAV */
   nav { border-bottom: 2px solid var(--ink); padding: 10px 0 8px; display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
   .nav-left { color: var(--muted); }
   .nav-right { display: flex; gap: 20px; align-items: center; }
   .nav-right button { background: none; border: 1px solid transparent; cursor: pointer; color: var(--ink); font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; transition: all 0.15s; }
   .nav-right button:hover, .nav-right button.active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
-  .nav-contact { color: var(--muted); text-decoration: none; font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid transparent; transition: all 0.15s; }
-  .nav-contact:hover { border-color: var(--red); color: var(--red); }
 
-  /* HEADER */
   header { text-align: center; padding: 32px 0 20px; border-bottom: 3px double var(--ink); }
   .dna-line { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 10px; }
   .helix-icon { width: 44px; height: 44px; flex-shrink: 0; }
@@ -40,24 +36,20 @@
   .logo-tagline { font-style: italic; font-size: 15px; color: var(--muted); margin-top: 4px; }
   .refresh-badge { font-family: 'Courier Prime', monospace; font-size: 11px; background: var(--red); color: white; padding: 3px 10px; display: inline-block; margin-top: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
 
-  /* PAGES */
   .page { display: none; }
   .page.active { display: block; animation: fadeIn 0.4s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* TIMESTAMP */
   .timestamp-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 6px; }
   .live-dot { display: inline-block; width: 7px; height: 7px; background: var(--red); border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  /* HEADLINE */
   .headline-block { text-align: center; padding: 22px 0 18px; border-bottom: 2px solid var(--ink); margin-bottom: 22px; }
   .kicker { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
   .headline-block a { display: block; font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.4rem, 4vw, 2.4rem); line-height: 1.2; color: var(--ink); text-decoration: none; transition: color 0.15s; }
   .headline-block a:hover { color: var(--red); }
   .source-tag { font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--muted); margin-top: 8px; letter-spacing: 0.06em; }
 
-  /* COLUMNS */
   .columns { display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr; gap: 0 18px; margin-bottom: 28px; }
   .col-divider { background: var(--border); }
   .col-header { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px; }
@@ -71,7 +63,6 @@
   .tag.red { background: var(--red); }
   .tag.gold { background: var(--gold); }
 
-  /* BOTTOM LINKS */
   .bottom-links { border-top: 2px solid var(--ink); padding-top: 16px; margin-top: 4px; }
   .section-label { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
   .bottom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px 24px; }
@@ -79,12 +70,10 @@
   .bottom-grid a::before { content: '›› '; color: var(--red); font-weight: 700; }
   .bottom-grid a:hover { color: var(--red); text-decoration: underline; }
 
-  /* LOADING / ERROR */
   .loading { text-align: center; padding: 60px 20px; font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--muted); letter-spacing: 0.1em; }
   .loading::after { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--red); border-radius: 50%; margin-left: 8px; animation: pulse 1s infinite; }
   .error-msg { text-align: center; padding: 40px 20px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--red); border: 1px solid var(--border); margin: 20px 0; }
 
-  /* ===== VIDEOS PAGE ===== */
   .videos-page { padding: 28px 0; }
   .videos-page h1 { font-family: 'Playfair Display', serif; font-size: 2rem; border-bottom: 3px double var(--ink); padding-bottom: 12px; margin-bottom: 6px; }
   .videos-page .page-intro { font-style: italic; color: var(--muted); font-size: 15px; margin-bottom: 28px; margin-top: 8px; }
@@ -106,7 +95,6 @@
   .v-timestamp { font-family: 'Courier Prime', monospace; font-size: 10px; background: var(--ink); color: var(--paper); padding: 2px 6px; text-decoration: none; transition: background 0.15s; display: inline-block; margin-top: 6px; }
   .v-timestamp:hover { background: var(--red); }
 
-  /* INFO PAGE */
   .info-page { max-width: 720px; margin: 32px auto; padding: 0 12px; }
   .info-page h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 6px; border-bottom: 3px double var(--ink); padding-bottom: 12px; }
   .info-page .intro { font-size: 19px; font-style: italic; color: var(--muted); margin: 16px 0 22px; line-height: 1.6; }
@@ -123,7 +111,6 @@
   .timeline-item .year { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--gold); font-weight: 700; letter-spacing: 0.1em; }
   .timeline-item p { margin: 2px 0 0; font-size: 15px; }
 
-  /* CONTACT PAGE */
   .contact-page { max-width: 600px; margin: 40px auto; padding: 0 12px; }
   .contact-page h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; border-bottom: 3px double var(--ink); padding-bottom: 12px; margin-bottom: 20px; }
   .contact-block { border: 1px solid var(--border); padding: 28px; background: rgba(255,255,255,0.4); text-align: center; }
@@ -136,7 +123,6 @@
   .contact-uses ul li { font-size: 15px; color: var(--muted); padding: 5px 0; border-bottom: 1px dotted var(--border); }
   .contact-uses ul li::before { content: '›› '; color: var(--red); font-weight: 700; }
 
-  /* FOOTER */
   footer { border-top: 2px solid var(--ink); padding: 14px 0 24px; margin-top: 30px; text-align: center; font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; line-height: 1.8; }
   footer a { color: var(--muted); text-decoration: none; }
   footer a:hover { color: var(--red); }
@@ -193,26 +179,25 @@
     <div class="refresh-badge">⟳ Refreshed Every Monday &amp; Thursday at Dawn</div>
   </header>
 
-  <!-- ===== ARTICLES PAGE ===== -->
+  <!-- ARTICLES PAGE -->
   <div id="page-articles" class="page active">
     <div id="articles-content">
       <div class="loading">FETCHING LATEST INTELLIGENCE</div>
     </div>
   </div>
 
-  <!-- ===== VIDEOS PAGE ===== -->
+  <!-- VIDEOS PAGE -->
   <div id="page-videos" class="page">
     <div class="videos-page">
       <h1>Yamanaka Factors in the Wild</h1>
       <p class="page-intro">Every time the world's biggest podcasts stopped to talk about cellular reprogramming — collected here.</p>
 
-      <!-- ALL IN PODCAST -->
+      <!-- ALL IN -->
       <div class="podcast-section">
         <h2>🎙 All-In Podcast — Science Corner</h2>
-
         <div class="video-card">
           <a class="video-thumb" href="https://www.youtube.com/watch?v=xvqsFTlX9_Y&t=3838s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/xvqsFTlX9_Y/mqdefault.jpg" alt="All In E262 Yamanaka Factors">
+            <img src="https://img.youtube.com/vi/xvqsFTlX9_Y/mqdefault.jpg" alt="All In E262">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
@@ -222,10 +207,9 @@
             <a class="v-timestamp" href="https://www.youtube.com/watch?v=xvqsFTlX9_Y&t=3838s" target="_blank" rel="noopener">▶ Jump to 1:03:58</a>
           </div>
         </div>
-
         <div class="video-card">
           <a class="video-thumb" href="https://www.youtube.com/watch?v=b4sfVn8BQ9Q&t=209s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/b4sfVn8BQ9Q/mqdefault.jpg" alt="All In Andrew Schulz Yamanaka IVF">
+            <img src="https://img.youtube.com/vi/b4sfVn8BQ9Q/mqdefault.jpg" alt="All In Andrew Schulz">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
@@ -240,22 +224,20 @@
       <!-- JOE ROGAN -->
       <div class="podcast-section">
         <h2>🎙 The Joe Rogan Experience</h2>
-
         <div class="video-card">
           <a class="video-thumb" href="https://open.spotify.com/episode/55UlxYWPfV46f7puMkZPeD" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/D9h4o4HlJgc/mqdefault.jpg" alt="JRE 1670 David Sinclair">
+            <img src="https://img.youtube.com/vi/D9h4o4HlJgc/mqdefault.jpg" alt="JRE 1670">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
             <div class="v-title"><a href="https://open.spotify.com/episode/55UlxYWPfV46f7puMkZPeD" target="_blank" rel="noopener">#1670 — David Sinclair: Reversing Aging & Reprogramming Cells</a></div>
             <div class="v-meta"><span class="tag red">JRE</span> JUNE 2021 · DAVID SINCLAIR, HARVARD</div>
-            <div class="v-desc">Sinclair walks Rogan through his landmark research using Yamanaka factors (OSK) to restore vision in old mice — and what it means for human aging reversal. One of the most-cited longevity episodes in podcast history.</div>
+            <div class="v-desc">Sinclair walks Rogan through his landmark research using Yamanaka factors (OSK) to restore vision in old mice — and what it means for human aging reversal.</div>
           </div>
         </div>
-
         <div class="video-card">
           <a class="video-thumb" href="https://open.spotify.com/episode/0Gifr7mhEsQBI5oGzJomz2" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/UILmMOQlWuI/mqdefault.jpg" alt="JRE 1349 David Sinclair">
+            <img src="https://img.youtube.com/vi/UILmMOQlWuI/mqdefault.jpg" alt="JRE 1349">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
@@ -269,17 +251,77 @@
       <!-- LEX FRIDMAN -->
       <div class="podcast-section">
         <h2>🎙 Lex Fridman Podcast</h2>
-
         <div class="video-card">
           <a class="video-thumb" href="https://www.youtube.com/watch?v=jhKZIq3SlYE&t=2630s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/jhKZIq3SlYE/mqdefault.jpg" alt="Lex Fridman David Sinclair">
+            <img src="https://img.youtube.com/vi/jhKZIq3SlYE/mqdefault.jpg" alt="Lex Fridman Sinclair">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
             <div class="v-title"><a href="https://www.youtube.com/watch?v=jhKZIq3SlYE&t=2630s" target="_blank" rel="noopener">#189 — David Sinclair: Extending the Human Lifespan Beyond 100 Years</a></div>
             <div class="v-meta"><span class="tag">LEX FRIDMAN</span> JUNE 2021 · DAVID SINCLAIR, HARVARD</div>
-            <div class="v-desc">At 43:50, Sinclair and Fridman discuss the "genetic reset switch that reverses aging" — a deep dive into how the OSK subset of Yamanaka factors can reset the age of tissues without erasing cellular identity.</div>
+            <div class="v-desc">At 43:50, Sinclair and Fridman discuss the "genetic reset switch that reverses aging" — the OSK subset of Yamanaka factors and how they reset the age of tissues without erasing cellular identity.</div>
             <a class="v-timestamp" href="https://www.youtube.com/watch?v=jhKZIq3SlYE&t=2630s" target="_blank" rel="noopener">▶ Jump to 43:50</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HUBERMAN LAB -->
+      <div class="podcast-section">
+        <h2>🎙 Huberman Lab</h2>
+        <div class="video-card">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=n9IxomBusuw" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/n9IxomBusuw/mqdefault.jpg" alt="Huberman Lab #52">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=n9IxomBusuw" target="_blank" rel="noopener">#52 — David Sinclair: The Biology of Slowing & Reversing Aging</a></div>
+            <div class="v-meta"><span class="tag">HUBERMAN LAB</span> DEC 2021 · DAVID SINCLAIR, HARVARD</div>
+            <div class="v-desc">One of Huberman's most-watched episodes. Sinclair covers the full science of epigenetic reprogramming and Yamanaka factors as the biological reset switch — with actionable protocols for slowing aging today.</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=31I-8y-oRdE&t=2621s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/31I-8y-oRdE/mqdefault.jpg" alt="Huberman Pasca stem cells">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=31I-8y-oRdE&t=2621s" target="_blank" rel="noopener">Dr. Sergiu Pașca: Stem Cells, Ethics & Yamanaka Factors</a></div>
+            <div class="v-meta"><span class="tag">HUBERMAN LAB</span> 2025 · DR. SERGIU PAȘCA, STANFORD</div>
+            <div class="v-desc">Stanford neuroscientist Pașca and Huberman discuss stem cell models with a dedicated segment on Yamanaka factors and their role in building human brain organoids for disease research.</div>
+            <a class="v-timestamp" href="https://www.youtube.com/watch?v=31I-8y-oRdE&t=2621s" target="_blank" rel="noopener">▶ Jump to 43:41</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PETER ATTIA -->
+      <div class="podcast-section">
+        <h2>🎙 The Peter Attia Drive</h2>
+        <div class="video-card">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=6pAaLBl7Hzs&t=2460s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/6pAaLBl7Hzs/mqdefault.jpg" alt="Peter Attia #70">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=6pAaLBl7Hzs&t=2460s" target="_blank" rel="noopener">#70 — David Sinclair: How Cellular Reprogramming Could Slow Our Aging Clock</a></div>
+            <div class="v-meta"><span class="tag">PETER ATTIA</span> 2019 · DAVID SINCLAIR, HARVARD</div>
+            <div class="v-desc">Perhaps the most technically deep podcast discussion of Yamanaka factors available — Attia and Sinclair go deep on the mechanism of cellular reprogramming, including viability in humans, at timestamp 41:00.</div>
+            <a class="v-timestamp" href="https://www.youtube.com/watch?v=6pAaLBl7Hzs&t=2460s" target="_blank" rel="noopener">▶ Jump to 41:00</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIARY OF A CEO -->
+      <div class="podcast-section">
+        <h2>🎙 The Diary of a CEO</h2>
+        <div class="video-card">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=5eMpYACQBOY" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/5eMpYACQBOY/mqdefault.jpg" alt="Diary of a CEO Rhonda Patrick">
+            <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <div class="video-info">
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=5eMpYACQBOY" target="_blank" rel="noopener">Dr. Rhonda Patrick: The Science of Yamanaka Factors & Longevity</a></div>
+            <div class="v-meta"><span class="tag">DIARY OF A CEO</span> JULY 2025 · DR. RHONDA PATRICK</div>
+            <div class="v-desc">Dr. Rhonda Patrick gives Steven Bartlett a clear, accessible explanation of Yamanaka factors and partial reprogramming — how pulsing four proteins onto an aged cell can restore youthful function without erasing cellular identity.</div>
           </div>
         </div>
       </div>
@@ -287,7 +329,7 @@
     </div>
   </div>
 
-  <!-- ===== INFO PAGE ===== -->
+  <!-- INFO PAGE -->
   <div id="page-info" class="page">
     <div class="info-page">
       <h1>What Are Yamanaka Factors?</h1>
@@ -334,7 +376,7 @@
     </div>
   </div>
 
-  <!-- ===== CONTACT PAGE ===== -->
+  <!-- CONTACT PAGE -->
   <div id="page-contact" class="page">
     <div class="contact-page">
       <h1>Contact</h1>
