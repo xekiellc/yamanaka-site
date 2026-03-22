@@ -7,6 +7,7 @@
 <meta name="description" content="AI-curated news on Yamanaka factors, partial reprogramming, and cellular rejuvenation science. Updated every Monday and Thursday.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://yamanakafactors.com/">
+<meta name="google-site-verification" content="Kb5_-aBMH_zxQ8SKptly1n9XCY9mHLNySJCJLXhhpG8">
 
 <!-- Open Graph / Social sharing -->
 <meta property="og:type" content="website">
@@ -476,7 +477,7 @@
   <div class="newsletter-bar">
     <div class="nl-text">
       <strong>The Yamanaka Factors Report</strong>
-      <span>Get the Monday & Thursday edition in your inbox — free.</span>
+      <span>Get the Monday &amp; Thursday edition in your inbox — free.</span>
     </div>
     <div class="nl-form">
       <input type="email" id="nl-email" placeholder="your@email.com">
@@ -491,7 +492,6 @@
   </footer>
 
 </div>
-
 <script>
 const COLUMNS = [
   { label: '🔬 Longevity & Rejuvenation', keys: ['longevity','rejuvenation','aging','reprogramming','epigenetic'] },
@@ -642,7 +642,6 @@ function showPage(name, btn) {
 function nlSubscribe() {
   const email = document.getElementById('nl-email').value.trim();
   if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-  // TODO: replace this href with your Beehiiv subscribe link once set up
   window.open('mailto:info@yamanakafactors.com?subject=Subscribe&body=Please add me to the newsletter: ' + email, '_blank');
   document.getElementById('nl-email').value = '';
   alert('Thanks! We\'ll add you to the list.');
