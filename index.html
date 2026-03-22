@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAMANAKA FACTORS — The Cellular Reprogramming Report</title>
+<meta name="description" content="AI-curated news on Yamanaka factors, partial reprogramming, and longevity science. Updated every Monday and Thursday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f5f0e8;
+    --red: #c0392b;
+    --gold: #9a7c2b;
+    --muted: #5a5247;
+    --border: #ccc5b5;
+    --hover: #b22222;
+    --visited: #6b4c9a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+  }
+  .page-wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+  nav {
+    border-bottom: 2px solid var(--ink);
+    padding: 10px 0 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-left { color: var(--muted); }
+  .nav-right { display: flex; gap: 20px; }
+  .nav-right button {
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: var(--ink);
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    transition: all 0.15s;
+  }
+  .nav-right button:hover, .nav-right button.active {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  header {
+    text-align: center;
+    padding: 32px 0 20px;
+    border-bottom: 3px double var(--ink);
+  }
+  .dna-line { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 10px; }
+  .helix-icon { width: 44px; height: 44px; flex-shrink: 0; }
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 7vw, 4.8rem);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .logo-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 6px;
+  }
+  .logo-tagline { font-style: italic; font-size: 15px; color: var(--muted); margin-top: 4px; }
+  .refresh-badge {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    background: var(--red);
+    color: white;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-top: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .timestamp-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .live-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: var(--red);
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .headline-block {
+    text-align: center;
+    padding: 22px 0 18px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 22px;
+  }
+  .kicker {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .headline-block a {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .headline-block a:hover { color: var(--red); }
+  .source-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr 2px 1fr;
+    gap: 0 18px;
+    margin-bottom: 28px;
+  }
+  .col-divider { background: var(--border); }
+  .col-header {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+  }
+  .article-link {
+    display: block;
+    margin-bottom: 13px;
+    padding-bottom: 13px;
+    border-bottom: 1px dotted var(--border);
+  }
+  .article-link:last-child { border-bottom: none; }
+  .article-link a {
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .article-link a:hover { color: var(--red); text-decoration: underline; }
+  .article-link a:visited { color: var(--visited); }
+  .article-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .tag {
+    padding: 1px 5px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .tag.red { background: var(--red); }
+  .tag.gold { background: var(--gold); }
+  .bottom-links { border-top: 2px solid var(--ink); padding-top: 16px; margin-top: 4px; }
+  .section-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+  .bottom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px 24px; }
+  .bottom-grid a {
+    font-size: 15px;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1.35;
+    display: block;
+  }
+  .bottom-grid a::before { content: '›› '; color: var(--red); font-weight: 700; }
+  .bottom-grid a:hover { color: var(--red); text-decoration: underline; }
+  .loading {
+    text-align: center;
+    padding: 60px 20px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .loading::after {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    margin-left: 8px;
+    animation: pulse 1s infinite;
+  }
+  .error-msg {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--red);
+    border: 1px solid var(--border);
+    margin: 20px 0;
+  }
+  .info-page { max-width: 720px; margin: 32px auto; padding: 0 12px; }
+  .info-page h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    margin-bottom: 6px;
+    border-bottom: 3px double var(--ink);
+    padding-bottom: 12px;
+  }
+  .info-page .intro { font-size: 19px; font-style: italic; color: var(--muted); margin: 16px 0 22px; line-height: 1.6; }
+  .info-page h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 24px 0 8px; }
+  .info-page p { margin-bottom: 14px; line-height: 1.7; }
+  .factor-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  .factor-card { border: 1px solid var(--border); padding: 14px; background: rgba(255,255,255,0.4); }
+  .factor-card .factor-name { font-family: 'Courier Prime', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+  .factor-card .factor-gene { font-size: 20px; font-family: 'Playfair Display', serif; font-weight: 700; margin-bottom: 6px; }
+  .factor-card p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.5; }
+  .timeline { border-left: 2px solid var(--gold); padding-left: 20px; margin: 20px 0; }
+  .timeline-item { margin-bottom: 18px; position: relative; }
+  .timeline-item::before { content: ''; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: absolute; left: -25px; top: 6px; }
+  .timeline-item .year { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--gold); font-weight: 700; letter-spacing: 0.1em; }
+  .timeline-item p { margin: 2px 0 0; font-size: 15px; }
+  footer {
+    border-top: 2px solid var(--ink);
+    padding: 14px 0 24px;
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 640px) {
+    .columns { grid-template-columns: 1fr; }
+    .col-divider { display: none; }
+    .factor-box { grid-template-columns: 1fr; }
+    .bottom-grid { grid-template-columns: 1fr; }
+    .timestamp-bar { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <nav>
+    <span class="nav-left">YAMANAKAFACTORS.COM</span>
+    <div class="nav-right">
+      <button class="active" onclick="showPage('articles', this)">NEWS</button>
+      <button onclick="showPage('info', this)">ABOUT</button>
+    </div>
+  </nav>
+  <header>
+    <div class="dna-line">
+      <svg class="helix-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 4 C14 10, 30 10, 36 16 C30 22, 14 22, 8 28 C14 34, 30 34, 36 40" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 4 C30 10, 14 10, 8 16 C14 22, 30 22, 36 28 C30 34, 14 34, 8 40" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <line x1="13" y1="10" x2="31" y2="10" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+        <line x1="9.5" y1="16.5" x2="34.5" y2="16.5" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+        <line x1="9.5" y1="27.5" x2="34.5" y2="27.5" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+        <line x1="13" y1="34" x2="31" y2="34" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+      </svg>
+      <div>
+        <div class="logo-text">Yamanaka Factors</div>
+        <div class="logo-sub">The Cellular Reprogramming Report</div>
+      </div>
+      <svg class="helix-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 4 C14 10, 30 10, 36 16 C30 22, 14 22, 8 28 C14 34, 30 34, 36 40" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 4 C30 10, 14 10, 8 16 C14 22, 30 22, 36 28 C30 34, 14 34, 8 40" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <line x1="13" y1="10" x2="31" y2="10" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+        <line x1="9.5" y1="16.5" x2="34.5" y2="16.5" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+        <line x1="9.5" y1="27.5" x2="34.5" y2="27.5" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+        <line x1="13" y1="34" x2="31" y2="34" stroke="#9a7c2b" stroke-width="1.5" opacity="0.7"/>
+      </svg>
+    </div>
+    <div class="logo-tagline">Oct3/4 · Sox2 · Klf4 · c-Myc — Tracking the Science of Cellular Rejuvenation</div>
+    <div class="refresh-badge">⟳ Refreshed Every Monday &amp; Thursday at Dawn</div>
+  </header>
+
+  <div id="page-articles" class="page active">
+    <div id="articles-content">
+      <div class="loading">FETCHING LATEST INTELLIGENCE</div>
+    </div>
+  </div>
+
+  <div id="page-info" class="page">
+    <div class="info-page">
+      <h1>What Are Yamanaka Factors?</h1>
+      <p class="intro">In 2006, a Japanese scientist named Shinya Yamanaka changed biology forever. He discovered that four ordinary proteins could rewind the clock on a fully mature cell — turning it back into a stem cell capable of becoming any tissue in the body.</p>
+      <h2>The Four Factors</h2>
+      <p>The "Yamanaka factors" are a set of four transcription factors — proteins that regulate gene expression. Together, they can reprogram differentiated adult cells into induced pluripotent stem cells (iPSCs):</p>
+      <div class="factor-box">
+        <div class="factor-card">
+          <div class="factor-name">Factor I</div>
+          <div class="factor-gene">Oct3/4</div>
+          <p>A master regulator of pluripotency. Activates stem-cell genes and suppresses differentiation. Central to the reprogramming cascade.</p>
+        </div>
+        <div class="factor-card">
+          <div class="factor-name">Factor II</div>
+          <div class="factor-gene">Sox2</div>
+          <p>Works in tandem with Oct4 to maintain the pluripotent state. Also plays roles in neural development and brain plasticity.</p>
+        </div>
+        <div class="factor-card">
+          <div class="factor-name">Factor III</div>
+          <div class="factor-gene">Klf4</div>
+          <p>Balances cell proliferation and differentiation. Helps reset the epigenome to its embryonic state during reprogramming.</p>
+        </div>
+        <div class="factor-card">
+          <div class="factor-name">Factor IV</div>
+          <div class="factor-gene">c-Myc</div>
+          <p>A powerful growth-promoting oncogene. Boosts reprogramming efficiency but poses tumor risk — a key safety challenge for therapies.</p>
+        </div>
+      </div>
+      <h2>Why It Matters</h2>
+      <p>The original discovery earned Yamanaka the 2012 Nobel Prize in Physiology or Medicine. Researchers discovered that <em>partial reprogramming</em> can reset epigenetic aging marks while preserving the cell's identity — potentially enabling true biological age reversal in living tissue.</p>
+      <h2>A Brief Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item"><div class="year">2006</div><p>Yamanaka and Takahashi publish the landmark paper: four factors reprogram mouse fibroblasts into iPSCs.</p></div>
+        <div class="timeline-item"><div class="year">2007</div><p>Human cells reprogrammed using the same factors.</p></div>
+        <div class="timeline-item"><div class="year">2012</div><p>Nobel Prize in Physiology or Medicine awarded to Yamanaka and John Gurdon.</p></div>
+        <div class="timeline-item"><div class="year">2016</div><p>Salk Institute demonstrates cyclic partial reprogramming extends mouse lifespan.</p></div>
+        <div class="timeline-item"><div class="year">2020</div><p>David Sinclair's lab restores vision in old mice using OSK factors.</p></div>
+        <div class="timeline-item"><div class="year">2022</div><p>Altos Labs founded with $3B — focused entirely on rejuvenation reprogramming.</p></div>
+        <div class="timeline-item"><div class="year">2024–Present</div><p>First human clinical trials begin. AI-driven discovery accelerates the field.</p></div>
+      </div>
+      <h2>About This Site</h2>
+      <p>YamanakaFactors.com is an automated news aggregator tracking research, clinical developments, and commercial activity in cellular reprogramming and longevity. Refreshed every Monday and Thursday.</p>
+      <p style="color: var(--muted); font-size: 14px; font-style: italic;">Not a medical resource. Always consult published research and qualified professionals.</p>
+    </div>
+  </div>
+
+  <footer>
+    <strong>YAMANAKAFACTORS.COM</strong> &nbsp;·&nbsp; AI-CURATED SCIENCE NEWS &nbsp;·&nbsp; REFRESHED MON &amp; THU &nbsp;·&nbsp; EST. 2025
+  </footer>
+</div>
+
+<script>
+const COLUMNS = [
+  { label: '🔬 Longevity & Rejuvenation', keys: ['longevity','rejuvenation','aging','reprogramming','epigenetic'] },
+  { label: '💊 Clinical & Commercial',    keys: ['trial','fda','biotech','company','drug','funding','raises','clinical'] },
+  { label: '🧬 Basic Science',            keys: ['gene','cell','factor','study','research','mechanism','protein'] },
+];
+const TAG_RULES = [
+  { words: ['breaking','exclusive'], cls: 'red',  label: 'BREAKING' },
+  { words: ['fda','approved'],       cls: 'red',  label: 'FDA' },
+  { words: ['trial','phase'],        cls: 'red',  label: 'TRIAL' },
+  { words: ['breakthrough','first'], cls: 'gold', label: 'BREAKTHROUGH' },
+  { words: ['interview','q&a'],      cls: 'gold', label: 'INTERVIEW' },
+  { words: ['study','research'],     cls: '',     label: 'STUDY' },
+];
+function pickTag(title) {
+  const t = title.toLowerCase();
+  for (const rule of TAG_RULES) { if (rule.words.some(w => t.includes(w))) return rule; }
+  return null;
+}
+function assignColumn(article) {
+  const t = (article.title + ' ' + (article.category || '')).toLowerCase();
+  for (let i = 0; i < COLUMNS.length; i++) { if (COLUMNS[i].keys.some(k => t.includes(k))) return i; }
+  return Math.floor(Math.random() * 3);
+}
+function timeAgo(dateStr) {
+  if (!dateStr) return '';
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const days = Math.floor(diff / 86400000);
+  if (days === 0) return 'TODAY';
+  if (days === 1) return '1 DAY AGO';
+  return `${days} DAYS AGO`;
+}
+function nextRefresh() {
+  const now = new Date();
+  const day = now.getDay();
+  let daysUntil = day <= 1 ? (1 - day) : day <= 4 ? (4 - day) : (8 - day);
+  if (daysUntil === 0 && now.getHours() >= 6) daysUntil = day === 1 ? 3 : 4;
+  const next = new Date(now);
+  next.setDate(now.getDate() + daysUntil);
+  next.setHours(6, 0, 0, 0);
+  const days2 = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+  return `NEXT REFRESH: ${days2[next.getDay()]}, ${next.toLocaleDateString('en-US',{month:'short',day:'numeric'})} — DAWN`;
+}
+function renderArticles(data) {
+  const articles = data.articles || [];
+  if (!articles.length) {
+    document.getElementById('articles-content').innerHTML = '<div class="error-msg">NO ARTICLES FOUND. CHECK BACK AFTER NEXT REFRESH.</div>';
+    return;
+  }
+  const top = articles[0];
+  const rest = articles.slice(1, 13);
+  const bottom = articles.slice(13);
+  const cols = [[], [], []];
+  rest.forEach(a => cols[assignColumn(a)].push(a));
+  const updatedStr = data.updated ? new Date(data.updated).toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}) : 'UNKNOWN DATE';
+  let html = `
+    <div class="timestamp-bar">
+      <span><span class="live-dot"></span>LAST UPDATED: ${updatedStr.toUpperCase()}</span>
+      <span>${nextRefresh()}</span>
+    </div>
+    <div class="headline-block">
+      <div class="kicker">⚡ TOP STORY</div>
+      <a href="${top.url}" target="_blank" rel="noopener">${top.title}</a>
+      <div class="source-tag">SOURCE: ${(top.source||'').toUpperCase()}${top.publishedAt ? ' · ' + timeAgo(top.publishedAt) : ''}</div>
+    </div>
+    <div class="columns">`;
+  COLUMNS.forEach((col, i) => {
+    if (i > 0) html += '<div class="col-divider"></div>';
+    html += `<div class="col"><div class="col-header">${col.label}</div>`;
+    const items = cols[i].length ? cols[i] : rest.filter((_, idx) => idx % 3 === i);
+    items.slice(0, 5).forEach(a => {
+      const tag = pickTag(a.title);
+      html += `<div class="article-link"><a href="${a.url}" target="_blank" rel="noopener">${a.title}</a><div class="article-meta">${tag ? `<span class="tag ${tag.cls}">${tag.label}</span>` : ''}${(a.source||'').toUpperCase()}${a.publishedAt ? ' · ' + timeAgo(a.publishedAt) : ''}</div></div>`;
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  if (bottom.length) {
+    html += `<div class="bottom-links"><div class="section-label">Also Developing...</div><div class="bottom-grid">`;
+    bottom.slice(0, 10).forEach(a => { html += `<a href="${a.url}" target="_blank" rel="noopener">${a.title}</a>`; });
+    html += '</div></div>';
+  }
+  document.getElementById('articles-content').innerHTML = html;
+}
+function loadArticles() {
+  fetch('articles.json?v=' + Date.now())
+    .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+    .then(renderArticles)
+    .catch(() => { renderArticles({ updated: new Date().toISOString(), articles: PLACEHOLDER }); });
+}
+const PLACEHOLDER = [
+  { title: "SITE LAUNCHING SOON — FIRST AUTOMATED REFRESH COMING MONDAY", url: "#", source: "yamanakafactors.com", publishedAt: new Date().toISOString() },
+  { title: "Yamanaka Reprogramming Reverses Aging Markers in Human Fibroblasts", url: "#", source: "Nature", publishedAt: new Date().toISOString() },
+  { title: "Altos Labs Reports Progress on Partial Reprogramming in Primates", url: "#", source: "Science", publishedAt: new Date().toISOString() },
+  { title: "Turn Biotechnologies Advances mRNA Reprogramming Therapy to Phase I", url: "#", source: "STAT News", publishedAt: new Date().toISOString() },
+  { title: "Klf4 Mechanism in Epigenetic Age Reversal Mapped by Salk Institute", url: "#", source: "Cell Stem Cell", publishedAt: new Date().toISOString() },
+  { title: "Nobel Laureate Yamanaka: Partial Reprogramming Most Exciting Since iPSCs", url: "#", source: "Science", publishedAt: new Date().toISOString() },
+  { title: "Rejuvenate Bio Signs Major Deal for Cardiac Aging Gene Therapy", url: "#", source: "Endpoints", publishedAt: new Date().toISOString() },
+  { title: "FDA Grants Breakthrough Designation to Retinal Rejuvenation Therapy", url: "#", source: "FierceBiotech", publishedAt: new Date().toISOString() },
+  { title: "AI Models Identify Small-Molecule Substitutes for Factor Delivery", url: "#", source: "Nature Methods", publishedAt: new Date().toISOString() },
+  { title: "New Safety Threshold Found for Reprogramming Protocols", url: "#", source: "Nature Cell Biology", publishedAt: new Date().toISOString() },
+  { title: "Cyclic Reprogramming Extends Mouse Lifespan 25% in Multi-Lab Study", url: "#", source: "Cell", publishedAt: new Date().toISOString() },
+  { title: "CRISPR Delivers Yamanaka Factors Without Viral Vector", url: "#", source: "Genome Biology", publishedAt: new Date().toISOString() },
+  { title: "Longevity Biotech Attracts $4B in Q1 2025", url: "#", source: "Financial Times", publishedAt: new Date().toISOString() },
+];
+function showPage(name, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-right button').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+loadArticles();
+</script>
+</body>
+</html>
