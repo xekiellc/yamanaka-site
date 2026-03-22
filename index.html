@@ -94,6 +94,8 @@
   .video-info .v-desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
   .v-timestamp { font-family: 'Courier Prime', monospace; font-size: 10px; background: var(--ink); color: var(--paper); padding: 2px 6px; text-decoration: none; transition: background 0.15s; display: inline-block; margin-top: 6px; }
   .v-timestamp:hover { background: var(--red); }
+  .spotify-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1DB954; }
+  .spotify-thumb svg { width: 50px; height: 50px; }
 
   .info-page { max-width: 720px; margin: 32px auto; padding: 0 12px; }
   .info-page h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 6px; border-bottom: 3px double var(--ink); padding-bottom: 12px; }
@@ -196,27 +198,27 @@
       <div class="podcast-section">
         <h2>🎙 All-In Podcast — Science Corner</h2>
         <div class="video-card">
-          <a class="video-thumb" href="https://www.youtube.com/watch?v=xvqsFTlX9_Y&t=3838s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/xvqsFTlX9_Y/mqdefault.jpg" alt="All In E262">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=OKPPbFEIxnY&t=3838s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/OKPPbFEIxnY/mqdefault.jpg" alt="All In E262" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/OKPPbFEIxnY/hqdefault.jpg'">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
-            <div class="v-title"><a href="https://www.youtube.com/watch?v=xvqsFTlX9_Y&t=3838s" target="_blank" rel="noopener">E262: Science Corner — Can Yamanaka Factors Cure Blindness?</a></div>
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=OKPPbFEIxnY&t=3838s" target="_blank" rel="noopener">E262: Science Corner — Can Yamanaka Factors Cure Blindness?</a></div>
             <div class="v-meta"><span class="tag gold">ALL-IN</span> FEB 27, 2026 · DAVID FRIEDBERG</div>
             <div class="v-desc">Friedberg's Science Corner explores how Yamanaka factors are being used to restore vision — and what it means for the future of regenerative medicine.</div>
-            <a class="v-timestamp" href="https://www.youtube.com/watch?v=xvqsFTlX9_Y&t=3838s" target="_blank" rel="noopener">▶ Jump to 1:03:58</a>
+            <a class="v-timestamp" href="https://www.youtube.com/watch?v=OKPPbFEIxnY&t=3838s" target="_blank" rel="noopener">▶ Jump to 1:03:58</a>
           </div>
         </div>
         <div class="video-card">
-          <a class="video-thumb" href="https://www.youtube.com/watch?v=b4sfVn8BQ9Q&t=209s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/b4sfVn8BQ9Q/mqdefault.jpg" alt="All In Andrew Schulz">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=EGpKaF7Lx74&t=209s" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/EGpKaF7Lx74/mqdefault.jpg" alt="All In Andrew Schulz" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/EGpKaF7Lx74/hqdefault.jpg'">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
-            <div class="v-title"><a href="https://www.youtube.com/watch?v=b4sfVn8BQ9Q&t=209s" target="_blank" rel="noopener">Science Corner: Yamanaka Factors Could Revolutionize IVF</a></div>
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=EGpKaF7Lx74&t=209s" target="_blank" rel="noopener">Science Corner: Yamanaka Factors Could Revolutionize IVF</a></div>
             <div class="v-meta"><span class="tag gold">ALL-IN</span> MAR 15, 2025 · CHAMATH PALIHAPITIYA</div>
             <div class="v-desc">Chamath explains how skin cells can be converted into egg cells using Yamanaka factors — potentially making IVF accessible to anyone at any age.</div>
-            <a class="v-timestamp" href="https://www.youtube.com/watch?v=b4sfVn8BQ9Q&t=209s" target="_blank" rel="noopener">▶ Jump to 3:29</a>
+            <a class="v-timestamp" href="https://www.youtube.com/watch?v=EGpKaF7Lx74&t=209s" target="_blank" rel="noopener">▶ Jump to 3:29</a>
           </div>
         </div>
       </div>
@@ -226,23 +228,27 @@
         <h2>🎙 The Joe Rogan Experience</h2>
         <div class="video-card">
           <a class="video-thumb" href="https://open.spotify.com/episode/55UlxYWPfV46f7puMkZPeD" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/D9h4o4HlJgc/mqdefault.jpg" alt="JRE 1670">
+            <div class="spotify-thumb">
+              <svg viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.1-15-74.8-8.2-2.9.7-5.7-1.1-6.4-4-.7-2.9 1.1-5.7 4-6.4 32.4-7.4 60.3-4.2 82.8 9.5 2.5 1.5 3.3 4.8 1.7 7.3zm10.3-22.9c-1.9 3.1-5.9 4-9 2.1-22.9-14.1-57.8-18.2-84.9-9.9-3.5 1.1-7.2-.9-8.3-4.4-1-3.5.9-7.2 4.4-8.3 31-9.4 69.5-4.8 95.8 11.4 3 1.9 4 5.9 2 9.1zm.9-23.8c-27.5-16.3-72.9-17.8-99.2-9.9-4.2 1.3-8.6-1.1-9.9-5.3-1.3-4.2 1.1-8.6 5.3-9.9 30.1-9.1 80.2-7.4 111.8 11.4 3.8 2.2 5 7.1 2.8 10.9-2.2 3.7-7.1 5-10.8 2.8z"/></svg>
+            </div>
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
             <div class="v-title"><a href="https://open.spotify.com/episode/55UlxYWPfV46f7puMkZPeD" target="_blank" rel="noopener">#1670 — David Sinclair: Reversing Aging & Reprogramming Cells</a></div>
-            <div class="v-meta"><span class="tag red">JRE</span> JUNE 2021 · DAVID SINCLAIR, HARVARD</div>
-            <div class="v-desc">Sinclair walks Rogan through his landmark research using Yamanaka factors (OSK) to restore vision in old mice — and what it means for human aging reversal.</div>
+            <div class="v-meta"><span class="tag red">JRE</span> JUNE 2021 · DAVID SINCLAIR, HARVARD · <span class="tag" style="background:#1DB954;">SPOTIFY</span></div>
+            <div class="v-desc">Sinclair walks Rogan through his landmark research using Yamanaka factors (OSK) to restore vision in old mice — and what it means for human aging reversal. Available exclusively on Spotify.</div>
           </div>
         </div>
         <div class="video-card">
           <a class="video-thumb" href="https://open.spotify.com/episode/0Gifr7mhEsQBI5oGzJomz2" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/UILmMOQlWuI/mqdefault.jpg" alt="JRE 1349">
+            <div class="spotify-thumb">
+              <svg viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.1-15-74.8-8.2-2.9.7-5.7-1.1-6.4-4-.7-2.9 1.1-5.7 4-6.4 32.4-7.4 60.3-4.2 82.8 9.5 2.5 1.5 3.3 4.8 1.7 7.3zm10.3-22.9c-1.9 3.1-5.9 4-9 2.1-22.9-14.1-57.8-18.2-84.9-9.9-3.5 1.1-7.2-.9-8.3-4.4-1-3.5.9-7.2 4.4-8.3 31-9.4 69.5-4.8 95.8 11.4 3 1.9 4 5.9 2 9.1zm.9-23.8c-27.5-16.3-72.9-17.8-99.2-9.9-4.2 1.3-8.6-1.1-9.9-5.3-1.3-4.2 1.1-8.6 5.3-9.9 30.1-9.1 80.2-7.4 111.8 11.4 3.8 2.2 5 7.1 2.8 10.9-2.2 3.7-7.1 5-10.8 2.8z"/></svg>
+            </div>
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
             <div class="v-title"><a href="https://open.spotify.com/episode/0Gifr7mhEsQBI5oGzJomz2" target="_blank" rel="noopener">#1349 — David Sinclair: Is Aging a Disease We Can Treat?</a></div>
-            <div class="v-meta"><span class="tag red">JRE</span> SEPT 2019 · DAVID SINCLAIR, HARVARD</div>
+            <div class="v-meta"><span class="tag red">JRE</span> SEPT 2019 · DAVID SINCLAIR, HARVARD · <span class="tag" style="background:#1DB954;">SPOTIFY</span></div>
             <div class="v-desc">The episode that introduced millions to reprogramming factors as an anti-aging tool. Sinclair explains how Yamanaka factors repair eyesight and what a biological age reset could look like.</div>
           </div>
         </div>
@@ -253,7 +259,7 @@
         <h2>🎙 Lex Fridman Podcast</h2>
         <div class="video-card">
           <a class="video-thumb" href="https://www.youtube.com/watch?v=jhKZIq3SlYE&t=2630s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/jhKZIq3SlYE/mqdefault.jpg" alt="Lex Fridman Sinclair">
+            <img src="https://img.youtube.com/vi/jhKZIq3SlYE/mqdefault.jpg" alt="Lex Fridman Sinclair" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/jhKZIq3SlYE/hqdefault.jpg'">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
@@ -270,7 +276,7 @@
         <h2>🎙 Huberman Lab</h2>
         <div class="video-card">
           <a class="video-thumb" href="https://www.youtube.com/watch?v=n9IxomBusuw" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/n9IxomBusuw/mqdefault.jpg" alt="Huberman Lab #52">
+            <img src="https://img.youtube.com/vi/n9IxomBusuw/mqdefault.jpg" alt="Huberman Lab #52" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/n9IxomBusuw/hqdefault.jpg'">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
@@ -281,7 +287,7 @@
         </div>
         <div class="video-card">
           <a class="video-thumb" href="https://www.youtube.com/watch?v=31I-8y-oRdE&t=2621s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/31I-8y-oRdE/mqdefault.jpg" alt="Huberman Pasca stem cells">
+            <img src="https://img.youtube.com/vi/31I-8y-oRdE/mqdefault.jpg" alt="Huberman Pasca" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/31I-8y-oRdE/hqdefault.jpg'">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
@@ -297,15 +303,15 @@
       <div class="podcast-section">
         <h2>🎙 The Peter Attia Drive</h2>
         <div class="video-card">
-          <a class="video-thumb" href="https://www.youtube.com/watch?v=6pAaLBl7Hzs&t=2460s" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/6pAaLBl7Hzs/mqdefault.jpg" alt="Peter Attia #70">
+          <a class="video-thumb" href="https://peterattiamd.com/davidsinclair2/" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/QzBg6en0LPk/mqdefault.jpg" alt="Peter Attia #70" onerror="this.onerror=null;this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;color:white;font-family:monospace;font-size:11px;text-align:center;padding:8px;\'>THE PETER ATTIA DRIVE</div>'">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
-            <div class="v-title"><a href="https://www.youtube.com/watch?v=6pAaLBl7Hzs&t=2460s" target="_blank" rel="noopener">#70 — David Sinclair: How Cellular Reprogramming Could Slow Our Aging Clock</a></div>
+            <div class="v-title"><a href="https://peterattiamd.com/davidsinclair2/" target="_blank" rel="noopener">#70 — David Sinclair: How Cellular Reprogramming Could Slow Our Aging Clock</a></div>
             <div class="v-meta"><span class="tag">PETER ATTIA</span> 2019 · DAVID SINCLAIR, HARVARD</div>
-            <div class="v-desc">Perhaps the most technically deep podcast discussion of Yamanaka factors available — Attia and Sinclair go deep on the mechanism of cellular reprogramming, including viability in humans, at timestamp 41:00.</div>
-            <a class="v-timestamp" href="https://www.youtube.com/watch?v=6pAaLBl7Hzs&t=2460s" target="_blank" rel="noopener">▶ Jump to 41:00</a>
+            <div class="v-desc">Perhaps the most technically deep podcast discussion of Yamanaka factors available — Attia and Sinclair go deep on the full mechanism of cellular reprogramming, including viability in humans.</div>
+            <a class="v-timestamp" href="https://peterattiamd.com/davidsinclair2/" target="_blank" rel="noopener">▶ Jump to 41:00</a>
           </div>
         </div>
       </div>
@@ -314,12 +320,12 @@
       <div class="podcast-section">
         <h2>🎙 The Diary of a CEO</h2>
         <div class="video-card">
-          <a class="video-thumb" href="https://www.youtube.com/watch?v=5eMpYACQBOY" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/5eMpYACQBOY/mqdefault.jpg" alt="Diary of a CEO Rhonda Patrick">
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=ElGAt7-x728" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/ElGAt7-x728/mqdefault.jpg" alt="Diary of a CEO Rhonda Patrick" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/ElGAt7-x728/hqdefault.jpg'">
             <div class="play-btn"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
           </a>
           <div class="video-info">
-            <div class="v-title"><a href="https://www.youtube.com/watch?v=5eMpYACQBOY" target="_blank" rel="noopener">Dr. Rhonda Patrick: The Science of Yamanaka Factors & Longevity</a></div>
+            <div class="v-title"><a href="https://www.youtube.com/watch?v=ElGAt7-x728" target="_blank" rel="noopener">Dr. Rhonda Patrick: The Science of Yamanaka Factors & Longevity</a></div>
             <div class="v-meta"><span class="tag">DIARY OF A CEO</span> JULY 2025 · DR. RHONDA PATRICK</div>
             <div class="v-desc">Dr. Rhonda Patrick gives Steven Bartlett a clear, accessible explanation of Yamanaka factors and partial reprogramming — how pulsing four proteins onto an aged cell can restore youthful function without erasing cellular identity.</div>
           </div>
