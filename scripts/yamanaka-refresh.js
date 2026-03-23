@@ -27,7 +27,7 @@ const OUTPUT_FILE         = path.join(__dirname, '..', 'articles.json');
 const ARCHIVE_INDEX_FILE  = path.join(__dirname, '..', 'archive-index.json');
 const ARCHIVE_DIR         = path.join(__dirname, '..', 'archive');
 
-const NEW_ARTICLE_THRESHOLD = 6;   // minimum new articles to trigger a refresh
+const NEW_ARTICLE_THRESHOLD = 3;   // minimum new articles to trigger a refresh
 const MAX_ARCHIVE_EDITIONS  = 16;  // keep last 16 editions (~8 weeks)
 
 const SEARCH_QUERIES = [
