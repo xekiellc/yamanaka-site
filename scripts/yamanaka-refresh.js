@@ -190,8 +190,7 @@ Format exactly like this:
     "title": "YOUR PUNCHY HEADLINE HERE",
     "category": "longevity",
     "url": "https://...",
-    "source": "Nature",
-    "publishedAt": "2025-03-17T00:00:00Z"
+    "source": "Nature"
   }
 ]
 
@@ -231,7 +230,7 @@ ${articleList}`;
       title:       item.title,
       url:         item.url || original.url,
       source:      item.source || original.source,
-      publishedAt: item.publishedAt || original.publishedAt,
+      publishedAt: original.publishedAt,   // ← always use NewsAPI date, never Claude's
       category:    item.category || 'science',
     };
   });
