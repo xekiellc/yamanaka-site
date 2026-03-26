@@ -7,8 +7,8 @@
  * ARCHIVE LOGIC:
  * 1. Fetches recent articles from NewsAPI
  * 2. Compares against current articles.json to find NEW articles
- * 3. If 6+ new articles found → archive current edition, post new one
- * 4. If fewer than 6 new articles → skip update, site stays unchanged
+ * 3. If 3+ new articles found → archive current edition, post new one
+ * 4. If fewer than 3 new articles → skip update, site stays unchanged
  * 5. Maintains archive-index.json listing all past editions (last 16)
  *
  * Required environment variables:
@@ -31,13 +31,35 @@ const NEW_ARTICLE_THRESHOLD = 3;   // minimum new articles to trigger a refresh
 const MAX_ARCHIVE_EDITIONS  = 16;  // keep last 16 editions (~8 weeks)
 
 const SEARCH_QUERIES = [
+  // Core — Yamanaka & reprogramming
   'Yamanaka factors reprogramming',
   'partial reprogramming longevity',
   'cellular rejuvenation aging reversal',
   'iPSC stem cell therapy aging',
+  'epigenetic reprogramming anti-aging',
+
+  // Longevity science broadly
+  'longevity biotech research',
   'epigenetic clock reversal',
-  'Altos Labs rejuvenation',
-  'longevity biotech reprogramming',
+  'senolytics senescent cells aging',
+  'NAD+ longevity aging research',
+  'telomere extension aging',
+  'rapamycin longevity research',
+  'aging reversal clinical trial',
+
+  // Major labs & companies
+  'Altos Labs rejuvenation research',
+  'Calico aging research',
+  'Unity Biotechnology senolytic',
+
+  // Stem cells & regenerative medicine
+  'stem cell therapy regenerative medicine',
+  'gene therapy aging reversal',
+
+  // Broader longevity news
+  'longevity drug human trial',
+  'biological age reversal science',
+  'healthspan lifespan extension research',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────
@@ -169,15 +191,15 @@ function findNewArticles(fetchedArticles, currentArticles) {
 async function rankAndRewriteWithClaude(articles) {
   console.log('🤖 Sending to Claude for ranking and headline writing...');
 
-  const candidates = articles.slice(0, 40);
+  const candidates = articles.slice(0, 60);
   const articleList = candidates.map((a, i) =>
     `${i + 1}. TITLE: ${a.title}\n   SOURCE: ${a.source}\n   URL: ${a.url}\n   DESC: ${(a.description || '').slice(0, 120)}`
   ).join('\n\n');
 
-  const prompt = `You are the editor of YamanakaFactors.com, a Drudge Report-style news aggregator covering Yamanaka factors, cellular reprogramming, partial reprogramming, longevity science, and related biotech.
+  const prompt = `You are the editor of YamanakaFactors.com, a Drudge Report-style news aggregator covering Yamanaka factors, cellular reprogramming, partial reprogramming, longevity science, senolytics, epigenetic clocks, stem cell therapy, NAD+ research, telomere science, and related longevity biotech.
 
 Here are ${candidates.length} recent articles. Your job:
-1. Select the most important and interesting articles (up to 13) for our readers
+1. Select the most important and interesting articles (up to 13) for our readers — prioritize Yamanaka/reprogramming stories, then broader longevity science
 2. For each selected article, write a punchy, dramatic, Drudge-style headline in ALL CAPS. Max 120 characters.
 3. Assign a category: "longevity", "clinical", or "science"
 4. Return ONLY a valid JSON array, no other text, no markdown backticks, no explanation.
@@ -230,7 +252,7 @@ ${articleList}`;
       title:       item.title,
       url:         item.url || original.url,
       source:      item.source || original.source,
-      publishedAt: original.publishedAt,   // ← always use NewsAPI date, never Claude's
+      publishedAt: original.publishedAt,
       category:    item.category || 'science',
     };
   });
