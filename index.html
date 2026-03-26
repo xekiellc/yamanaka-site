@@ -114,6 +114,20 @@
   .bottom-grid a::before { content: '›› '; color: var(--red); font-weight: 700; }
   .bottom-grid a:hover { color: var(--red); text-decoration: underline; }
 
+  /* ── ALSO IN LONGEVITY SCIENCE ── */
+  .longevity-section { border-top: 3px double var(--ink); margin-top: 28px; padding-top: 20px; margin-bottom: 10px; }
+  .longevity-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+  .longevity-title { font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  .longevity-subtitle { font-family: 'EB Garamond', serif; font-style: italic; font-size: 14px; color: var(--muted); }
+  .longevity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 32px; }
+  .longevity-item { padding: 10px 0; border-bottom: 1px dotted var(--border); }
+  .longevity-item:last-child { border-bottom: none; }
+  .longevity-item a { font-size: 15px; line-height: 1.4; color: var(--ink); text-decoration: none; transition: color 0.15s; }
+  .longevity-item a::before { content: '›› '; color: var(--gold); font-weight: 700; }
+  .longevity-item a:hover { color: var(--red); text-decoration: underline; }
+  .longevity-item a:visited { color: var(--visited); }
+  .longevity-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
+
   .loading { text-align: center; padding: 60px 20px; font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--muted); letter-spacing: 0.1em; }
   .loading::after { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--red); border-radius: 50%; margin-left: 8px; animation: pulse 1s infinite; }
   .error-msg { text-align: center; padding: 40px 20px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--red); border: 1px solid var(--border); margin: 20px 0; }
@@ -211,6 +225,7 @@
     .col-divider { display: none; }
     .factor-box { grid-template-columns: 1fr; }
     .bottom-grid { grid-template-columns: 1fr; }
+    .longevity-grid { grid-template-columns: 1fr; }
     .timestamp-bar { flex-direction: column; }
     .video-card { flex-direction: column; }
     .video-thumb { width: 100%; height: 180px; }
@@ -447,7 +462,7 @@
         <div class="timeline-item"><div class="year">2024–Present</div><p>First human clinical trials begin. AI-driven discovery accelerates the field.</p></div>
       </div>
       <h2>About This Site</h2>
-      <p>YamanakaFactors.com is an automated news aggregator tracking research, clinical developments, and commercial activity in cellular reprogramming and longevity. Refreshed every Monday and Thursday when 6 or more new articles are found.</p>
+      <p>YamanakaFactors.com is an automated news aggregator tracking research, clinical developments, and commercial activity in cellular reprogramming and longevity. Refreshed every Monday and Thursday when new articles are found.</p>
       <p style="color: var(--muted); font-size: 14px; font-style: italic;">Not a medical resource. Always consult published research and qualified professionals.</p>
     </div>
   </div>
@@ -493,11 +508,19 @@
 
 </div>
 <script>
+const YF_CORE_KEYS = [
+  'yamanaka','reprogramming','reprogram','ipsc','pluripotent',
+  'cellular rejuvenation','partial reprogramming','epigenetic clock',
+  'altos labs','sinclair','cellular aging reversal','age reversal',
+  'rejuvenation biotech','calico','unity biotechnology'
+];
+
 const COLUMNS = [
   { label: '🔬 Longevity & Rejuvenation', keys: ['longevity','rejuvenation','aging','reprogramming','epigenetic'] },
   { label: '💊 Clinical & Commercial',    keys: ['trial','fda','biotech','company','drug','funding','raises','clinical'] },
   { label: '🧬 Basic Science',            keys: ['gene','cell','factor','study','research','mechanism','protein'] },
 ];
+
 const TAG_RULES = [
   { words: ['breaking','exclusive'], cls: 'red',  label: 'BREAKING' },
   { words: ['fda','approved'],       cls: 'red',  label: 'FDA' },
@@ -506,16 +529,24 @@ const TAG_RULES = [
   { words: ['interview','q&a'],      cls: 'gold', label: 'INTERVIEW' },
   { words: ['study','research'],     cls: '',     label: 'STUDY' },
 ];
+
 function pickTag(title) {
   const t = title.toLowerCase();
   for (const rule of TAG_RULES) { if (rule.words.some(w => t.includes(w))) return rule; }
   return null;
 }
+
+function isCoreYF(article) {
+  const t = (article.title + ' ' + (article.description || '') + ' ' + (article.category || '')).toLowerCase();
+  return YF_CORE_KEYS.some(k => t.includes(k));
+}
+
 function assignColumn(article) {
   const t = (article.title + ' ' + (article.category || '')).toLowerCase();
   for (let i = 0; i < COLUMNS.length; i++) { if (COLUMNS[i].keys.some(k => t.includes(k))) return i; }
   return Math.floor(Math.random() * 3);
 }
+
 function timeAgo(dateStr) {
   if (!dateStr) return '';
   const diff = Date.now() - new Date(dateStr).getTime();
@@ -524,6 +555,7 @@ function timeAgo(dateStr) {
   if (days === 1) return '1 DAY AGO';
   return `${days} DAYS AGO`;
 }
+
 function nextRefresh() {
   const now = new Date();
   const day = now.getDay();
@@ -535,17 +567,25 @@ function nextRefresh() {
   const days2 = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
   return `NEXT REFRESH: ${days2[next.getDay()]}, ${next.toLocaleDateString('en-US',{month:'short',day:'numeric'})} — DAWN`;
 }
+
 function buildArticleHTML(data) {
   const articles = data.articles || [];
   if (!articles.length) return '<div class="error-msg">NO ARTICLES FOUND. CHECK BACK AFTER NEXT REFRESH.</div>';
-  const top = articles[0];
-  const rest = articles.slice(1, 13);
-  const bottom = articles.slice(13);
+
+  const coreArticles = articles.filter(a => isCoreYF(a));
+  const longevityArticles = articles.filter(a => !isCoreYF(a));
+  const mainArticles = coreArticles.length >= 3 ? coreArticles : articles;
+
+  const top = mainArticles[0];
+  const rest = mainArticles.slice(1, 13);
+  const bottom = mainArticles.slice(13);
   const cols = [[], [], []];
   rest.forEach(a => cols[assignColumn(a)].push(a));
+
   const updatedStr = data.updated
     ? new Date(data.updated).toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})
     : 'UNKNOWN DATE';
+
   let html = `
     <div class="timestamp-bar">
       <span><span class="live-dot"></span>LAST UPDATED: ${updatedStr.toUpperCase()}</span>
@@ -557,6 +597,7 @@ function buildArticleHTML(data) {
       <div class="source-tag">SOURCE: ${(top.source||'').toUpperCase()}${top.publishedAt ? ' · ' + timeAgo(top.publishedAt) : ''}</div>
     </div>
     <div class="columns">`;
+
   COLUMNS.forEach((col, i) => {
     if (i > 0) html += '<div class="col-divider"></div>';
     html += `<div class="col"><div class="col-header">${col.label}</div>`;
@@ -567,23 +608,47 @@ function buildArticleHTML(data) {
     });
     html += '</div>';
   });
+
   html += '</div>';
+
   if (bottom.length) {
     html += `<div class="bottom-links"><div class="section-label">Also Developing...</div><div class="bottom-grid">`;
     bottom.slice(0, 10).forEach(a => { html += `<a href="${a.url}" target="_blank" rel="noopener">${a.title}</a>`; });
     html += '</div></div>';
   }
+
+  if (longevityArticles.length > 0) {
+    html += `
+    <div class="longevity-section">
+      <div class="longevity-header">
+        <div class="longevity-title">🧬 Also in Longevity Science</div>
+        <div class="longevity-subtitle">Senolytics · Epigenetic Clocks · NAD+ · Telomeres · Stem Cells · Biotech</div>
+      </div>
+      <div class="longevity-grid">`;
+    longevityArticles.slice(0, 12).forEach(a => {
+      html += `
+        <div class="longevity-item">
+          <a href="${a.url}" target="_blank" rel="noopener">${a.title}</a>
+          <div class="longevity-meta">${(a.source||'').toUpperCase()}${a.publishedAt ? ' · ' + timeAgo(a.publishedAt) : ''}</div>
+        </div>`;
+    });
+    html += '</div></div>';
+  }
+
   return html;
 }
+
 function renderArticles(data) {
   document.getElementById('articles-content').innerHTML = buildArticleHTML(data);
 }
+
 function loadArticles() {
   fetch('articles.json?v=' + Date.now())
     .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
     .then(renderArticles)
     .catch(() => renderArticles({ updated: new Date().toISOString(), articles: PLACEHOLDER }));
 }
+
 function loadArchiveIndex() {
   const container = document.getElementById('archive-list-container');
   fetch('archive-index.json?v=' + Date.now())
@@ -609,6 +674,7 @@ function loadArchiveIndex() {
       container.innerHTML = `<div class="edition-empty">THE ARCHIVE IS EMPTY — PAST EDITIONS WILL APPEAR HERE AFTER THE FIRST SITE REFRESH.</div>`;
     });
 }
+
 function loadEdition(file, label, updated) {
   document.getElementById('archive-index-view').style.display = 'none';
   document.getElementById('archive-edition-view').style.display = 'block';
@@ -628,10 +694,12 @@ function loadEdition(file, label, updated) {
       document.getElementById('archive-edition-content').innerHTML = '<div class="error-msg">COULD NOT LOAD THIS EDITION.</div>';
     });
 }
+
 function showArchiveIndex() {
   document.getElementById('archive-index-view').style.display = 'block';
   document.getElementById('archive-edition-view').style.display = 'none';
 }
+
 function showPage(name, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-right button').forEach(b => b.classList.remove('active'));
@@ -639,12 +707,14 @@ function showPage(name, btn) {
   btn.classList.add('active');
   if (name === 'archive') { showArchiveIndex(); loadArchiveIndex(); }
 }
+
 function nlSubscribe() {
   const email = document.getElementById('nl-email').value.trim();
   if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
   window.open('https://yamanakafactors.beehiiv.com/subscribe?email=' + encodeURIComponent(email), '_blank');
   document.getElementById('nl-email').value = '';
 }
+
 const PLACEHOLDER = [
   { title: "SITE LAUNCHING SOON — FIRST AUTOMATED REFRESH COMING MONDAY", url: "#", source: "yamanakafactors.com", publishedAt: new Date().toISOString() },
   { title: "Yamanaka Reprogramming Reverses Aging Markers in Human Fibroblasts", url: "#", source: "Nature", publishedAt: new Date().toISOString() },
@@ -660,6 +730,7 @@ const PLACEHOLDER = [
   { title: "CRISPR Delivers Yamanaka Factors Without Viral Vector", url: "#", source: "Genome Biology", publishedAt: new Date().toISOString() },
   { title: "Longevity Biotech Attracts $4B in Q1 2025", url: "#", source: "Financial Times", publishedAt: new Date().toISOString() },
 ];
+
 loadArticles();
 </script>
 </body>
