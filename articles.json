@@ -1,4 +1,96 @@
 {
-  "updated": null,
-  "articles": []
+  "updated": "2026-03-26T11:13:07.846Z",
+  "articles": [
+    {
+      "title": "MATERNAL OBESITY DISRUPTS EPIGENETIC REPROGRAMMING IN EMBRYOS VIA PHOSPHOLIPID UNCOUPLING",
+      "url": "https://www.nature.com/articles/s41467-026-70492-2",
+      "source": "Nature.com",
+      "publishedAt": "2026-03-18T00:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "JAPAN FIRST TO APPROVE STEM CELL THERAPIES FOR PARKINSON'S AND HEART FAILURE",
+      "url": "https://www.medicalnewstoday.com/articles/japan-first-approve-stem-cell-treatments-parkinsons-heart-failure",
+      "source": "Medical News Today",
+      "publishedAt": "2026-03-14T09:54:17Z",
+      "category": "clinical"
+    },
+    {
+      "title": "DAVID SINCLAIR: AGING CAN BE REVERSED, GENE THERAPY KEY TO 22ND CENTURY LIFESPANS",
+      "url": "https://cryptobriefing.com/david-sinclair-aging-can-be-reversed-gene-therapy-is-key-to-rejuvenation-and-we-may-live-into-the-twenty-second-century-the-diary-of-a-ceo/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-03-23T19:08:32Z",
+      "category": "longevity"
+    },
+    {
+      "title": "DAILY MULTIVITAMINS SLOW BIOLOGICAL AGING IN MAJOR CLINICAL TRIAL - COSMOS STUDY",
+      "url": "https://www.nature.com/articles/s41591-026-04239-3",
+      "source": "Nature.com",
+      "publishedAt": "2026-03-09T00:00:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "BREAKTHROUGH: RECYCLING SENESCENT CELL LIPIDS FOR TARGETED ANTI-AGING THERAPY",
+      "url": "https://www.nature.com/articles/s41467-026-70486-0",
+      "source": "Nature.com",
+      "publishedAt": "2026-03-13T00:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "CHINESE BIOTECH CLAIMS NEW PILL COULD EXTEND HUMAN LIFE TO 150 YEARS",
+      "url": "https://www.globalresearch.ca/chinese-biotech-firm-claims-new-pill-extend-human-life-150-years/5918750",
+      "source": "Globalresearch.ca",
+      "publishedAt": "2026-03-14T08:33:18Z",
+      "category": "longevity"
+    },
+    {
+      "title": "ZOO LIFESTYLE ACCELERATES EPIGENETIC AGING IN KING PENGUINS DESPITE LONGER LIFESPANS",
+      "url": "https://www.nature.com/articles/s41467-026-70527-8",
+      "source": "Nature.com",
+      "publishedAt": "2026-03-11T00:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "STRAWBERRY COMPOUND FISETIN EMERGES AS POWERFUL SENOLYTIC ANTI-AGING AGENT",
+      "url": "https://www.naturalnews.com/2026-03-18-common-fruit-compound-redefining-anti-aging-science.html",
+      "source": "Naturalnews.com",
+      "publishedAt": "2026-03-18T06:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "STANFORD BREAKTHROUGH: REVERSING MEMORY LOSS VIA GUT-BRAIN COMMUNICATION",
+      "url": "https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html",
+      "source": "Stanford.edu",
+      "publishedAt": "2026-03-12T16:38:51Z",
+      "category": "science"
+    },
+    {
+      "title": "$45 BILLION CELL THERAPY BOOM HITS MANUFACTURING MILESTONE INVESTORS MISSED",
+      "url": "https://www.globenewswire.com/news-release/2026/03/18/3258408/0/en/The-45-Billion-Cell-Therapy-Boom-Just-Hit-a-Manufacturing-Milestone-Most-Investors-Haven-t-Noticed.html",
+      "source": "GlobeNewswire",
+      "publishedAt": "2026-03-18T15:30:00Z",
+      "category": "clinical"
+    },
+    {
+      "title": "OBAGI LAUNCHES NAD+ CELLULAR RENEWAL SERUM TO VISIBLY REWIND SKIN'S AGE",
+      "url": "https://www.globenewswire.com/news-release/2026/03/24/3261243/0/en/Obagi-Medical-Introduces-NU-GEN-Cellular-Renewal-Serum-Designed-to-Visibly-Rewind-Skin-s-Age-and-Restore-Visible-Youthfulness.html",
+      "source": "GlobeNewswire",
+      "publishedAt": "2026-03-24T12:35:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "IMMORTAL JELLYFISH REVERSES AGING - BIOLOGY SAYS IT SHOULDN'T HAPPEN",
+      "url": "https://economictimes.indiatimes.com/news/international/us/researchers-studying-this-organism-discovered-something-biology-said-shouldnt-happen/articleshow/129326238.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-03-09T10:19:41Z",
+      "category": "science"
+    },
+    {
+      "title": "BILLIONAIRE-BACKED STARTUP GROWS 'ORGAN SACKS' TO REPLACE ANIMAL TESTING",
+      "url": "https://www.wired.com/story/a-billionaire-backed-startup-wants-to-grow-organ-sacks-to-replace-animal-testing/",
+      "source": "Wired",
+      "publishedAt": "2026-03-23T19:46:05Z",
+      "category": "science"
+    }
+  ]
 }
