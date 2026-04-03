@@ -10,10 +10,12 @@
  * 3. If 3+ new articles found → archive current edition, post new one
  * 4. If fewer than 3 new articles → skip update, site stays unchanged
  * 5. Maintains archive-index.json listing all past editions (last 16)
+ * 6. Automatically sends Beehiiv newsletter after each successful refresh
  *
  * Required environment variables:
  *   NEWS_API_KEY      — from newsapi.org
  *   ANTHROPIC_API_KEY — from console.anthropic.com
+ *   BEEHIIV_API_KEY   — from app.beehiiv.com/settings/workspace/api
  * =====================================================================
  */
 
@@ -23,22 +25,21 @@ const path  = require('path');
 
 const NEWS_API_KEY        = process.env.NEWS_API_KEY;
 const ANTHROPIC_API_KEY   = process.env.ANTHROPIC_API_KEY;
+const BEEHIIV_API_KEY     = process.env.BEEHIIV_API_KEY;
+const BEEHIIV_PUB_ID      = 'pub_f8d00ab2-c30a-4c38-983d-6af960ecfbd1';
 const OUTPUT_FILE         = path.join(__dirname, '..', 'articles.json');
 const ARCHIVE_INDEX_FILE  = path.join(__dirname, '..', 'archive-index.json');
 const ARCHIVE_DIR         = path.join(__dirname, '..', 'archive');
 
-const NEW_ARTICLE_THRESHOLD = 3;   // minimum new articles to trigger a refresh
-const MAX_ARCHIVE_EDITIONS  = 16;  // keep last 16 editions (~8 weeks)
+const NEW_ARTICLE_THRESHOLD = 3;
+const MAX_ARCHIVE_EDITIONS  = 16;
 
 const SEARCH_QUERIES = [
-  // Core — Yamanaka & reprogramming
   'Yamanaka factors reprogramming',
   'partial reprogramming longevity',
   'cellular rejuvenation aging reversal',
   'iPSC stem cell therapy aging',
   'epigenetic reprogramming anti-aging',
-
-  // Longevity science broadly
   'longevity biotech research',
   'epigenetic clock reversal',
   'senolytics senescent cells aging',
@@ -46,17 +47,11 @@ const SEARCH_QUERIES = [
   'telomere extension aging',
   'rapamycin longevity research',
   'aging reversal clinical trial',
-
-  // Major labs & companies
   'Altos Labs rejuvenation research',
   'Calico aging research',
   'Unity Biotechnology senolytic',
-
-  // Stem cells & regenerative medicine
   'stem cell therapy regenerative medicine',
   'gene therapy aging reversal',
-
-  // Broader longevity news
   'longevity drug human trial',
   'biological age reversal science',
   'healthspan lifespan extension research',
@@ -87,6 +82,27 @@ function httpsPost(hostname, pathStr, headers, body) {
     const bodyStr = JSON.stringify(body);
     const options = {
       hostname, path: pathStr, method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(bodyStr), ...headers }
+    };
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(new Error('JSON parse error: ' + data.slice(0, 200))); }
+      });
+    });
+    req.on('error', reject);
+    req.write(bodyStr);
+    req.end();
+  });
+}
+
+function httpsPatch(hostname, pathStr, headers, body) {
+  return new Promise((resolve, reject) => {
+    const bodyStr = JSON.stringify(body);
+    const options = {
+      hostname, path: pathStr, method: 'PATCH',
       headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(bodyStr), ...headers }
     };
     const req = https.request(options, (res) => {
@@ -315,6 +331,137 @@ function writeOutput(articles) {
   console.log(`✅ Wrote ${articles.length} articles to articles.json`);
 }
 
+// ── Step 7: Send Beehiiv Newsletter ───────────────────────────────────
+async function sendBeehiivNewsletter(articles) {
+  if (!BEEHIIV_API_KEY) {
+    console.warn('⚠ No BEEHIIV_API_KEY found — skipping newsletter');
+    return;
+  }
+
+  console.log('\n📧 Sending Beehiiv newsletter...');
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  const YF_CORE_KEYS = [
+    'yamanaka','reprogramming','reprogram','ipsc','pluripotent',
+    'cellular rejuvenation','partial reprogramming','epigenetic clock',
+    'altos labs','sinclair','cellular aging reversal','age reversal',
+    'rejuvenation biotech','calico','unity biotechnology'
+  ];
+
+  const coreArticles = articles.filter(a => {
+    const t = (a.title + ' ' + (a.category || '')).toLowerCase();
+    return YF_CORE_KEYS.some(k => t.includes(k));
+  });
+  const longevityArticles = articles.filter(a => {
+    const t = (a.title + ' ' + (a.category || '')).toLowerCase();
+    return !YF_CORE_KEYS.some(k => t.includes(k));
+  });
+
+  const mainArticles = coreArticles.length >= 3 ? coreArticles : articles;
+  const topStory = mainArticles[0];
+  const restStories = mainArticles.slice(1);
+
+  // Build HTML email body
+  let html = `
+<div style="max-width:600px;margin:0 auto;font-family:Georgia,serif;background:#f5f0e8;padding:0;">
+
+  <!-- Header -->
+  <div style="background:#0a0a0a;padding:32px 24px;text-align:center;border-bottom:4px solid #c0392b;">
+    <div style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;color:#9a7c2b;text-transform:uppercase;margin-bottom:8px;">The Yamanaka Factors Report</div>
+    <div style="font-family:Georgia,serif;font-size:42px;font-weight:900;color:#f5f0e8;letter-spacing:4px;line-height:1;">YAMANAKA<br>FACTORS</div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#9a7c2b;letter-spacing:3px;margin-top:10px;text-transform:uppercase;">The Cellular Reprogramming Report</div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#666;margin-top:8px;letter-spacing:2px;">${dateStr.toUpperCase()}</div>
+  </div>
+
+  <!-- Top Story -->
+  <div style="background:#f5f0e8;padding:28px 24px;border-bottom:2px solid #0a0a0a;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;color:#c0392b;text-transform:uppercase;margin-bottom:10px;">⚡ Top Story</div>
+    <a href="${topStory.url}" style="font-family:Georgia,serif;font-size:24px;font-weight:700;color:#0a0a0a;text-decoration:none;line-height:1.3;display:block;">${topStory.title}</a>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:8px;">${(topStory.source || '').toUpperCase()}</div>
+  </div>
+
+  <!-- Main Stories -->
+  <div style="background:#f5f0e8;padding:20px 24px;border-bottom:2px solid #0a0a0a;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;color:#9a7c2b;text-transform:uppercase;margin-bottom:16px;">🔬 Latest in Cellular Reprogramming</div>
+    ${restStories.map(a => `
+    <div style="padding:10px 0;border-bottom:1px dotted #ccc5b5;">
+      <a href="${a.url}" style="font-family:Georgia,serif;font-size:16px;color:#0a0a0a;text-decoration:none;line-height:1.4;">${a.title}</a>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:3px;">${(a.source || '').toUpperCase()}</div>
+    </div>`).join('')}
+  </div>
+
+  ${longevityArticles.length > 0 ? `
+  <!-- Longevity Science -->
+  <div style="background:#f5f0e8;padding:20px 24px;border-bottom:2px solid #0a0a0a;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;color:#9a7c2b;text-transform:uppercase;margin-bottom:8px;">🧬 Also in Longevity Science</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:12px;color:#5a5247;margin-bottom:14px;">Senolytics · Epigenetic Clocks · NAD+ · Telomeres · Stem Cells · Biotech</div>
+    ${longevityArticles.slice(0, 6).map(a => `
+    <div style="padding:8px 0;border-bottom:1px dotted #ccc5b5;">
+      <a href="${a.url}" style="font-family:Georgia,serif;font-size:15px;color:#0a0a0a;text-decoration:none;line-height:1.4;">${a.title}</a>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:3px;">${(a.source || '').toUpperCase()}</div>
+    </div>`).join('')}
+  </div>` : ''}
+
+  <!-- Footer -->
+  <div style="background:#0a0a0a;padding:20px 24px;text-align:center;">
+    <a href="https://yamanakafactors.com" style="font-family:'Courier New',monospace;font-size:12px;color:#9a7c2b;text-decoration:none;letter-spacing:2px;">YAMANAKAFACTORS.COM</a>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#444;margin-top:6px;letter-spacing:1px;">AI-CURATED · REFRESHED EVERY MON & THU · FREE</div>
+  </div>
+
+</div>`;
+
+  const subject = `The Yamanaka Factors Report — ${dateStr}`;
+
+  try {
+    // Create draft post
+    const createResponse = await httpsPost(
+      'api.beehiiv.com',
+      `/v2/publications/${BEEHIIV_PUB_ID}/posts`,
+      { 'Authorization': `Bearer ${BEEHIIV_API_KEY}` },
+      {
+        subject:        subject,
+        content:        { free: { web: html, email: html } },
+        status:         'draft',
+        audience:       'free',
+        content_tags:   ['yamanaka', 'longevity', 'anti-aging'],
+      }
+    );
+
+    if (createResponse.errors || !createResponse.data?.id) {
+      console.warn('⚠ Beehiiv post creation failed:', JSON.stringify(createResponse));
+      return;
+    }
+
+    const postId = createResponse.data.id;
+    console.log(`  ✅ Draft created — post ID: ${postId}`);
+
+    // Small delay before sending
+    await sleep(2000);
+
+    // Send the post
+    const sendResponse = await httpsPost(
+      'api.beehiiv.com',
+      `/v2/publications/${BEEHIIV_PUB_ID}/posts/${postId}/send`,
+      { 'Authorization': `Bearer ${BEEHIIV_API_KEY}` },
+      { send_at: 'now' }
+    );
+
+    if (sendResponse.errors) {
+      console.warn('⚠ Beehiiv send failed:', JSON.stringify(sendResponse));
+      return;
+    }
+
+    console.log(`  📧 Newsletter sent successfully!`);
+
+  } catch (err) {
+    console.warn('⚠ Beehiiv newsletter error (non-fatal):', err.message);
+  }
+}
+
 // ── Main ──────────────────────────────────────────────────────────────
 async function main() {
   console.log('🔬 YamanakaFactors.com — Article Refresh Starting');
@@ -353,6 +500,8 @@ async function main() {
   }
 
   writeOutput(ranked);
+
+  await sendBeehiivNewsletter(ranked);
 
   console.log('');
   console.log('🎉 Refresh complete!');
