@@ -423,6 +423,7 @@ async function sendBeehiivNewsletter(articles) {
       `/v2/publications/${BEEHIIV_PUB_ID}/posts`,
       { 'Authorization': `Bearer ${BEEHIIV_API_KEY}` },
       {
+        title:          subject,
         subject:        subject,
         content:        { free: { web: html, email: html } },
         status:         'draft',
