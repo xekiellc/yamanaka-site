@@ -2,16 +2,12 @@ name: Refresh Articles
 
 on:
   schedule:
-    - cron: '0 6 * * 1'
-    - cron: '0 6 * * 4'
+    - cron: '0 6 * * 1,4'
   workflow_dispatch:
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,14 +19,15 @@ jobs:
 
       - name: Run article refresh
         env:
-          NEWS_API_KEY:      ${{ secrets.NEWS_API_KEY }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
         run: node scripts/yamanaka-refresh.js
 
       - name: Commit updated articles.json
         run: |
-          git config user.name  "yamanaka-bot"
+          git config user.name "yamanaka-bot"
           git config user.email "bot@yamanakafactors.com"
-          git add articles.json
-          git diff --staged --quiet || git commit -m "🔬 Auto-refresh: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git add articles.json archive-index.json archive/
+          git diff --cached --quiet || git commit -m "🔬 Auto-refresh: $(date -u '+%Y-%m-%d %H:%M') UTC"
           git push
