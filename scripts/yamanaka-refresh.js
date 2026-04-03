@@ -10,12 +10,13 @@
  * 3. If 3+ new articles found → archive current edition, post new one
  * 4. If fewer than 3 new articles → skip update, site stays unchanged
  * 5. Maintains archive-index.json listing all past editions (last 16)
- * 6. Writes rss.xml on every refresh (Beehiiv RSS automation picks this up)
+ * 6. Writes rss.xml on every refresh
+ * 7. Sends newsletter via MailerLite API
  *
  * Required environment variables:
- *   NEWS_API_KEY      — from newsapi.org
- *   ANTHROPIC_API_KEY — from console.anthropic.com
- *   BEEHIIV_API_KEY   — not needed for RSS approach (kept for future use)
+ *   NEWS_API_KEY        — from newsapi.org
+ *   ANTHROPIC_API_KEY   — from console.anthropic.com
+ *   MAILERLITE_API_KEY  — from dashboard.mailerlite.com/integrations/api
  * =====================================================================
  */
 
@@ -25,8 +26,7 @@ const path  = require('path');
 
 const NEWS_API_KEY        = process.env.NEWS_API_KEY;
 const ANTHROPIC_API_KEY   = process.env.ANTHROPIC_API_KEY;
-const BEEHIIV_API_KEY     = process.env.BEEHIIV_API_KEY;
-const BEEHIIV_PUB_ID      = 'pub_f8d00ab2-c30a-4c38-983d-6af960ecfbd1';
+const MAILERLITE_API_KEY  = process.env.MAILERLITE_API_KEY;
 const OUTPUT_FILE         = path.join(__dirname, '..', 'articles.json');
 const ARCHIVE_INDEX_FILE  = path.join(__dirname, '..', 'archive-index.json');
 const ARCHIVE_DIR         = path.join(__dirname, '..', 'archive');
@@ -89,8 +89,8 @@ function httpsPost(hostname, pathStr, headers, body) {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
-        try { resolve(JSON.parse(data)); }
-        catch (e) { reject(new Error('JSON parse error: ' + data.slice(0, 200))); }
+        try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
+        catch (e) { resolve({ status: res.statusCode, body: data }); }
       });
     });
     req.on('error', reject);
@@ -238,9 +238,9 @@ ${articleList}`;
     }
   );
 
-  if (response.error) throw new Error('Claude API error: ' + JSON.stringify(response.error));
+  if (response.body.error) throw new Error('Claude API error: ' + JSON.stringify(response.body.error));
 
-  const rawText = response.content?.[0]?.text || '';
+  const rawText = response.body.content?.[0]?.text || '';
   const cleaned = rawText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
 
   let ranked;
@@ -348,8 +348,56 @@ function writeRssFeed(articles) {
   const topStory = mainArticles[0];
   const restStories = mainArticles.slice(1);
 
-  // Build rich HTML description for the RSS item (this becomes the email body in Beehiiv)
-  const htmlContent = `
+  const htmlContent = buildEmailHtml(articles, dateStr);
+  const rssTitle = `The Yamanaka Factors Report — ${dateStr}`;
+
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Yamanaka Factors Report</title>
+    <link>https://yamanakafactors.com</link>
+    <description>AI-curated news on Yamanaka factors, cellular reprogramming, and longevity science. Refreshed every Monday and Thursday.</description>
+    <language>en-us</language>
+    <lastBuildDate>${pubDate}</lastBuildDate>
+    <atom:link href="https://yamanakafactors.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>${escapeXml(rssTitle)}</title>
+      <link>https://yamanakafactors.com</link>
+      <guid isPermaLink="false">yamanakafactors-${todaySlug()}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description>${escapeXml(rssTitle)}</description>
+      <content:encoded><![CDATA[${htmlContent}]]></content:encoded>
+    </item>
+  </channel>
+</rss>`;
+
+  fs.writeFileSync(RSS_FILE, rss, 'utf8');
+  console.log(`📡 Wrote rss.xml — https://yamanakafactors.com/rss.xml`);
+}
+
+// ── Build email HTML ──────────────────────────────────────────────────
+function buildEmailHtml(articles, dateStr) {
+  const YF_CORE_KEYS = [
+    'yamanaka','reprogramming','reprogram','ipsc','pluripotent',
+    'cellular rejuvenation','partial reprogramming','epigenetic clock',
+    'altos labs','sinclair','cellular aging reversal','age reversal',
+    'rejuvenation biotech','calico','unity biotechnology'
+  ];
+
+  const coreArticles = articles.filter(a => {
+    const t = (a.title + ' ' + (a.category || '')).toLowerCase();
+    return YF_CORE_KEYS.some(k => t.includes(k));
+  });
+  const longevityArticles = articles.filter(a => {
+    const t = (a.title + ' ' + (a.category || '')).toLowerCase();
+    return !YF_CORE_KEYS.some(k => t.includes(k));
+  });
+
+  const mainArticles = coreArticles.length >= 3 ? coreArticles : articles;
+  const topStory = mainArticles[0];
+  const restStories = mainArticles.slice(1);
+
+  return `
 <div style="max-width:600px;margin:0 auto;font-family:Georgia,serif;background:#f5f0e8;padding:0;">
 
   <div style="background:#0a0a0a;padding:32px 24px;text-align:center;border-bottom:4px solid #c0392b;">
@@ -395,35 +443,75 @@ function writeRssFeed(articles) {
   </div>
 
 </div>`;
+}
 
-  const rssTitle = `The Yamanaka Factors Report — ${dateStr}`;
-  const escapedHtml = htmlContent
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+// ── Step 8: Send MailerLite Newsletter ────────────────────────────────
+async function sendMailerLiteNewsletter(articles) {
+  if (!MAILERLITE_API_KEY) {
+    console.warn('⚠ No MAILERLITE_API_KEY found — skipping newsletter');
+    return;
+  }
 
-  const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>The Yamanaka Factors Report</title>
-    <link>https://yamanakafactors.com</link>
-    <description>AI-curated news on Yamanaka factors, cellular reprogramming, and longevity science. Refreshed every Monday and Thursday.</description>
-    <language>en-us</language>
-    <lastBuildDate>${pubDate}</lastBuildDate>
-    <atom:link href="https://yamanakafactors.com/rss.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title>${escapeXml(rssTitle)}</title>
-      <link>https://yamanakafactors.com</link>
-      <guid isPermaLink="false">yamanakafactors-${todaySlug()}</guid>
-      <pubDate>${pubDate}</pubDate>
-      <description>${escapeXml(rssTitle)}</description>
-      <content:encoded><![CDATA[${htmlContent}]]></content:encoded>
-    </item>
-  </channel>
-</rss>`;
+  console.log('\n📧 Sending MailerLite newsletter...');
 
-  fs.writeFileSync(RSS_FILE, rss, 'utf8');
-  console.log(`📡 Wrote rss.xml — https://yamanakafactors.com/rss.xml`);
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  const subject = `The Yamanaka Factors Report — ${dateStr}`;
+  const htmlContent = buildEmailHtml(articles, dateStr);
+
+  try {
+    // Step 1: Create campaign
+    const createRes = await httpsPost(
+      'connect.mailerlite.com',
+      '/api/campaigns',
+      { 'Authorization': `Bearer ${MAILERLITE_API_KEY}` },
+      {
+        name:     `Yamanaka Factors Report — ${todaySlug()}`,
+        type:     'regular',
+        emails: [{
+          subject:   subject,
+          from_name: 'The Yamanaka Factors Report',
+          from:      'zach@xekie.com',
+          content:   htmlContent,
+        }],
+      }
+    );
+
+    if (createRes.status !== 201) {
+      console.warn('⚠ MailerLite campaign creation failed:', JSON.stringify(createRes.body));
+      return;
+    }
+
+    const campaignId = createRes.body.data?.id;
+    if (!campaignId) {
+      console.warn('⚠ No campaign ID returned:', JSON.stringify(createRes.body));
+      return;
+    }
+
+    console.log(`  ✅ Campaign created — ID: ${campaignId}`);
+    await sleep(2000);
+
+    // Step 2: Schedule/send immediately
+    const scheduleRes = await httpsPost(
+      'connect.mailerlite.com',
+      `/api/campaigns/${campaignId}/schedule`,
+      { 'Authorization': `Bearer ${MAILERLITE_API_KEY}` },
+      { delivery: 'instant' }
+    );
+
+    if (scheduleRes.status !== 200 && scheduleRes.status !== 204) {
+      console.warn('⚠ MailerLite send failed:', JSON.stringify(scheduleRes.body));
+      return;
+    }
+
+    console.log(`  📧 Newsletter sent successfully to all subscribers!`);
+
+  } catch (err) {
+    console.warn('⚠ MailerLite newsletter error (non-fatal):', err.message);
+  }
 }
 
 // ── Main ──────────────────────────────────────────────────────────────
@@ -465,6 +553,8 @@ async function main() {
 
   writeOutput(ranked);
   writeRssFeed(ranked);
+
+  await sendMailerLiteNewsletter(ranked);
 
   console.log('');
   console.log('🎉 Refresh complete!');
