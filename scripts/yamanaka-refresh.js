@@ -10,12 +10,12 @@
  * 3. If 3+ new articles found → archive current edition, post new one
  * 4. If fewer than 3 new articles → skip update, site stays unchanged
  * 5. Maintains archive-index.json listing all past editions (last 16)
- * 6. Automatically sends Beehiiv newsletter after each successful refresh
+ * 6. Writes rss.xml on every refresh (Beehiiv RSS automation picks this up)
  *
  * Required environment variables:
  *   NEWS_API_KEY      — from newsapi.org
  *   ANTHROPIC_API_KEY — from console.anthropic.com
- *   BEEHIIV_API_KEY   — from app.beehiiv.com/settings/workspace/api
+ *   BEEHIIV_API_KEY   — not needed for RSS approach (kept for future use)
  * =====================================================================
  */
 
@@ -30,6 +30,7 @@ const BEEHIIV_PUB_ID      = 'pub_f8d00ab2-c30a-4c38-983d-6af960ecfbd1';
 const OUTPUT_FILE         = path.join(__dirname, '..', 'articles.json');
 const ARCHIVE_INDEX_FILE  = path.join(__dirname, '..', 'archive-index.json');
 const ARCHIVE_DIR         = path.join(__dirname, '..', 'archive');
+const RSS_FILE            = path.join(__dirname, '..', 'rss.xml');
 
 const NEW_ARTICLE_THRESHOLD = 3;
 const MAX_ARCHIVE_EDITIONS  = 16;
@@ -98,27 +99,6 @@ function httpsPost(hostname, pathStr, headers, body) {
   });
 }
 
-function httpsPatch(hostname, pathStr, headers, body) {
-  return new Promise((resolve, reject) => {
-    const bodyStr = JSON.stringify(body);
-    const options = {
-      hostname, path: pathStr, method: 'PATCH',
-      headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(bodyStr), ...headers }
-    };
-    const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try { resolve(JSON.parse(data)); }
-        catch (e) { reject(new Error('JSON parse error: ' + data.slice(0, 200))); }
-      });
-    });
-    req.on('error', reject);
-    req.write(bodyStr);
-    req.end();
-  });
-}
-
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 function formatDateLabel(isoString) {
@@ -131,6 +111,15 @@ function formatDateLabel(isoString) {
 function todaySlug() {
   const d = new Date();
   return d.toISOString().split('T')[0];
+}
+
+function escapeXml(str) {
+  return (str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 }
 
 // ── Load current articles ─────────────────────────────────────────────
@@ -331,19 +320,13 @@ function writeOutput(articles) {
   console.log(`✅ Wrote ${articles.length} articles to articles.json`);
 }
 
-// ── Step 7: Send Beehiiv Newsletter ───────────────────────────────────
-async function sendBeehiivNewsletter(articles) {
-  if (!BEEHIIV_API_KEY) {
-    console.warn('⚠ No BEEHIIV_API_KEY found — skipping newsletter');
-    return;
-  }
-
-  console.log('\n📧 Sending Beehiiv newsletter...');
-
+// ── Step 7: Write RSS feed ────────────────────────────────────────────
+function writeRssFeed(articles) {
   const now = new Date();
   const dateStr = now.toLocaleDateString('en-US', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
   });
+  const pubDate = now.toUTCString();
 
   const YF_CORE_KEYS = [
     'yamanaka','reprogramming','reprogram','ipsc','pluripotent',
@@ -365,11 +348,10 @@ async function sendBeehiivNewsletter(articles) {
   const topStory = mainArticles[0];
   const restStories = mainArticles.slice(1);
 
-  // Build HTML email body
-  let html = `
+  // Build rich HTML description for the RSS item (this becomes the email body in Beehiiv)
+  const htmlContent = `
 <div style="max-width:600px;margin:0 auto;font-family:Georgia,serif;background:#f5f0e8;padding:0;">
 
-  <!-- Header -->
   <div style="background:#0a0a0a;padding:32px 24px;text-align:center;border-bottom:4px solid #c0392b;">
     <div style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;color:#9a7c2b;text-transform:uppercase;margin-bottom:8px;">The Yamanaka Factors Report</div>
     <div style="font-family:Georgia,serif;font-size:42px;font-weight:900;color:#f5f0e8;letter-spacing:4px;line-height:1;">YAMANAKA<br>FACTORS</div>
@@ -377,90 +359,71 @@ async function sendBeehiivNewsletter(articles) {
     <div style="font-family:'Courier New',monospace;font-size:10px;color:#666;margin-top:8px;letter-spacing:2px;">${dateStr.toUpperCase()}</div>
   </div>
 
-  <!-- Top Story -->
   <div style="background:#f5f0e8;padding:28px 24px;border-bottom:2px solid #0a0a0a;">
     <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;color:#c0392b;text-transform:uppercase;margin-bottom:10px;">⚡ Top Story</div>
-    <a href="${topStory.url}" style="font-family:Georgia,serif;font-size:24px;font-weight:700;color:#0a0a0a;text-decoration:none;line-height:1.3;display:block;">${topStory.title}</a>
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:8px;">${(topStory.source || '').toUpperCase()}</div>
+    <a href="${topStory.url}" style="font-family:Georgia,serif;font-size:24px;font-weight:700;color:#0a0a0a;text-decoration:none;line-height:1.3;display:block;">${escapeXml(topStory.title)}</a>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:8px;">${escapeXml((topStory.source || '').toUpperCase())}</div>
   </div>
 
-  <!-- Main Stories -->
   <div style="background:#f5f0e8;padding:20px 24px;border-bottom:2px solid #0a0a0a;">
     <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;color:#9a7c2b;text-transform:uppercase;margin-bottom:16px;">🔬 Latest in Cellular Reprogramming</div>
     ${restStories.map(a => `
     <div style="padding:10px 0;border-bottom:1px dotted #ccc5b5;">
-      <a href="${a.url}" style="font-family:Georgia,serif;font-size:16px;color:#0a0a0a;text-decoration:none;line-height:1.4;">${a.title}</a>
-      <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:3px;">${(a.source || '').toUpperCase()}</div>
+      <a href="${a.url}" style="font-family:Georgia,serif;font-size:16px;color:#0a0a0a;text-decoration:none;line-height:1.4;">${escapeXml(a.title)}</a>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:3px;">${escapeXml((a.source || '').toUpperCase())}</div>
     </div>`).join('')}
   </div>
 
   ${longevityArticles.length > 0 ? `
-  <!-- Longevity Science -->
   <div style="background:#f5f0e8;padding:20px 24px;border-bottom:2px solid #0a0a0a;">
     <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;color:#9a7c2b;text-transform:uppercase;margin-bottom:8px;">🧬 Also in Longevity Science</div>
     <div style="font-family:Georgia,serif;font-style:italic;font-size:12px;color:#5a5247;margin-bottom:14px;">Senolytics · Epigenetic Clocks · NAD+ · Telomeres · Stem Cells · Biotech</div>
     ${longevityArticles.slice(0, 6).map(a => `
     <div style="padding:8px 0;border-bottom:1px dotted #ccc5b5;">
-      <a href="${a.url}" style="font-family:Georgia,serif;font-size:15px;color:#0a0a0a;text-decoration:none;line-height:1.4;">${a.title}</a>
-      <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:3px;">${(a.source || '').toUpperCase()}</div>
+      <a href="${a.url}" style="font-family:Georgia,serif;font-size:15px;color:#0a0a0a;text-decoration:none;line-height:1.4;">${escapeXml(a.title)}</a>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:#5a5247;margin-top:3px;">${escapeXml((a.source || '').toUpperCase())}</div>
     </div>`).join('')}
   </div>` : ''}
 
-  <!-- Footer -->
+  <div style="background:#f5f0e8;padding:20px 24px;text-align:center;border-top:2px solid #0a0a0a;">
+    <a href="https://yamanakafactors.com" style="display:inline-block;background:#c0392b;color:#f5f0e8;font-family:'Courier New',monospace;font-size:12px;letter-spacing:2px;text-decoration:none;padding:12px 28px;text-transform:uppercase;">READ FULL EDITION →</a>
+  </div>
+
   <div style="background:#0a0a0a;padding:20px 24px;text-align:center;">
     <a href="https://yamanakafactors.com" style="font-family:'Courier New',monospace;font-size:12px;color:#9a7c2b;text-decoration:none;letter-spacing:2px;">YAMANAKAFACTORS.COM</a>
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:#444;margin-top:6px;letter-spacing:1px;">AI-CURATED · REFRESHED EVERY MON & THU · FREE</div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#444;margin-top:6px;letter-spacing:1px;">AI-CURATED · REFRESHED EVERY MON &amp; THU · FREE</div>
   </div>
 
 </div>`;
 
-  const subject = `The Yamanaka Factors Report — ${dateStr}`;
+  const rssTitle = `The Yamanaka Factors Report — ${dateStr}`;
+  const escapedHtml = htmlContent
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 
-  try {
-    // Create draft post
-    const createResponse = await httpsPost(
-      'api.beehiiv.com',
-      `/v2/publications/${BEEHIIV_PUB_ID}/posts`,
-      { 'Authorization': `Bearer ${BEEHIIV_API_KEY}` },
-      {
-        title:          subject,
-        subject:        subject,
-        content:        { free: { web: html, email: html } },
-        status:         'draft',
-        audience:       'free',
-        content_tags:   ['yamanaka', 'longevity', 'anti-aging'],
-      }
-    );
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Yamanaka Factors Report</title>
+    <link>https://yamanakafactors.com</link>
+    <description>AI-curated news on Yamanaka factors, cellular reprogramming, and longevity science. Refreshed every Monday and Thursday.</description>
+    <language>en-us</language>
+    <lastBuildDate>${pubDate}</lastBuildDate>
+    <atom:link href="https://yamanakafactors.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>${escapeXml(rssTitle)}</title>
+      <link>https://yamanakafactors.com</link>
+      <guid isPermaLink="false">yamanakafactors-${todaySlug()}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description>${escapeXml(rssTitle)}</description>
+      <content:encoded><![CDATA[${htmlContent}]]></content:encoded>
+    </item>
+  </channel>
+</rss>`;
 
-    if (createResponse.errors || !createResponse.data?.id) {
-      console.warn('⚠ Beehiiv post creation failed:', JSON.stringify(createResponse));
-      return;
-    }
-
-    const postId = createResponse.data.id;
-    console.log(`  ✅ Draft created — post ID: ${postId}`);
-
-    // Small delay before sending
-    await sleep(2000);
-
-    // Send the post
-    const sendResponse = await httpsPost(
-      'api.beehiiv.com',
-      `/v2/publications/${BEEHIIV_PUB_ID}/posts/${postId}/send`,
-      { 'Authorization': `Bearer ${BEEHIIV_API_KEY}` },
-      { send_at: 'now' }
-    );
-
-    if (sendResponse.errors) {
-      console.warn('⚠ Beehiiv send failed:', JSON.stringify(sendResponse));
-      return;
-    }
-
-    console.log(`  📧 Newsletter sent successfully!`);
-
-  } catch (err) {
-    console.warn('⚠ Beehiiv newsletter error (non-fatal):', err.message);
-  }
+  fs.writeFileSync(RSS_FILE, rss, 'utf8');
+  console.log(`📡 Wrote rss.xml — https://yamanakafactors.com/rss.xml`);
 }
 
 // ── Main ──────────────────────────────────────────────────────────────
@@ -501,8 +464,7 @@ async function main() {
   }
 
   writeOutput(ranked);
-
-  await sendBeehiivNewsletter(ranked);
+  writeRssFeed(ranked);
 
   console.log('');
   console.log('🎉 Refresh complete!');
