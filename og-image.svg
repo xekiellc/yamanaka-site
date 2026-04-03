@@ -1,0 +1,40 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <line x1="0" y1="210" x2="1200" y2="210" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="0" y1="420" x2="1200" y2="420" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="630" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="800" y1="0" x2="800" y2="630" stroke="#1a1a1a" stroke-width="1"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#c0392b"/>
+  <rect x="0" y="624" width="1200" height="6" fill="#c0392b"/>
+  <g transform="translate(90, 115)">
+    <path d="M0 0 C20 30, 40 30, 60 0 C80 -30, 100 -30, 120 0 C140 30, 160 30, 180 0 C200 -30, 220 -30, 240 0 C260 30, 280 30, 300 0 C320 -30, 340 -30, 360 0" stroke="#c0392b" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M0 0 C20 -30, 40 -30, 60 0 C80 30, 100 30, 120 0 C140 -30, 160 -30, 180 0 C200 30, 220 30, 240 0 C260 -30, 280 -30, 300 0 C320 30, 340 30, 360 0" stroke="#f5f0e8" stroke-width="3" fill="none" opacity="0.4"/>
+    <line x1="30" y1="-15" x2="30" y2="15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="90" y1="15" x2="90" y2="-15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="150" y1="-15" x2="150" y2="15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="210" y1="15" x2="210" y2="-15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="270" y1="-15" x2="270" y2="15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="330" y1="15" x2="330" y2="-15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+  </g>
+  <g transform="translate(730, 510)">
+    <path d="M0 0 C20 30, 40 30, 60 0 C80 -30, 100 -30, 120 0 C140 30, 160 30, 180 0 C200 -30, 220 -30, 240 0 C260 30, 280 30, 300 0 C320 -30, 340 -30, 360 0" stroke="#c0392b" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M0 0 C20 -30, 40 -30, 60 0 C80 30, 100 30, 120 0 C140 -30, 160 -30, 180 0 C200 30, 220 30, 240 0 C260 -30, 280 -30, 300 0 C320 30, 340 30, 360 0" stroke="#f5f0e8" stroke-width="3" fill="none" opacity="0.4"/>
+    <line x1="30" y1="-15" x2="30" y2="15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="90" y1="15" x2="90" y2="-15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="150" y1="-15" x2="150" y2="15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="210" y1="15" x2="210" y2="-15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="270" y1="-15" x2="270" y2="15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+    <line x1="330" y1="15" x2="330" y2="-15" stroke="#9a7c2b" stroke-width="2" opacity="0.8"/>
+  </g>
+  <rect x="430" y="42" width="340" height="34" rx="4" fill="#c0392b"/>
+  <text x="600" y="65" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="3">ANTI-AGING SCIENCE NEWS</text>
+  <text x="600" y="210" text-anchor="middle" font-family="Georgia, serif" font-weight="900" font-size="108" fill="#f5f0e8" letter-spacing="6">YAMANAKA</text>
+  <text x="600" y="328" text-anchor="middle" font-family="Georgia, serif" font-weight="900" font-size="108" fill="#f5f0e8" letter-spacing="6">FACTORS</text>
+  <rect x="340" y="350" width="520" height="3" fill="#c0392b"/>
+  <text x="600" y="396" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#9a7c2b" letter-spacing="5">THE CELLULAR REPROGRAMMING REPORT</text>
+  <text x="600" y="438" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#555555" letter-spacing="2">Senolytics · Epigenetic Clocks · NAD+ · Telomeres · Stem Cells · Biotech</text>
+  <text x="600" y="476" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="19" fill="#666666" letter-spacing="2">Oct3/4 · Sox2 · Klf4 · c-Myc</text>
+  <text x="600" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#444444" letter-spacing="3">YAMANAKAFACTORS.COM</text>
+  <rect x="460" y="558" width="280" height="32" rx="4" fill="#1a1a1a" stroke="#333333" stroke-width="1"/>
+  <text x="600" y="580" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#666666" letter-spacing="2">AI-CURATED · MON &amp; THU · FREE</text>
+</svg>
