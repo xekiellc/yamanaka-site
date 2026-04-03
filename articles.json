@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-02T09:40:26.379Z",
+  "updated": "2026-04-03T12:58:21.772Z",
   "articles": [
     {
       "title": "JAPAN FIRST TO APPROVE STEM CELL THERAPIES FOR PARKINSON'S AND HEART FAILURE",
@@ -9,45 +9,59 @@
       "category": "clinical"
     },
     {
-      "title": "DAVID SINCLAIR: AGING CAN BE REVERSED, GENE THERAPY KEY TO REJUVENATION",
+      "title": "BILLIONAIRE-BACKED STARTUP PITCHES BRAINLESS HUMAN CLONES FOR ORGAN REPLACEMENT",
+      "url": "https://www.technologyreview.com/2026/03/30/1134780/r3-bio-brainless-human-clones-full-body-replacement-john-schloendorn-aging-longevity/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-03-30T09:00:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "DAVID SINCLAIR: AGING REVERSAL, GENE THERAPY KEY TO LIVING INTO 22ND CENTURY",
       "url": "https://cryptobriefing.com/david-sinclair-aging-can-be-reversed-gene-therapy-is-key-to-rejuvenation-and-we-may-live-into-the-twenty-second-century-the-diary-of-a-ceo/",
       "source": "Crypto Briefing",
       "publishedAt": "2026-03-23T19:08:32Z",
       "category": "longevity"
     },
     {
-      "title": "STEALTHY STARTUP PITCHED BRAINLESS HUMAN CLONES FOR ORGAN HARVEST",
-      "url": "https://www.technologyreview.com/2026/03/30/1134780/r3-bio-brainless-human-clones-full-body-replacement-john-schloendorn-aging-longevity/",
-      "source": "MIT Technology Review",
-      "publishedAt": "2026-03-30T09:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "BILLIONAIRE-BACKED STARTUP WANTS TO GROW 'ORGAN SACKS' TO REPLACE ANIMALS",
-      "url": "https://www.wired.com/story/a-billionaire-backed-startup-wants-to-grow-organ-sacks-to-replace-animal-testing/",
-      "source": "Wired",
-      "publishedAt": "2026-03-23T19:46:05Z",
-      "category": "science"
-    },
-    {
-      "title": "SYSTEMIC EPIGENETIC DYSREGULATION AS DRIVER OF AGING BREAKTHROUGH",
+      "title": "SYSTEMIC EPIGENETIC DYSREGULATION IDENTIFIED AS DRIVER OF AGING AND THERAPY TARGET",
       "url": "https://www.nature.com/articles/s41580-026-00958-0",
       "source": "Nature.com",
       "publishedAt": "2026-03-27T00:00:00Z",
       "category": "science"
     },
     {
-      "title": "DAILY MULTIVITAMINS SLOW EPIGENETIC AGING CLOCKS IN MAJOR TRIAL",
+      "title": "MULTIVITAMINS SLOW EPIGENETIC AGING CLOCKS IN MAJOR RANDOMIZED TRIAL",
       "url": "https://www.nature.com/articles/s41591-026-04239-3",
       "source": "Nature.com",
       "publishedAt": "2026-03-09T00:00:00Z",
       "category": "longevity"
     },
     {
-      "title": "BREAKTHROUGH: RECYCLING SENESCENT CELL LIPIDS FOR TARGETED SENOTHERAPY",
+      "title": "STANFORD REVERSES MEMORY LOSS BY RESTORING GUT-BRAIN COMMUNICATION IN MICE",
+      "url": "https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html",
+      "source": "Stanford.edu",
+      "publishedAt": "2026-03-12T16:38:51Z",
+      "category": "science"
+    },
+    {
+      "title": "MATERNAL OBESITY DISRUPTS EPIGENETIC REPROGRAMMING DURING GENOME ACTIVATION",
+      "url": "https://www.nature.com/articles/s41467-026-70492-2",
+      "source": "Nature.com",
+      "publishedAt": "2026-03-18T00:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "SCIENTISTS DEVELOP NEW SENOLYTIC THERAPY TARGETING SENESCENT CELL LIPIDS",
       "url": "https://www.nature.com/articles/s41467-026-70486-0",
       "source": "Nature.com",
       "publishedAt": "2026-03-13T00:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "ZOO LIFE ACCELERATES EPIGENETIC AGING IN KING PENGUINS DESPITE LONGER LIFESPAN",
+      "url": "https://www.nature.com/articles/s41467-026-70527-8",
+      "source": "Nature.com",
+      "publishedAt": "2026-03-11T00:00:00Z",
       "category": "science"
     },
     {
@@ -58,38 +72,24 @@
       "category": "clinical"
     },
     {
-      "title": "REVERSING MEMORY LOSS VIA GUT-BRAIN COMMUNICATION BREAKTHROUGH",
-      "url": "https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html",
-      "source": "Stanford.edu",
-      "publishedAt": "2026-03-12T16:38:51Z",
-      "category": "science"
-    },
-    {
-      "title": "JELLYFISH REVERSES LIFE CYCLE: BIOLOGY SAID IT SHOULDN'T HAPPEN",
+      "title": "JELLYFISH REVERSES LIFE CYCLE IN BREAKTHROUGH THAT 'SHOULDN'T HAPPEN'",
       "url": "https://economictimes.indiatimes.com/news/international/us/researchers-studying-this-organism-discovered-something-biology-said-shouldnt-happen/articleshow/129326238.cms",
       "source": "The Times of India",
       "publishedAt": "2026-03-09T10:19:41Z",
       "category": "science"
     },
     {
-      "title": "MATERNAL OBESITY DISRUPTS EPIGENETIC REPROGRAMMING IN EMBRYOS",
-      "url": "https://www.nature.com/articles/s41467-026-70492-2",
-      "source": "Nature.com",
-      "publishedAt": "2026-03-18T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "LONGEVITY TOURISM TAKING OVER LIVES OF WEALTHY MEN - COMING FOR YOU NEXT",
-      "url": "https://slate.com/technology/2026/03/longevity-tourism-rfk-jr-gene-therapy.html",
-      "source": "Slate Magazine",
-      "publishedAt": "2026-03-30T09:35:00Z",
-      "category": "longevity"
-    },
-    {
-      "title": "FRUIT COMPOUND REDEFINING ANTI-AGING: STRAWBERRY SENOLYTIC BREAKTHROUGH",
+      "title": "STRAWBERRY COMPOUND FISETIN EMERGES AS POWERFUL ANTI-AGING SENOLYTIC AGENT",
       "url": "https://www.naturalnews.com/2026-03-18-common-fruit-compound-redefining-anti-aging-science.html",
       "source": "Naturalnews.com",
       "publishedAt": "2026-03-18T06:00:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "LONGEVITY TOURISM TAKES OVER LIVES OF WEALTHY MEN WITH UNTESTED SUBSTANCES",
+      "url": "https://slate.com/technology/2026/03/longevity-tourism-rfk-jr-gene-therapy.html",
+      "source": "Slate Magazine",
+      "publishedAt": "2026-03-30T09:35:00Z",
       "category": "longevity"
     }
   ]
