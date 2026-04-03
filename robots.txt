@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
 Sitemap: https://yamanakafactors.com/sitemap.xml
