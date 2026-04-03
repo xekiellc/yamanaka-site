@@ -1,6 +1,13 @@
 {
   "editions": [
     {
+      "slug": "2026-04-03",
+      "label": "Friday, April 3, 2026",
+      "updated": "2026-04-03T12:58:21.772Z",
+      "count": 13,
+      "file": "archive/edition-2026-04-03.json"
+    },
+    {
       "slug": "2026-04-02",
       "label": "Thursday, April 2, 2026",
       "updated": "2026-04-02T09:40:26.379Z",
