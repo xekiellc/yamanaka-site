@@ -24,10 +24,10 @@ jobs:
           BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
         run: node scripts/yamanaka-refresh.js
 
-      - name: Commit updated articles.json
+      - name: Commit updated files
         run: |
           git config user.name "yamanaka-bot"
           git config user.email "bot@yamanakafactors.com"
-          git add articles.json archive-index.json archive/
+          git add articles.json archive-index.json archive/ rss.xml
           git diff --cached --quiet || git commit -m "🔬 Auto-refresh: $(date -u '+%Y-%m-%d %H:%M') UTC"
           git push
