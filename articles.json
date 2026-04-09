@@ -1,96 +1,96 @@
 {
-  "updated": "2026-04-06T09:56:08.242Z",
+  "updated": "2026-04-09T07:24:13.404Z",
   "articles": [
     {
-      "title": "SINCLAIR: AGING CAN BE REVERSED! GENE THERAPY KEY TO REJUVENATION, LIVING TO 22ND CENTURY",
-      "url": "https://cryptobriefing.com/david-sinclair-aging-can-be-reversed-gene-therapy-is-key-to-rejuvenation-and-we-may-live-into-the-twenty-second-century-the-diary-of-a-ceo/",
-      "source": "Crypto Briefing",
-      "publishedAt": "2026-03-23T19:08:32Z",
-      "category": "longevity"
+      "title": "CELLULAR AGING REVERSAL METHOD HEADS TO HUMAN TRIALS - FIRST-EVER TEST OF DEVELOPMENT DIAL-BACK",
+      "url": "https://www.nature.com/articles/d41586-026-01024-7",
+      "source": "Nature.com",
+      "publishedAt": "2026-04-07T00:00:00Z",
+      "category": "clinical"
     },
     {
-      "title": "JAPAN FIRST TO APPROVE STEM CELL THERAPIES FOR PARKINSON'S AND HEART FAILURE!",
+      "title": "JAPAN APPROVES FIRST STEM CELL THERAPIES FOR PARKINSON'S AND HEART FAILURE - WORLD FIRST!",
       "url": "https://www.medicalnewstoday.com/articles/japan-first-approve-stem-cell-treatments-parkinsons-heart-failure",
       "source": "Medical News Today",
       "publishedAt": "2026-03-14T09:54:17Z",
       "category": "clinical"
     },
     {
-      "title": "INSIDE STEALTHY STARTUP THAT PITCHED BRAINLESS HUMAN CLONES FOR ORGAN HARVESTING",
+      "title": "SINCLAIR: AGING REVERSAL POSSIBLE, GENE THERAPY KEY - HUMANS MAY LIVE TO 2100s!",
+      "url": "https://cryptobriefing.com/david-sinclair-aging-can-be-reversed-gene-therapy-is-key-to-rejuvenation-and-we-may-live-into-the-twenty-second-century-the-diary-of-a-ceo/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-03-23T19:08:32Z",
+      "category": "longevity"
+    },
+    {
+      "title": "STARTUP PITCHED BRAINLESS HUMAN CLONES FOR ORGAN HARVESTING - FULL BODY REPLACEMENT PLAN!",
       "url": "https://www.technologyreview.com/2026/03/30/1134780/r3-bio-brainless-human-clones-full-body-replacement-john-schloendorn-aging-longevity/",
       "source": "MIT Technology Review",
       "publishedAt": "2026-03-30T09:00:00Z",
       "category": "science"
     },
     {
-      "title": "SYSTEMIC EPIGENETIC DYSREGULATION AS DRIVER OF AGING AND THERAPEUTIC TARGET",
+      "title": "EPIGENETIC CHAOS DRIVES AGING - SYSTEMIC BREAKDOWN IDENTIFIED AS THERAPEUTIC TARGET",
       "url": "https://www.nature.com/articles/s41580-026-00958-0",
       "source": "Nature.com",
       "publishedAt": "2026-03-27T00:00:00Z",
       "category": "science"
     },
     {
-      "title": "MULTIVITAMINS SLOW EPIGENETIC AGING CLOCKS IN MASSIVE RANDOMIZED TRIAL!",
+      "title": "MULTIVITAMINS SLOW EPIGENETIC AGING IN MAJOR TRIAL - COCOA EXTRACT FAILS!",
       "url": "https://www.nature.com/articles/s41591-026-04239-3",
       "source": "Nature.com",
       "publishedAt": "2026-03-09T00:00:00Z",
+      "category": "clinical"
+    },
+    {
+      "title": "HEXEMBIO RAISES $10.4M FOR STEM CELL REJUVENATION - RECREATES EMBRYONIC ENVIRONMENT!",
+      "url": "https://thenextweb.com/news/hexembio-seed-blood-stem-cell-rejuvenation-therapy/",
+      "source": "The Next Web",
+      "publishedAt": "2026-04-07T13:09:32Z",
+      "category": "longevity"
+    },
+    {
+      "title": "UCSF RESTORES MEMORY IN AGING MICE BY TARGETING BRAIN PROTEIN - HUMAN THERAPIES NEXT!",
+      "url": "https://www.ibtimes.com.au/ucsf-scientists-restore-memory-aging-mice-lowering-brain-protein-ftl1-sparking-hope-human-1865577",
+      "source": "Ibtimes.com.au",
+      "publishedAt": "2026-04-06T16:10:16Z",
       "category": "science"
     },
     {
-      "title": "MATERNAL OBESITY DISRUPTS EPIGENETIC REPROGRAMMING VIA PHOSPHOLIPID UNCOUPLING",
-      "url": "https://www.nature.com/articles/s41467-026-70492-2",
-      "source": "Nature.com",
-      "publishedAt": "2026-03-18T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "STANFORD REVERSES MEMORY LOSS VIA GUT-BRAIN COMMUNICATION BREAKTHROUGH!",
+      "title": "MEMORY LOSS REVERSED VIA GUT-BRAIN LINK - STANFORD DISCOVERS AGING BACTERIA CONNECTION!",
       "url": "https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html",
       "source": "Stanford.edu",
       "publishedAt": "2026-03-12T16:38:51Z",
       "category": "science"
     },
     {
-      "title": "FDA APPROVES FIRST GENE THERAPY FOR SEVERE LEUKOCYTE ADHESION DEFICIENCY!",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapy-severe-leukocyte-adhesion-deficiency-type-i",
-      "source": "FDA.gov",
-      "publishedAt": "2026-03-26T22:47:15Z",
-      "category": "clinical"
-    },
-    {
-      "title": "STRAWBERRY COMPOUND FISETIN REDEFINING ANTI-AGING SCIENCE AS SENOLYTIC POWERHOUSE",
-      "url": "https://www.naturalnews.com/2026-03-18-common-fruit-compound-redefining-anti-aging-science.html",
-      "source": "Naturalnews.com",
-      "publishedAt": "2026-03-18T06:00:00Z",
-      "category": "longevity"
-    },
-    {
-      "title": "ZOO PENGUINS LIVE LONGER BUT AGE FASTER: EPIGENETIC AGING CLOCK STUDY SHOCKS",
-      "url": "https://www.nature.com/articles/s41467-026-70527-8",
-      "source": "Nature.com",
-      "publishedAt": "2026-03-11T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "TELOMERE PROTEIN POT1B SAFEGUARDS GENOME BY REGULATING CELLULAR STRESS",
-      "url": "https://www.nature.com/articles/s41467-026-70441-z",
-      "source": "Nature.com",
-      "publishedAt": "2026-03-10T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "RECYCLING SENESCENT CELL LIPIDS FOR TARGETED SENOTHERAPY BREAKTHROUGH",
+      "title": "SCIENTISTS RECYCLE SENESCENT CELL LIPIDS FOR TARGETED AGING THERAPY - BREAKTHROUGH!",
       "url": "https://www.nature.com/articles/s41467-026-70486-0",
       "source": "Nature.com",
       "publishedAt": "2026-03-13T00:00:00Z",
       "category": "science"
     },
     {
-      "title": "JELLYFISH REVERSES LIFE CYCLE: BIOLOGY SAID IT SHOULDN'T HAPPEN!",
+      "title": "STRAWBERRY COMPOUND EMERGES AS POWERFUL ANTI-AGING WEAPON - FISETIN REDEFINES LONGEVITY!",
+      "url": "https://www.naturalnews.com/2026-03-18-common-fruit-compound-redefining-anti-aging-science.html",
+      "source": "Naturalnews.com",
+      "publishedAt": "2026-03-18T06:00:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "JELLYFISH REVERSES LIFE CYCLE - BIOLOGY SAYS IT SHOULDN'T HAPPEN!",
       "url": "https://economictimes.indiatimes.com/news/international/us/researchers-studying-this-organism-discovered-something-biology-said-shouldnt-happen/articleshow/129326238.cms",
       "source": "The Times of India",
       "publishedAt": "2026-03-09T10:19:41Z",
       "category": "science"
+    },
+    {
+      "title": "LONGEVITY TOURISM TAKES OVER WEALTHY ELDERLY MEN - UNDERGROUND GENE THERAPY BOOM!",
+      "url": "https://slate.com/technology/2026/03/longevity-tourism-rfk-jr-gene-therapy.html",
+      "source": "Slate Magazine",
+      "publishedAt": "2026-03-30T09:35:00Z",
+      "category": "longevity"
     }
   ]
 }
