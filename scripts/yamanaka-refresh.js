@@ -11,12 +11,12 @@
  * 4. If fewer than 3 new articles → skip update, site stays unchanged
  * 5. Maintains archive-index.json listing all past editions (last 16)
  * 6. Writes rss.xml on every refresh
- * 7. Sends newsletter via Loops API
+ * 7. Sends newsletter via Resend API
  *
  * Required environment variables:
  *   NEWS_API_KEY        — from newsapi.org
  *   ANTHROPIC_API_KEY   — from console.anthropic.com
- *   LOOPS_API_KEY       — from app.loops.so/settings/api
+ *   RESEND_API_KEY      — from resend.com/api-keys
  * =====================================================================
  */
 
@@ -24,14 +24,13 @@ const https = require('https');
 const fs    = require('fs');
 const path  = require('path');
 
-const NEWS_API_KEY        = process.env.NEWS_API_KEY;
-const ANTHROPIC_API_KEY   = process.env.ANTHROPIC_API_KEY;
-const LOOPS_API_KEY       = process.env.LOOPS_API_KEY;
-const LOOPS_TRANSACTIONAL_ID = 'cmo1hc31f0mww0ix9pf0267wl';
-const OUTPUT_FILE         = path.join(__dirname, '..', 'articles.json');
-const ARCHIVE_INDEX_FILE  = path.join(__dirname, '..', 'archive-index.json');
-const ARCHIVE_DIR         = path.join(__dirname, '..', 'archive');
-const RSS_FILE            = path.join(__dirname, '..', 'rss.xml');
+const NEWS_API_KEY      = process.env.NEWS_API_KEY;
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const RESEND_API_KEY    = process.env.RESEND_API_KEY;
+const OUTPUT_FILE       = path.join(__dirname, '..', 'articles.json');
+const ARCHIVE_INDEX_FILE = path.join(__dirname, '..', 'archive-index.json');
+const ARCHIVE_DIR       = path.join(__dirname, '..', 'archive');
+const RSS_FILE          = path.join(__dirname, '..', 'rss.xml');
 
 const NEW_ARTICLE_THRESHOLD = 3;
 const MAX_ARCHIVE_EDITIONS  = 16;
@@ -355,8 +354,6 @@ function writeRssFeed(articles) {
   });
 
   const mainArticles = coreArticles.length >= 3 ? coreArticles : articles;
-  const topStory = mainArticles[0];
-
   const htmlContent = buildEmailHtml(articles, dateStr);
   const rssTitle = `The Yamanaka Factors Report — ${dateStr}`;
 
@@ -454,14 +451,14 @@ function buildEmailHtml(articles, dateStr) {
 </div>`;
 }
 
-// ── Step 8: Send Loops Newsletter ─────────────────────────────────────
-async function sendLoopsNewsletter(articles) {
-  if (!LOOPS_API_KEY) {
-    console.warn('⚠ No LOOPS_API_KEY found — skipping newsletter');
+// ── Step 8: Send Resend Newsletter ────────────────────────────────────
+async function sendResendNewsletter(articles) {
+  if (!RESEND_API_KEY) {
+    console.warn('⚠ No RESEND_API_KEY found — skipping newsletter');
     return;
   }
 
-  console.log('\n📧 Sending Loops newsletter...');
+  console.log('\n📧 Sending Resend newsletter...');
 
   const now = new Date();
   const dateStr = now.toLocaleDateString('en-US', {
@@ -477,20 +474,18 @@ async function sendLoopsNewsletter(articles) {
   for (const email of SUBSCRIBERS) {
     try {
       const res = await httpsPost(
-        'app.loops.so',
-        '/api/v1/transactional',
-        { 'Authorization': `Bearer ${LOOPS_API_KEY}` },
+        'api.resend.com',
+        '/emails',
+        { 'Authorization': `Bearer ${RESEND_API_KEY}` },
         {
-          transactionalId: LOOPS_TRANSACTIONAL_ID,
-          email: email,
-          dataVariables: {
-            subject: subject,
-            body: htmlContent,
-          }
+          from: 'The Yamanaka Factors Report <info@xekie.com>',
+          to: email,
+          subject: subject,
+          html: htmlContent,
         }
       );
 
-      if (res.status === 200) {
+      if (res.status === 200 || res.status === 201) {
         sent++;
       } else {
         console.warn(`  ⚠ Failed to send to ${email}:`, JSON.stringify(res.body).slice(0, 100));
@@ -517,7 +512,7 @@ async function main() {
   if (!NEWS_API_KEY)      { console.error('❌ Missing NEWS_API_KEY');      process.exit(1); }
   if (!ANTHROPIC_API_KEY) { console.error('❌ Missing ANTHROPIC_API_KEY'); process.exit(1); }
 
-  const currentData     = fs.existsSync(OUTPUT_FILE)
+  const currentData = fs.existsSync(OUTPUT_FILE)
     ? JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf8'))
     : { updated: null, articles: [] };
   const currentArticles = currentData.articles || [];
@@ -547,7 +542,7 @@ async function main() {
   writeOutput(ranked);
   writeRssFeed(ranked);
 
-  await sendLoopsNewsletter(ranked);
+  await sendResendNewsletter(ranked);
 
   console.log('');
   console.log('🎉 Refresh complete!');
