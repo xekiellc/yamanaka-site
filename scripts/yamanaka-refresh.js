@@ -36,6 +36,19 @@ const RSS_FILE            = path.join(__dirname, '..', 'rss.xml');
 const NEW_ARTICLE_THRESHOLD = 3;
 const MAX_ARCHIVE_EDITIONS  = 16;
 
+const SUBSCRIBERS = [
+  'zach@xekie.com',
+  'xekiellc@gmail.com',
+  'marshagent@gmail.com',
+  'brunorodriguez123@hotmail.com',
+  'guerrero.mariajose@gmail.com',
+  'tom.water@posteo.com',
+  'thomasmcrook@gmail.com',
+  'davidyeagercpa@msn.com',
+  'brioneja@gmail.com',
+  'katerina.axelsson@gmail.com',
+];
+
 const SEARCH_QUERIES = [
   'Yamanaka factors reprogramming',
   'partial reprogramming longevity',
@@ -96,25 +109,6 @@ function httpsPost(hostname, pathStr, headers, body) {
     });
     req.on('error', reject);
     req.write(bodyStr);
-    req.end();
-  });
-}
-
-function httpsGetApi(hostname, pathStr, headers) {
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostname, path: pathStr, method: 'GET',
-      headers: { 'Content-Type': 'application/json', ...headers }
-    };
-    const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
-        catch (e) { resolve({ status: res.statusCode, body: data }); }
-      });
-    });
-    req.on('error', reject);
     req.end();
   });
 }
@@ -477,32 +471,10 @@ async function sendLoopsNewsletter(articles) {
   const subject = `The Yamanaka Factors Report — ${dateStr}`;
   const htmlContent = buildEmailHtml(articles, dateStr);
 
-  // Fetch all subscribers from Loops
-  let subscribers = [];
-  try {
-    const listRes = await httpsGetApi(
-      'app.loops.so',
-      '/api/v1/contacts',
-      { 'Authorization': `Bearer ${LOOPS_API_KEY}` }
-    );
-
-    if (listRes.status === 200 && Array.isArray(listRes.body)) {
-      subscribers = listRes.body.filter(c => c.subscribed !== false);
-      console.log(`  Found ${subscribers.length} subscribed contacts`);
-    } else {
-      console.warn('⚠ Could not fetch subscribers:', JSON.stringify(listRes.body).slice(0, 200));
-      return;
-    }
-  } catch (err) {
-    console.warn('⚠ Error fetching Loops subscribers:', err.message);
-    return;
-  }
-
-  // Send transactional email to each subscriber
   let sent = 0;
   let failed = 0;
 
-  for (const subscriber of subscribers) {
+  for (const email of SUBSCRIBERS) {
     try {
       const res = await httpsPost(
         'app.loops.so',
@@ -510,7 +482,7 @@ async function sendLoopsNewsletter(articles) {
         { 'Authorization': `Bearer ${LOOPS_API_KEY}` },
         {
           transactionalId: LOOPS_TRANSACTIONAL_ID,
-          email: subscriber.email,
+          email: email,
           dataVariables: {
             subject: subject,
             body: htmlContent,
@@ -521,11 +493,11 @@ async function sendLoopsNewsletter(articles) {
       if (res.status === 200) {
         sent++;
       } else {
-        console.warn(`  ⚠ Failed to send to ${subscriber.email}:`, JSON.stringify(res.body).slice(0, 100));
+        console.warn(`  ⚠ Failed to send to ${email}:`, JSON.stringify(res.body).slice(0, 100));
         failed++;
       }
     } catch (err) {
-      console.warn(`  ⚠ Error sending to ${subscriber.email}:`, err.message);
+      console.warn(`  ⚠ Error sending to ${email}:`, err.message);
       failed++;
     }
 
