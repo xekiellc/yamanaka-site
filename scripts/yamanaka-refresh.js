@@ -11,12 +11,12 @@
  * 4. If fewer than 3 new articles → skip update, site stays unchanged
  * 5. Maintains archive-index.json listing all past editions (last 16)
  * 6. Writes rss.xml on every refresh
- * 7. Sends newsletter via MailerLite API
+ * 7. Sends newsletter via Loops API
  *
  * Required environment variables:
  *   NEWS_API_KEY        — from newsapi.org
  *   ANTHROPIC_API_KEY   — from console.anthropic.com
- *   MAILERLITE_API_KEY  — from dashboard.mailerlite.com/integrations/api
+ *   LOOPS_API_KEY       — from app.loops.so/settings/api
  * =====================================================================
  */
 
@@ -26,7 +26,8 @@ const path  = require('path');
 
 const NEWS_API_KEY        = process.env.NEWS_API_KEY;
 const ANTHROPIC_API_KEY   = process.env.ANTHROPIC_API_KEY;
-const MAILERLITE_API_KEY  = process.env.MAILERLITE_API_KEY;
+const LOOPS_API_KEY       = process.env.LOOPS_API_KEY;
+const LOOPS_TRANSACTIONAL_ID = 'cmo1hc31f0mww0ix9pf0267wl';
 const OUTPUT_FILE         = path.join(__dirname, '..', 'articles.json');
 const ARCHIVE_INDEX_FILE  = path.join(__dirname, '..', 'archive-index.json');
 const ARCHIVE_DIR         = path.join(__dirname, '..', 'archive');
@@ -339,14 +340,9 @@ function writeRssFeed(articles) {
     const t = (a.title + ' ' + (a.category || '')).toLowerCase();
     return YF_CORE_KEYS.some(k => t.includes(k));
   });
-  const longevityArticles = articles.filter(a => {
-    const t = (a.title + ' ' + (a.category || '')).toLowerCase();
-    return !YF_CORE_KEYS.some(k => t.includes(k));
-  });
 
   const mainArticles = coreArticles.length >= 3 ? coreArticles : articles;
   const topStory = mainArticles[0];
-  const restStories = mainArticles.slice(1);
 
   const htmlContent = buildEmailHtml(articles, dateStr);
   const rssTitle = `The Yamanaka Factors Report — ${dateStr}`;
@@ -445,14 +441,14 @@ function buildEmailHtml(articles, dateStr) {
 </div>`;
 }
 
-// ── Step 8: Send MailerLite Newsletter ────────────────────────────────
-async function sendMailerLiteNewsletter(articles) {
-  if (!MAILERLITE_API_KEY) {
-    console.warn('⚠ No MAILERLITE_API_KEY found — skipping newsletter');
+// ── Step 8: Send Loops Newsletter ─────────────────────────────────────
+async function sendLoopsNewsletter(articles) {
+  if (!LOOPS_API_KEY) {
+    console.warn('⚠ No LOOPS_API_KEY found — skipping newsletter');
     return;
   }
 
-  console.log('\n📧 Sending MailerLite newsletter...');
+  console.log('\n📧 Sending Loops newsletter...');
 
   const now = new Date();
   const dateStr = now.toLocaleDateString('en-US', {
@@ -462,56 +458,78 @@ async function sendMailerLiteNewsletter(articles) {
   const subject = `The Yamanaka Factors Report — ${dateStr}`;
   const htmlContent = buildEmailHtml(articles, dateStr);
 
+  // Fetch all subscribers from Loops
+  let subscribers = [];
   try {
-    // Step 1: Create campaign
-    const createRes = await httpsPost(
-      'connect.mailerlite.com',
-      '/api/campaigns',
-      { 'Authorization': `Bearer ${MAILERLITE_API_KEY}` },
-      {
-        name:     `Yamanaka Factors Report — ${todaySlug()}`,
-        type:     'regular',
-        emails: [{
-          subject:   subject,
-          from_name: 'The Yamanaka Factors Report',
-          from:      'zach@xekie.com',
-          content:   htmlContent,
-        }],
-      }
-    );
+    const listRes = await new Promise((resolve, reject) => {
+      const options = {
+        hostname: 'app.loops.so',
+        path: '/api/v1/contacts/list',
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${LOOPS_API_KEY}`,
+          'Content-Type': 'application/json',
+        }
+      };
+      const req = https.request(options, (res) => {
+        let data = '';
+        res.on('data', chunk => data += chunk);
+        res.on('end', () => {
+          try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
+          catch (e) { resolve({ status: res.statusCode, body: data }); }
+        });
+      });
+      req.on('error', reject);
+      req.end();
+    });
 
-    if (createRes.status !== 201) {
-      console.warn('⚠ MailerLite campaign creation failed:', JSON.stringify(createRes.body));
+    if (listRes.status === 200 && Array.isArray(listRes.body)) {
+      subscribers = listRes.body.filter(c => c.subscribed !== false);
+      console.log(`  Found ${subscribers.length} subscribed contacts`);
+    } else {
+      console.warn('⚠ Could not fetch subscribers:', JSON.stringify(listRes.body).slice(0, 200));
       return;
     }
-
-    const campaignId = createRes.body.data?.id;
-    if (!campaignId) {
-      console.warn('⚠ No campaign ID returned:', JSON.stringify(createRes.body));
-      return;
-    }
-
-    console.log(`  ✅ Campaign created — ID: ${campaignId}`);
-    await sleep(2000);
-
-    // Step 2: Schedule/send immediately
-    const scheduleRes = await httpsPost(
-      'connect.mailerlite.com',
-      `/api/campaigns/${campaignId}/schedule`,
-      { 'Authorization': `Bearer ${MAILERLITE_API_KEY}` },
-      { delivery: 'instant' }
-    );
-
-    if (scheduleRes.status !== 200 && scheduleRes.status !== 204) {
-      console.warn('⚠ MailerLite send failed:', JSON.stringify(scheduleRes.body));
-      return;
-    }
-
-    console.log(`  📧 Newsletter sent successfully to all subscribers!`);
-
   } catch (err) {
-    console.warn('⚠ MailerLite newsletter error (non-fatal):', err.message);
+    console.warn('⚠ Error fetching Loops subscribers:', err.message);
+    return;
   }
+
+  // Send transactional email to each subscriber
+  let sent = 0;
+  let failed = 0;
+
+  for (const subscriber of subscribers) {
+    try {
+      const res = await httpsPost(
+        'app.loops.so',
+        '/api/v1/transactional',
+        { 'Authorization': `Bearer ${LOOPS_API_KEY}` },
+        {
+          transactionalId: LOOPS_TRANSACTIONAL_ID,
+          email: subscriber.email,
+          dataVariables: {
+            subject: subject,
+            body: htmlContent,
+          }
+        }
+      );
+
+      if (res.status === 200) {
+        sent++;
+      } else {
+        console.warn(`  ⚠ Failed to send to ${subscriber.email}:`, JSON.stringify(res.body).slice(0, 100));
+        failed++;
+      }
+    } catch (err) {
+      console.warn(`  ⚠ Error sending to ${subscriber.email}:`, err.message);
+      failed++;
+    }
+
+    await sleep(200);
+  }
+
+  console.log(`  📧 Newsletter sent — ${sent} delivered, ${failed} failed`);
 }
 
 // ── Main ──────────────────────────────────────────────────────────────
@@ -554,7 +572,7 @@ async function main() {
   writeOutput(ranked);
   writeRssFeed(ranked);
 
-  await sendMailerLiteNewsletter(ranked);
+  await sendLoopsNewsletter(ranked);
 
   console.log('');
   console.log('🎉 Refresh complete!');
