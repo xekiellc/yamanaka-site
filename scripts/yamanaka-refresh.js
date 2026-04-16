@@ -100,6 +100,25 @@ function httpsPost(hostname, pathStr, headers, body) {
   });
 }
 
+function httpsGetApi(hostname, pathStr, headers) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname, path: pathStr, method: 'GET',
+      headers: { 'Content-Type': 'application/json', ...headers }
+    };
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
+        catch (e) { resolve({ status: res.statusCode, body: data }); }
+      });
+    });
+    req.on('error', reject);
+    req.end();
+  });
+}
+
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 function formatDateLabel(isoString) {
@@ -461,27 +480,11 @@ async function sendLoopsNewsletter(articles) {
   // Fetch all subscribers from Loops
   let subscribers = [];
   try {
-    const listRes = await new Promise((resolve, reject) => {
-      const options = {
-        hostname: 'app.loops.so',
-        path: '/api/v1/contacts/list',
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${LOOPS_API_KEY}`,
-          'Content-Type': 'application/json',
-        }
-      };
-      const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => {
-          try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
-          catch (e) { resolve({ status: res.statusCode, body: data }); }
-        });
-      });
-      req.on('error', reject);
-      req.end();
-    });
+    const listRes = await httpsGetApi(
+      'app.loops.so',
+      '/api/v1/contacts',
+      { 'Authorization': `Bearer ${LOOPS_API_KEY}` }
+    );
 
     if (listRes.status === 200 && Array.isArray(listRes.body)) {
       subscribers = listRes.body.filter(c => c.subscribed !== false);
