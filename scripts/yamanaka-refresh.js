@@ -478,7 +478,7 @@ async function sendResendNewsletter(articles) {
         '/emails',
         { 'Authorization': `Bearer ${RESEND_API_KEY}` },
         {
-          from: 'The Yamanaka Factors Report <info@xekie.com>',
+          from: 'The Yamanaka Factors Report <info@yamanakafactors.com>',
           to: email,
           subject: subject,
           html: htmlContent,
