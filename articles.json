@@ -1,95 +1,95 @@
 {
-  "updated": "2026-05-07T08:34:44.872Z",
+  "updated": "2026-05-11T09:40:16.785Z",
   "articles": [
     {
-      "title": "FIRST HUMAN TRIAL OF CELLULAR AGE REVERSAL METHOD LAUNCHES - DIALING BACK CELL DEVELOPMENT",
-      "url": "https://www.nature.com/articles/d41586-026-01024-7",
-      "source": "Nature.com",
-      "publishedAt": "2026-04-07T00:00:00Z",
-      "category": "clinical"
-    },
-    {
-      "title": "FDA CLEARS FIRST CELLULAR REJUVENATION TRIAL! $120 BILLION LONGEVITY MARKET EXPLODES",
+      "title": "FDA CLEARS FIRST CELLULAR REJUVENATION TRIAL! LONGEVITY HITS $120 BILLION MARKET",
       "url": "https://www.globenewswire.com/news-release/2026/04/23/3279692/0/en/The-Longevity-Trade-Is-No-Longer-a-Buzzword-It-s-a-120-Billion-Market-and-the-FDA-Just-Cleared-the-First-Cellular-Rejuvenation-Trial.html",
       "source": "GlobeNewswire",
       "publishedAt": "2026-04-23T10:15:00Z",
       "category": "clinical"
     },
     {
-      "title": "STEM CELL THERAPY TO REVERSE AGE-RELATED VISION CONDITIONS ENTERS HUMAN TRIALS",
+      "title": "STEM CELL THERAPY BREAKTHROUGH: AGE REVERSAL TRIAL TRANSFORMS VISION!",
       "url": "https://www.newscientist.com/article/2524182-is-stem-cell-therapy-about-to-transform-medicine-and-reverse-ageing/",
       "source": "New Scientist",
       "publishedAt": "2026-04-24T09:00:12Z",
       "category": "clinical"
     },
     {
-      "title": "UCSF REVERSES BRAIN AGING IN MICE BY LOWERING FTL1 PROTEIN - MEMORY RESTORED!",
-      "url": "https://www.ibtimes.com.au/ucsf-scientists-restore-memory-aging-mice-lowering-brain-protein-ftl1-sparking-hope-human-1865577",
-      "source": "Ibtimes.com.au",
-      "publishedAt": "2026-04-06T16:10:16Z",
+      "title": "INSILICO CREATES INDUSTRY'S FIRST LONGEVITY BOARD FOR AI AGING RESEARCH!",
+      "url": "https://apnews.com/press-release/pr-newswire/insilico-medicine-announces-industrys-first-longevity-board-to-accelerate-ai-driven-aging-research-for-drug-discovery-14af7ee520af523b030bfe46f676d0b4",
+      "source": "Associated Press",
+      "publishedAt": "2026-04-21T17:23:16Z",
       "category": "science"
     },
     {
-      "title": "LONGEVITY SUPPLEMENT EXTENDS MOUSE LIFESPANS 18% - NOW HUMAN DATA BACKS IT UP!",
-      "url": "https://nypost.com/2026/05/05/shopping/new-longevity-powder-shows-major-heart-benefits-in-human-trial/",
-      "source": "New York Post",
-      "publishedAt": "2026-05-05T19:30:00Z",
+      "title": "HOLY GRAIL GENE DISCOVERED! HUMANS MAY SOON REGROW LIMBS LIKE AXOLOTLS",
+      "url": "https://www.sciencedaily.com/releases/2026/05/260508003121.htm",
+      "source": "Science Daily",
+      "publishedAt": "2026-05-09T05:04:19Z",
+      "category": "science"
+    },
+    {
+      "title": "$12M RAPAMYCIN TRIAL LAUNCHES TO BOOST IMMUNE FUNCTION IN AGING",
+      "url": "https://www.digitaljournal.com/tech-science/improving-immune-function-rapamycin-clinical-trial-launched/article",
+      "source": "Digital Journal",
+      "publishedAt": "2026-05-07T20:34:00Z",
       "category": "clinical"
     },
     {
-      "title": "SHOCKING! $1 RAPAMYCIN LONGEVITY DRUG BLOCKS EXERCISE BENEFITS - STUDY REVEALS",
+      "title": "SHOCK: $1 LONGEVITY DRUG RAPAMYCIN MAY SABOTAGE EXERCISE BENEFITS!",
       "url": "https://www.dailymail.com/health/article-15775873/longevity-benefits-exercise-rapamycin-drug-bryan-johnson.html",
       "source": "Dailymail.com",
       "publishedAt": "2026-04-29T18:25:41Z",
       "category": "science"
     },
     {
-      "title": "DOG LONGEVITY PILL APPROVED - YOUR NEXT PET MAY LIVE MUCH LONGER",
-      "url": "https://www.theatlantic.com/science/2026/05/celine-halioua-loyal-pet-longevity/687005/",
-      "source": "The Atlantic",
-      "publishedAt": "2026-05-02T12:00:00Z",
-      "category": "clinical"
-    },
-    {
-      "title": "INSILICO MEDICINE FORMS INDUSTRY'S FIRST LONGEVITY BOARD FOR AI-DRIVEN AGING RESEARCH",
-      "url": "https://apnews.com/press-release/pr-newswire/insilico-medicine-announces-industrys-first-longevity-board-to-accelerate-ai-driven-aging-research-for-drug-discovery-14af7ee520af523b030bfe46f676d0b4",
-      "source": "Associated Press",
-      "publishedAt": "2026-04-21T17:23:16Z",
-      "category": "longevity"
-    },
-    {
-      "title": "WORLD'S OLDEST CORD BLOOD BANK BUILDS MISSING STEM CELL PLATFORM",
-      "url": "https://thenextweb.com/news/nybce-biohub-cord-blood-ipsc-stem-cells/",
-      "source": "The Next Web",
-      "publishedAt": "2026-05-01T09:54:36Z",
-      "category": "science"
-    },
-    {
-      "title": "CELL SENESCENCE COMPLEXITY OVERLOOKED BY SCIENTISTS - NATURE STUDY REVEALS",
-      "url": "https://www.nature.com/articles/s41580-026-00973-1",
-      "source": "Nature.com",
-      "publishedAt": "2026-04-20T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "BREAKTHROUGH: CHEMICAL ANCHORING OVERCOMES SENESCENCE-DRIVEN CANCER RESISTANCE",
+      "title": "BREAKTHROUGH: SCIENTISTS TRAP CANCER DRUGS IN SENESCENT TUMOR CELLS!",
       "url": "https://www.nature.com/articles/s41467-026-71549-y",
       "source": "Nature.com",
       "publishedAt": "2026-04-13T00:00:00Z",
       "category": "science"
     },
     {
-      "title": "TELOMERIC CIRCLES PROMOTE CANCER'S ALTERNATIVE TELOMERE LENGTHENING",
-      "url": "https://www.nature.com/articles/s41467-026-72032-4",
-      "source": "Nature.com",
-      "publishedAt": "2026-04-22T00:00:00Z",
+      "title": "LONGEVITY SUPPLEMENT EXTENDS MOUSE LIFE 18% — NOW HUMAN DATA REVEALED!",
+      "url": "https://nypost.com/2026/05/05/shopping/new-longevity-powder-shows-major-heart-benefits-in-human-trial/",
+      "source": "New York Post",
+      "publishedAt": "2026-05-05T19:30:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "AGED GARLIC EXTRACT ACTIVATES FAT-BRAIN-MUSCLE PATHWAY TO FIGHT AGING!",
+      "url": "https://www.prnewswire.com/news-releases/compound-found-in-aged-garlic-extract-shows-potential-to-improve-muscle-health-during-aging-302766561.html",
+      "source": "PRNewswire",
+      "publishedAt": "2026-05-08T14:16:00Z",
       "category": "science"
     },
     {
-      "title": "GLOBAL STEM CELL THERAPY MARKET TO FLOURISH 11% BY 2034 - DELVEINSIGHT REPORT",
-      "url": "https://www.globenewswire.com/news-release/2026/05/05/3288098/0/en/Global-Stem-Cell-Therapy-Market-Set-to-Flourish-at-a-CAGR-of-11-by-2034-Owing-to-the-Technological-Advancements-and-Favorable-Regulations-DelveInsight.html",
-      "source": "GlobeNewswire",
-      "publishedAt": "2026-05-05T17:00:00Z",
+      "title": "YOUR NEXT DOG MAY LIVE LONGER! NEW PILL EXTENDS CANINE LIFESPANS",
+      "url": "https://www.theatlantic.com/science/2026/05/celine-halioua-loyal-pet-longevity/687005/",
+      "source": "The Atlantic",
+      "publishedAt": "2026-05-02T12:00:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "NATURE STUDY: CELL SENESCENCE MORE COMPLEX THAN SCIENTISTS THOUGHT!",
+      "url": "https://www.nature.com/articles/s41580-026-00973-1",
+      "source": "Nature.com",
+      "publishedAt": "2026-04-20T00:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "MEET THE 11 RISING STARS OF LONGEVITY MEDICINE REVOLUTION!",
+      "url": "https://www.businessinsider.com/rising-stars-longevity-medicine-2026-4",
+      "source": "Business Insider",
+      "publishedAt": "2026-04-27T09:12:01Z",
+      "category": "longevity"
+    },
+    {
+      "title": "INSIDE SAN FRANCISCO'S EXCLUSIVE PEPTIDE CLUB FOR BIOHACKERS!",
+      "url": "https://www.businessinsider.com/inside-san-francisco-hottest-peptide-club-optimization-2026-4",
+      "source": "Business Insider",
+      "publishedAt": "2026-04-19T08:09:01Z",
       "category": "longevity"
     }
   ]
