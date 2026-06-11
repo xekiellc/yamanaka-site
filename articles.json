@@ -1,19 +1,26 @@
 {
-  "updated": "2026-06-08T10:56:12.322Z",
+  "updated": "2026-06-11T10:25:10.298Z",
   "articles": [
     {
-      "title": "BREAKTHROUGH DRUG REVERSES AGING IN SKIN AND DRAMATICALLY SPEEDS HEALING",
-      "url": "https://www.sciencedaily.com/releases/2026/05/260519003215.htm",
-      "source": "Science Daily",
-      "publishedAt": "2026-05-20T01:13:26Z",
+      "title": "WORLD-FIRST: CELLULAR REPROGRAMMING THERAPY GIVEN TO HUMAN PATIENT",
+      "url": "https://www.nature.com/articles/d41586-026-01836-7",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-09T00:00:00Z",
       "category": "clinical"
     },
     {
-      "title": "MESENCHYMAL DRIFT: HOW AGING CELLS LOSE THEIR IDENTITY",
-      "url": "https://www.news-medical.net/news/20260601/Mesenchymal-drift-may-explain-how-aging-cells-lose-their-identity.aspx",
-      "source": "News-Medical.Net",
-      "publishedAt": "2026-06-01T04:55:33Z",
-      "category": "science"
+      "title": "FIRST-EVER REVERSE-AGING DRUG INJECTED INTO HUMAN EYEBALL!",
+      "url": "https://www.businessinsider.com/first-ever-reverse-aging-treatment-injected-into-a-human-2026-6",
+      "source": "Business Insider",
+      "publishedAt": "2026-06-09T10:00:02Z",
+      "category": "clinical"
+    },
+    {
+      "title": "LONGEVITY STARTUP DOSES FIRST HUMAN IN BID TO REVERSE AGE-RELATED SIGHT LOSS",
+      "url": "https://www.wired.com/story/longevity-startup-doses-first-human-in-bid-to-reverse-age-related-sight-loss/",
+      "source": "Wired",
+      "publishedAt": "2026-06-09T13:23:53Z",
+      "category": "clinical"
     },
     {
       "title": "NEWLIMIT TRIPLES VALUATION TO $3B WITH $435M FUNDING ROUND",
@@ -23,74 +30,67 @@
       "category": "longevity"
     },
     {
-      "title": "PROMISING ANTI-AGING DRUG MAY CAUSE BRAIN DAMAGE, SCIENTISTS WARN",
-      "url": "https://www.sciencealert.com/promising-anti-aging-drug-may-cause-brain-damage-scientists-warn",
-      "source": "ScienceAlert",
-      "publishedAt": "2026-06-03T12:00:32Z",
-      "category": "clinical"
-    },
-    {
-      "title": "RNA IMBALANCE AS A HALLMARK OF CELLULAR AGEING",
-      "url": "https://www.nature.com/articles/s41556-026-01946-4",
-      "source": "Nature.com",
-      "publishedAt": "2026-05-12T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "UNIVERSAL TRANSCRIPTOMIC HALLMARKS OF MAMMALIAN AGEING AND MORTALITY",
+      "title": "UNIVERSAL TRANSCRIPTOMIC HALLMARKS OF MAMMALIAN AGEING DISCOVERED",
       "url": "https://www.nature.com/articles/s41586-026-10542-3",
       "source": "Nature.com",
       "publishedAt": "2026-05-27T00:00:00Z",
       "category": "science"
     },
     {
-      "title": "FROM GERMLINE IMMORTALITY TO SOMATIC REJUVENATION: UNLOCKING THE OVARIAN BLUEPRINT FOR LONGEVITY",
+      "title": "BREAKTHROUGH DRUG REVERSES AGING IN SKIN AND DRAMATICALLY SPEEDS HEALING",
+      "url": "https://www.sciencedaily.com/releases/2026/05/260519003215.htm",
+      "source": "Science Daily",
+      "publishedAt": "2026-05-20T01:13:26Z",
+      "category": "science"
+    },
+    {
+      "title": "UNLOCKING THE OVARIAN BLUEPRINT FOR LONGEVITY: FROM GERMLINE TO REJUVENATION",
       "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3003804",
       "source": "Plos.org",
       "publishedAt": "2026-05-26T14:00:00Z",
       "category": "science"
     },
     {
-      "title": "ANTI-AGING CELL THERAPY REACHES MAJOR GMP MILESTONE",
-      "url": "https://www.prnewswire.com/news-releases/anti-aging-cell-therapy-reaches-major-gmp-milestone-as-wave-of-clinical-advancements-gain-momentum-302783641.html",
-      "source": "PRNewswire",
-      "publishedAt": "2026-05-28T13:15:00Z",
-      "category": "clinical"
-    },
-    {
-      "title": "'LONGEVITY GENE' MAY PROTECT THE BRAIN FROM ALZHEIMER'S BY BOOSTING DNA REPAIR",
-      "url": "https://www.foxnews.com/health/longevity-gene-may-protect-brain-alzheimers-boosting-dna-repair-study-finds",
-      "source": "Fox News",
-      "publishedAt": "2026-05-19T11:00:09Z",
-      "category": "longevity"
-    },
-    {
-      "title": "IMMORTAL JELLYFISH CAN REVERSE ITS OWN AGING PROCESS",
-      "url": "https://spacedaily.com/d-there-is-a-species-of-jellyfish-that-is-essentially-immortal-turritopsis-dohrnii-which-can-revert-from-its-adult-form-back-to-its-juvenile-polyp-stage-when-stressed-or-injured-and-then-mat/",
-      "source": "Space Daily",
-      "publishedAt": "2026-06-01T10:30:49Z",
+      "title": "RNA IMBALANCE AS A HALLMARK OF CELLULAR AGEING DISCOVERED",
+      "url": "https://www.nature.com/articles/s41556-026-01946-4",
+      "source": "Nature.com",
+      "publishedAt": "2026-05-12T00:00:00Z",
       "category": "science"
     },
     {
-      "title": "IMPROVING IMMUNE FUNCTION: RAPAMYCIN CLINICAL TRIAL LAUNCHED",
-      "url": "https://www.digitaljournal.com/tech-science/improving-immune-function-rapamycin-clinical-trial-launched/article",
-      "source": "Digital Journal",
-      "publishedAt": "2026-05-07T20:34:00Z",
-      "category": "clinical"
+      "title": "EVOLUTIONARY GENETICS OF AGEING: HOW EVOLUTION SHAPES LONGEVITY",
+      "url": "https://www.nature.com/articles/s41576-026-00959-x",
+      "source": "Nature.com",
+      "publishedAt": "2026-05-11T00:00:00Z",
+      "category": "science"
     },
     {
-      "title": "HOW 'ZOMBIE CELLS' COULD BE QUIETLY TAKING OVER YOUR BODY",
-      "url": "https://www.dailymail.com/health/article-15849655/zombie-senescent-cell-cancer-dementia-prevention-diet-foods.html",
-      "source": "Dailymail.com",
-      "publishedAt": "2026-06-06T13:34:41Z",
-      "category": "longevity"
+      "title": "LONGEVITY GENE MAY PROTECT BRAIN FROM ALZHEIMER'S BY BOOSTING DNA REPAIR",
+      "url": "https://www.foxnews.com/health/longevity-gene-may-protect-brain-alzheimers-boosting-dna-repair-study-finds",
+      "source": "Fox News",
+      "publishedAt": "2026-05-19T11:00:09Z",
+      "category": "science"
     },
     {
-      "title": "ELPASBIO COMPLETES PATIENT ENROLLMENT IN PHASE III STEM CELL TRIAL",
-      "url": "https://www.prnewswire.com/news-releases/elpasbio-completes-patient-enrollment-in-phase-iii-pivotal-clinical-trial-of-allojoin-302789982.html",
-      "source": "PRNewswire",
-      "publishedAt": "2026-06-04T03:17:02Z",
-      "category": "clinical"
+      "title": "PROMISING ANTI-AGING DRUG MAY CAUSE BRAIN DAMAGE, SCIENTISTS WARN",
+      "url": "https://www.sciencealert.com/promising-anti-aging-drug-may-cause-brain-damage-scientists-warn",
+      "source": "ScienceAlert",
+      "publishedAt": "2026-06-03T12:00:32Z",
+      "category": "science"
+    },
+    {
+      "title": "MESENCHYMAL DRIFT MAY EXPLAIN HOW AGING CELLS LOSE THEIR IDENTITY",
+      "url": "https://www.news-medical.net/news/20260601/Mesenchymal-drift-may-explain-how-aging-cells-lose-their-identity.aspx",
+      "source": "News-Medical.Net",
+      "publishedAt": "2026-06-01T04:55:33Z",
+      "category": "science"
+    },
+    {
+      "title": "YOUNG BLOOD REVERSES AGING ACROSS NEARLY EVERY TISSUE IN MICE",
+      "url": "https://spacedaily.com/d-for-nearly-two-decades-researchers-have-been-demonstrating-in-mice-that-the-blood-of-a-young-animal-when-surgically-shared-with-an-old-one-can-reverse-signs-of-aging-across-nearly-every-tissue/",
+      "source": "Space Daily",
+      "publishedAt": "2026-06-09T03:30:11Z",
+      "category": "science"
     }
   ]
 }
