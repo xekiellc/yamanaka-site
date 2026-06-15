@@ -1,18 +1,32 @@
 {
-  "updated": "2026-06-11T10:25:10.298Z",
+  "updated": "2026-06-15T12:14:28.296Z",
   "articles": [
     {
-      "title": "WORLD-FIRST: CELLULAR REPROGRAMMING THERAPY GIVEN TO HUMAN PATIENT",
+      "title": "FIRST-EVER REVERSE-AGING DRUG INJECTED INTO HUMAN — CELLULAR REPROGRAMMING GOES LIVE",
+      "url": "https://www.businessinsider.com/first-ever-reverse-aging-treatment-injected-into-a-human-2026-6",
+      "source": "Business Insider",
+      "publishedAt": "2026-06-09T10:00:02Z",
+      "category": "clinical"
+    },
+    {
+      "title": "WORLD-FIRST: THERAPY TO MAKE CELLS YOUNG AGAIN GIVEN TO PERSON — LANDMARK TRIAL BEGINS",
       "url": "https://www.nature.com/articles/d41586-026-01836-7",
       "source": "Nature.com",
       "publishedAt": "2026-06-09T00:00:00Z",
       "category": "clinical"
     },
     {
-      "title": "FIRST-EVER REVERSE-AGING DRUG INJECTED INTO HUMAN EYEBALL!",
-      "url": "https://www.businessinsider.com/first-ever-reverse-aging-treatment-injected-into-a-human-2026-6",
-      "source": "Business Insider",
-      "publishedAt": "2026-06-09T10:00:02Z",
+      "title": "FDA CLEARS FIRST HUMAN EPIGENETIC REPROGRAMMING TRIAL — HARVARD-BACKED ANTI-AGING THERAPY",
+      "url": "https://www.medicaldaily.com/fda-first-epigenetic-reprogramming-human-trial-life-biosciences-2026-475608",
+      "source": "Medical Daily",
+      "publishedAt": "2026-06-12T17:47:01Z",
+      "category": "clinical"
+    },
+    {
+      "title": "HIGH-RISK THERAPY TO MAKE CELLS YOUNG AGAIN — PATIENT RECEIVES CONTROVERSIAL TREATMENT",
+      "url": "https://www.sciencealert.com/world-first-patient-receives-high-risk-therapy-to-make-cells-young-again",
+      "source": "ScienceAlert",
+      "publishedAt": "2026-06-10T11:00:35Z",
       "category": "clinical"
     },
     {
@@ -23,17 +37,31 @@
       "category": "clinical"
     },
     {
-      "title": "NEWLIMIT TRIPLES VALUATION TO $3B WITH $435M FUNDING ROUND",
+      "title": "'REPROGRAMMING' IS BUZZIEST APPROACH TO REVERSING AGING RIGHT NOW — MIT TECHNOLOGY REVIEW",
+      "url": "https://www.technologyreview.com/2026/06/12/1138829/reprogramming-buzziest-approach-reversing-aging-right-now/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-12T09:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "NEWLIMIT TRIPLES VALUATION TO $3B WITH $435M FUNDING ROUND — BIOTECH REVOLUTION",
       "url": "https://cryptobriefing.com/newlimit-triples-valuation-435m-funding/",
       "source": "Crypto Briefing",
       "publishedAt": "2026-06-02T20:23:52Z",
       "category": "longevity"
     },
     {
-      "title": "UNIVERSAL TRANSCRIPTOMIC HALLMARKS OF MAMMALIAN AGEING DISCOVERED",
+      "title": "UNIVERSAL TRANSCRIPTOMIC HALLMARKS OF MAMMALIAN AGEING AND MORTALITY REVEALED",
       "url": "https://www.nature.com/articles/s41586-026-10542-3",
       "source": "Nature.com",
       "publishedAt": "2026-05-27T00:00:00Z",
+      "category": "science"
+    },
+    {
+      "title": "YOUNG BLOOD REVERSES AGING ACROSS EVERY TISSUE — MOST HEAVILY FUNDED RACE IN BIOTECH",
+      "url": "https://spacedaily.com/d-for-nearly-two-decades-researchers-have-been-demonstrating-in-mice-that-the-blood-of-a-young-animal-when-surgically-shared-with-an-old-one-can-reverse-signs-of-aging-across-nearly-every-tissue/",
+      "source": "Space Daily",
+      "publishedAt": "2026-06-09T03:30:11Z",
       "category": "science"
     },
     {
@@ -44,53 +72,25 @@
       "category": "science"
     },
     {
-      "title": "UNLOCKING THE OVARIAN BLUEPRINT FOR LONGEVITY: FROM GERMLINE TO REJUVENATION",
-      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3003804",
-      "source": "Plos.org",
-      "publishedAt": "2026-05-26T14:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "RNA IMBALANCE AS A HALLMARK OF CELLULAR AGEING DISCOVERED",
-      "url": "https://www.nature.com/articles/s41556-026-01946-4",
-      "source": "Nature.com",
-      "publishedAt": "2026-05-12T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "EVOLUTIONARY GENETICS OF AGEING: HOW EVOLUTION SHAPES LONGEVITY",
-      "url": "https://www.nature.com/articles/s41576-026-00959-x",
-      "source": "Nature.com",
-      "publishedAt": "2026-05-11T00:00:00Z",
-      "category": "science"
-    },
-    {
-      "title": "LONGEVITY GENE MAY PROTECT BRAIN FROM ALZHEIMER'S BY BOOSTING DNA REPAIR",
-      "url": "https://www.foxnews.com/health/longevity-gene-may-protect-brain-alzheimers-boosting-dna-repair-study-finds",
-      "source": "Fox News",
-      "publishedAt": "2026-05-19T11:00:09Z",
-      "category": "science"
-    },
-    {
-      "title": "PROMISING ANTI-AGING DRUG MAY CAUSE BRAIN DAMAGE, SCIENTISTS WARN",
+      "title": "PROMISING ANTI-AGING DRUG MAY CAUSE BRAIN DAMAGE — SCIENTISTS WARN ABOUT D+Q COMBO",
       "url": "https://www.sciencealert.com/promising-anti-aging-drug-may-cause-brain-damage-scientists-warn",
       "source": "ScienceAlert",
       "publishedAt": "2026-06-03T12:00:32Z",
       "category": "science"
     },
     {
-      "title": "MESENCHYMAL DRIFT MAY EXPLAIN HOW AGING CELLS LOSE THEIR IDENTITY",
-      "url": "https://www.news-medical.net/news/20260601/Mesenchymal-drift-may-explain-how-aging-cells-lose-their-identity.aspx",
-      "source": "News-Medical.Net",
-      "publishedAt": "2026-06-01T04:55:33Z",
+      "title": "FROM GERMLINE IMMORTALITY TO SOMATIC REJUVENATION — UNLOCKING OVARIAN LONGEVITY BLUEPRINT",
+      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3003804",
+      "source": "Plos.org",
+      "publishedAt": "2026-05-26T14:00:00Z",
       "category": "science"
     },
     {
-      "title": "YOUNG BLOOD REVERSES AGING ACROSS NEARLY EVERY TISSUE IN MICE",
-      "url": "https://spacedaily.com/d-for-nearly-two-decades-researchers-have-been-demonstrating-in-mice-that-the-blood-of-a-young-animal-when-surgically-shared-with-an-old-one-can-reverse-signs-of-aging-across-nearly-every-tissue/",
-      "source": "Space Daily",
-      "publishedAt": "2026-06-09T03:30:11Z",
-      "category": "science"
+      "title": "'LONGEVITY GENE' MAY PROTECT BRAIN FROM ALZHEIMER'S BY BOOSTING DNA REPAIR",
+      "url": "https://www.foxnews.com/health/longevity-gene-may-protect-brain-alzheimers-boosting-dna-repair-study-finds",
+      "source": "Fox News",
+      "publishedAt": "2026-05-19T11:00:09Z",
+      "category": "longevity"
     }
   ]
 }
