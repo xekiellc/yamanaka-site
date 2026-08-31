@@ -1,6 +1,13 @@
 {
   "editions": [
     {
+      "slug": "2026-08-27",
+      "label": "Thursday, August 27, 2026",
+      "updated": "2026-08-27T17:22:45.348Z",
+      "count": 13,
+      "file": "archive/edition-2026-08-27.json"
+    },
+    {
       "slug": "2026-08-24",
       "label": "Monday, August 24, 2026",
       "updated": "2026-08-24T06:57:28.608Z",
@@ -104,13 +111,6 @@
       "updated": "2026-05-28T10:01:59.196Z",
       "count": 13,
       "file": "archive/edition-2026-05-28.json"
-    },
-    {
-      "slug": "2026-05-25",
-      "label": "Monday, May 25, 2026",
-      "updated": "2026-05-25T10:06:54.901Z",
-      "count": 13,
-      "file": "archive/edition-2026-05-25.json"
     }
   ]
 }
