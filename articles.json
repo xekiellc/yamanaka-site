@@ -1,96 +1,96 @@
 {
-  "updated": "2026-09-10T10:44:54.783Z",
+  "updated": "2026-09-24T11:12:41.466Z",
   "articles": [
     {
-      "title": "YAMANAKA'S CELLS-MADE-YOUNG DISCOVERY NOW TREATING REAL DISEASES, 20 YEARS LATER",
-      "url": "https://time.com/collection/longevity-leaders/2026/shinya-yamanaka/",
-      "source": "Time",
-      "publishedAt": "2026-08-20T13:01:10Z",
-      "category": "science"
-    },
-    {
-      "title": "IZPISUA BELMONTE: AGING IS A CELL IDENTITY CRISIS — AND WE CAN REWIND IT",
-      "url": "https://time.com/collection/longevity-leaders/2026/juan-carlos-izpisua-belmonte/",
-      "source": "Time",
-      "publishedAt": "2026-08-20T13:01:11Z",
-      "category": "science"
-    },
-    {
-      "title": "AGE-REVERSAL TECH THAT RESTORED SIGHT: INSIDE THE WHITEHEAD INSTITUTE BREAKTHROUGH",
+      "title": "GENETICIST'S AGE-REVERSAL TECH COULD RESTORE SIGHT — YAMANAKA FACTORS AT WORK",
       "url": "https://www.technologyreview.com/2026/09/08/1142074/yuancheng-ryan-lu-age-reversal-tech-restores-sight/",
       "source": "MIT Technology Review",
       "publishedAt": "2026-09-08T10:32:00Z",
       "category": "science"
     },
     {
-      "title": "SINCLAIR BETS BLINDNESS — AND AGING ITSELF — CAN BE REVERSED: INSIDE HARVARD'S EXPERIMENTS",
-      "url": "https://time.com/collection/longevity-leaders/2026/david-sinclair/",
-      "source": "Time",
-      "publishedAt": "2026-08-20T13:01:12Z",
-      "category": "longevity"
-    },
-    {
-      "title": "IPSC THERAPIES LEAVE THE LAB: TWO DECADES AFTER DISCOVERY, TREATMENTS GO MAINSTREAM",
+      "title": "IPSC THERAPIES EXIT THE LAB: TWO DECADES LATER, YAMANAKA'S DISCOVERY HITS CLINICS",
       "url": "https://www.nature.com/articles/s41591-026-04584-3",
       "source": "Nature.com",
       "publishedAt": "2026-08-27T00:00:00Z",
       "category": "clinical"
     },
     {
-      "title": "SIX AGING CLOCKS CONFIRM AI-DESIGNED DRUG SLASHES BIOLOGICAL AGE IN CLINICAL TRIAL",
+      "title": "BOMBSHELL: OVER HALF OF 51 LONGEVITY INTERVENTIONS MOVED NO AGING CLOCK — SENOLYTICS WENT BOTH WAYS",
+      "url": "https://www.medicaldaily.com/epigenetic-aging-clocks-longevity-interventions-nature-medicine-477795",
+      "source": "Medical Daily",
+      "publishedAt": "2026-08-26T22:10:14Z",
+      "category": "science"
+    },
+    {
+      "title": "SIX PROTEOMIC AGING CLOCKS DEPLOYED IN PHASE 2A TRIAL — GEROPROTECTION NOW MEASURABLE",
       "url": "https://www.nature.com/articles/s41587-026-03286-y",
       "source": "Nature.com",
       "publishedAt": "2026-09-07T00:00:00Z",
       "category": "clinical"
     },
     {
-      "title": "AI-BUILT LUNG DRUG ROLLED BACK BIOLOGICAL AGE 3-4 YEARS — AND LOWER DOSE WON",
+      "title": "AI-DESIGNED DRUG TURNS BACK SIX AGING CLOCKS IN LUNG PATIENTS — LOWER DOSE WINS",
       "url": "https://www.medicaldaily.com/rentosertib-proteomic-aging-clocks-nature-biotechnology-478365",
       "source": "Medical Daily",
       "publishedAt": "2026-09-08T13:23:38Z",
       "category": "clinical"
     },
     {
-      "title": "BOMBSHELL: HALF OF 51 LONGEVITY TREATMENTS MOVED NO AGING CLOCK WHATSOEVER",
-      "url": "https://www.medicaldaily.com/epigenetic-aging-clocks-longevity-interventions-nature-medicine-477795",
-      "source": "Medical Daily",
-      "publishedAt": "2026-08-26T22:10:14Z",
-      "category": "longevity"
-    },
-    {
-      "title": "'ZOMBIE' SENESCENT CELLS FOUND ESSENTIAL FOR BUILDING THE BRAIN — SENOLYTICS RETHINK AHEAD",
-      "url": "https://www.medicaldaily.com/senescent-cells-brain-barrier-development-477173",
-      "source": "Medical Daily",
-      "publishedAt": "2026-08-11T23:00:11Z",
+      "title": "INSILICO OPENS AI LONGEVITY TOOLKIT TO WORLD IN CELL COVER STUDY — LONGEVITYBENCH LAUNCHES",
+      "url": "https://www.prnewswire.com/news-releases/insilico-medicine-opens-ai-longevity-discovery-toolkit-to-researchers-worldwide-in-cell-cover-study-302882275.html",
+      "source": "PRNewswire",
+      "publishedAt": "2026-09-17T15:21:00Z",
       "category": "science"
     },
     {
-      "title": "NATURE MEDICINE CALLS OUT LONGEVITY FIELD: LESS HYPE, MORE CLINICAL EVIDENCE NOW",
-      "url": "https://www.nature.com/articles/s41591-026-04611-3",
+      "title": "'REMARKABLY ENCOURAGING': STEM CELLS FOR AUTOIMMUNE DISEASE ENTER BOLD NEW PHASE",
+      "url": "https://www.nature.com/articles/d41586-026-02855-0",
       "source": "Nature.com",
-      "publishedAt": "2026-08-11T00:00:00Z",
-      "category": "longevity"
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "category": "clinical"
     },
     {
-      "title": "TELOMERE SHRINKAGE IS ACTUALLY A CANCER SHIELD, STUNNING NEW REVIEW REVEALS",
+      "title": "STEM CELLS REVERSE STROKE DAMAGE, RESTORE MOVEMENT IN MICE — NEW NEURONS GROWN",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260921081116.htm",
+      "source": "Science Daily",
+      "publishedAt": "2026-09-22T01:49:32Z",
+      "category": "science"
+    },
+    {
+      "title": "TELOMERE SHORTENING IS A TUMOR SUPPRESSOR? NATURE REVIEW FLIPS THE SCRIPT",
       "url": "https://www.nature.com/articles/s41576-026-01001-w",
       "source": "Nature.com",
       "publishedAt": "2026-09-01T00:00:00Z",
       "category": "science"
     },
     {
-      "title": "WARNING: LONGEVITY SUPPLEMENT LOVED BY KIM K AND BRYAN JOHNSON MAY TURBOCHARGE CANCER",
-      "url": "https://nypost.com/2026/08/18/health/kim-kardashian-and-bryan-johnson-beloved-supplement-may-speed-up-cancer-growth/",
-      "source": "New York Post",
-      "publishedAt": "2026-08-18T14:41:48Z",
+      "title": "SEMAGLUTIDE EXTENDS LIFESPAN IN OLD FEMALE MICE 12% — HUMAN CLAIMS STILL UNPROVEN",
+      "url": "https://www.medicaldaily.com/semaglutide-lifespan-aged-female-mice-nature-study-478818",
+      "source": "Medical Daily",
+      "publishedAt": "2026-09-18T12:50:03Z",
+      "category": "science"
+    },
+    {
+      "title": "SENOLYTIC STARTUP TARGETS HAIR LOSS WITH GPX4 MODULATOR — CLINICAL TRIAL LAUNCHES",
+      "url": "https://financialpost.com/pmn/business-wire-news-releases-pmn/rubedo-life-sciences-announces-clinical-study-to-treat-hair-loss-with-gpx4-modulator-rls-1496-first-human-ex-vivo-evidence-demonstrates-robust-hair-follicle-growth",
+      "source": "Financial Post",
+      "publishedAt": "2026-09-16T12:23:14Z",
+      "category": "clinical"
+    },
+    {
+      "title": "MONTANA SMASHES FDA MONOPOLY — FIRST STATE TO CLEAR EXPERIMENTAL LONGEVITY THERAPIES",
+      "url": "https://reason.com/2026/09/18/montana-is-trying-to-break-the-fdas-monopoly-on-experimental-treatments/",
+      "source": "Reason",
+      "publishedAt": "2026-09-18T15:09:53Z",
       "category": "longevity"
     },
     {
-      "title": "FDA CRACKS DOWN ON ARIZONA STEM CELL CLINIC PREYING ON ALS AND AUTISM PATIENTS",
-      "url": "https://www.medicaldaily.com/fda-warning-letter-r3-medical-stem-cell-exosome-clinics-478193",
-      "source": "Medical Daily",
-      "publishedAt": "2026-09-03T20:30:08Z",
-      "category": "clinical"
+      "title": "NEW STUDY: MOST ANTI-AGING INTERVENTIONS DON'T WORK — HERE'S WHAT ACTUALLY DOES",
+      "url": "https://www.medicalnewstoday.com/articles/what-can-and-cant-slow-down-aging-new-study-offers-clues",
+      "source": "Medical News Today",
+      "publishedAt": "2026-09-05T06:00:00Z",
+      "category": "longevity"
     }
   ]
 }
