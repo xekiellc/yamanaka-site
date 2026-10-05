@@ -1,95 +1,95 @@
 {
-  "updated": "2026-10-01T12:33:13.746Z",
+  "updated": "2026-10-05T13:45:50.235Z",
   "articles": [
     {
-      "title": "GENETICIST'S AGE-REVERSAL TECH RESTORES SIGHT — YAMANAKA FACTORS TARGET THE EYE",
+      "title": "LOSS OF CELL IDENTITY IS WHAT AGING REALLY IS — AND EPIGENETIC CLOCKS ARE MEASURING IT",
+      "url": "https://erictopol.substack.com/p/loss-of-cell-identity-drives-human",
+      "source": "Substack.com",
+      "publishedAt": "2026-10-01T20:02:57Z",
+      "category": "science"
+    },
+    {
+      "title": "GENETICIST'S AGE-REVERSAL TECH RESTORES SIGHT — YAMANAKA FACTORS TARGET THE EYES",
       "url": "https://www.technologyreview.com/2026/09/08/1142074/yuancheng-ryan-lu-age-reversal-tech-restores-sight/",
       "source": "MIT Technology Review",
       "publishedAt": "2026-09-08T10:32:00Z",
       "category": "science"
     },
     {
-      "title": "SIX AGING CLOCKS CONFIRM: AI DRUG REVERSES BIOLOGICAL AGE IN HUMAN TRIAL",
-      "url": "https://www.nature.com/articles/s41587-026-03286-y",
-      "source": "Nature.com",
-      "publishedAt": "2026-09-07T00:00:00Z",
-      "category": "clinical"
-    },
-    {
-      "title": "INSILICO'S AI DRUG RENTOSERTIB TURNS BACK BIOLOGICAL CLOCK — NATURE BIOTECH BOMBSHELL",
+      "title": "AI-DESIGNED DRUG REVERSES BIOLOGICAL AGE ON 6 PROTEOMIC CLOCKS — PUBLISHED IN NATURE BIOTECH",
       "url": "https://www.prnewswire.com/news-releases/nature-biotechnology--insilicos-ai-driven-ipf-candidate-rentosertib-shows-potential-for-biological-age-reversal-as-assessed-by-six-proteomic-aging-clocks-302871277.html",
       "source": "PRNewswire",
       "publishedAt": "2026-09-07T09:42:00Z",
-      "category": "clinical"
+      "category": "science"
     },
     {
-      "title": "AI-DESIGNED LUNG DRUG LOWERS BIOLOGICAL AGE MARKERS IN HUMAN PATIENTS",
+      "title": "AI LUNG DRUG ROLLS BACK BIOLOGICAL AGE MARKERS IN HUMAN TRIAL — SCIENTISTS STUNNED",
       "url": "https://www.medicalnewstoday.com/articles/ai-designed-lung-disease-drug-lowers-biological-age-markers-early-trial",
       "source": "Medical News Today",
       "publishedAt": "2026-09-13T09:50:04Z",
       "category": "clinical"
     },
     {
-      "title": "INSILICO OPENS AI LONGEVITY TOOLKIT TO WORLD — CELL COVER STUDY DROPS",
-      "url": "https://www.prnewswire.com/news-releases/insilico-medicine-opens-ai-longevity-discovery-toolkit-to-researchers-worldwide-in-cell-cover-study-302882275.html",
-      "source": "PRNewswire",
-      "publishedAt": "2026-09-17T15:21:00Z",
-      "category": "science"
-    },
-    {
-      "title": "'REMARKABLY ENCOURAGING': STEM CELL TREATMENTS FOR AUTOIMMUNE DISEASE ENTER NEW PHASE",
-      "url": "https://www.nature.com/articles/d41586-026-02855-0",
-      "source": "Nature.com",
-      "publishedAt": "2026-09-23T00:00:00Z",
-      "category": "clinical"
-    },
-    {
-      "title": "STEM CELLS REVERSE STROKE DAMAGE, RESTORE MOVEMENT IN MICE",
-      "url": "https://www.sciencedaily.com/releases/2026/09/260921081116.htm",
-      "source": "Science Daily",
-      "publishedAt": "2026-09-22T01:49:32Z",
-      "category": "science"
-    },
-    {
-      "title": "BREAKTHROUGH DRUG NUKES SENESCENT CELLS — OLDER MICE HEAL WOUNDS LIKE THE YOUNG",
+      "title": "BREAKTHROUGH SENOLYTIC DRUG REVERSES SKIN AGING, DRAMATICALLY SPEEDS WOUND HEALING IN MICE",
       "url": "https://www.sciencedaily.com/releases/2026/09/260922223008.htm",
       "source": "Science Daily",
       "publishedAt": "2026-09-23T12:32:35Z",
       "category": "science"
     },
     {
-      "title": "NATURE REVIEW FLIPS SCRIPT: TELOMERE SHORTENING MAY ACTUALLY PROTECT AGAINST CANCER",
-      "url": "https://www.nature.com/articles/s41576-026-01001-w",
-      "source": "Nature.com",
-      "publishedAt": "2026-09-01T00:00:00Z",
+      "title": "STEM CELL TREATMENTS FOR AUTOIMMUNE DISEASES ENTER 'REMARKABLY ENCOURAGING' NEW PHASE",
+      "url": "https://www.nature.com/articles/d41586-026-02855-0",
+      "source": "Nature",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "category": "clinical"
+    },
+    {
+      "title": "STEM CELLS REVERSE STROKE DAMAGE, RESTORE MOVEMENT IN MICE — NEURONS REGENERATED",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260921081116.htm",
+      "source": "Science Daily",
+      "publishedAt": "2026-09-22T01:49:32Z",
       "category": "science"
     },
     {
-      "title": "OZEMPIC EXTENDS LIFESPAN IN AGED FEMALE MICE BY 12% — HUMAN CLAIMS STILL UNPROVEN",
+      "title": "OZEMPIC EXTENDS LIFESPAN IN OLD FEMALE MICE 12% — BUT HUMAN LONGEVITY CLAIMS UNPROVEN",
       "url": "https://www.medicaldaily.com/semaglutide-lifespan-aged-female-mice-nature-study-478818",
       "source": "Medical Daily",
       "publishedAt": "2026-09-18T12:50:03Z",
       "category": "science"
     },
     {
-      "title": "NATURE ASKS: WHAT DOES REGENERATIVE MEDICINE NEED TO FINALLY FLOURISH?",
-      "url": "https://www.nature.com/articles/d41586-026-02854-1",
-      "source": "Nature.com",
-      "publishedAt": "2026-09-23T00:00:00Z",
+      "title": "HARVARD SCIENTIST: 150-YEAR-OLD HUMAN MAY ALREADY BE ALIVE — HIS EXPERIMENT COULD PROVE IT",
+      "url": "https://economictimes.indiatimes.com/magazines/panache/150-year-old-human-might-already-be-among-us-claims-harvard-scientist-his-experiment-may-have-unlocked-how-long-we-can-really-live/articleshow/134642094.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-10-02T15:23:20Z",
       "category": "longevity"
     },
     {
-      "title": "LONGEVITY BOOM IS OUTRUNNING THE SCIENCE — AND THE RISKS ARE PILING UP",
+      "title": "NATURE: REGENERATIVE MEDICINE HAS BREAKTHROUGH POTENTIAL — BUT NEEDS RADICAL RETHINK TO FLOURISH",
+      "url": "https://www.nature.com/articles/d41586-026-02854-1",
+      "source": "Nature",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "category": "clinical"
+    },
+    {
+      "title": "NEW STUDY REVEALS WHAT ACTUALLY SLOWS AGING — AND WHAT DOESN'T",
+      "url": "https://www.medicalnewstoday.com/articles/what-can-and-cant-slow-down-aging-new-study-offers-clues",
+      "source": "Medical News Today",
+      "publishedAt": "2026-09-05T06:00:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "CAFFEINE FLIPS ANCIENT CELLULAR SWITCH TIED TO DNA REPAIR AND SLOWER AGING",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260907201609.htm",
+      "source": "Science Daily",
+      "publishedAt": "2026-09-09T00:28:13Z",
+      "category": "science"
+    },
+    {
+      "title": "LONGEVITY BOOM IS OUTRUNNING THE SCIENCE — AND THE RISKS ARE ONLY BEGINNING TO EMERGE",
       "url": "https://www.aljazeera.com/opinions/2026/9/27/the-longevity-boom-is-getting-ahead-of-the-science",
       "source": "Al Jazeera English",
       "publishedAt": "2026-09-27T15:48:16Z",
-      "category": "longevity"
-    },
-    {
-      "title": "ULTRA-RICH SPENDING $250K A YEAR ON LONGEVITY CLINICS — WHAT DO DOCTORS SAY?",
-      "url": "https://www.cnbc.com/2026/09/29/longevity-clinic-costs.html",
-      "source": "CNBC",
-      "publishedAt": "2026-09-29T13:09:15Z",
       "category": "longevity"
     }
   ]
