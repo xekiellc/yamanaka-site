@@ -1,95 +1,95 @@
 {
-  "updated": "2026-10-29T12:23:24.642Z",
+  "updated": "2026-11-02T14:54:00.644Z",
   "articles": [
     {
-      "title": "SCIENTISTS REVERSE 60 YEARS OF AGING IN HUMAN CELLS — 80-YEAR-OLD'S BLOOD BECOMES 20-YEAR-OLD NEURAL STEM CELLS",
+      "title": "SCIENTISTS REVERSE 60 YEARS OF AGING IN HUMAN CELLS — 80-YEAR-OLD'S CELLS TURNED 20",
       "url": "https://www.sciencedaily.com/releases/2026/10/261020085013.htm",
       "source": "Science Daily",
       "publishedAt": "2026-10-21T11:03:52Z",
       "category": "science"
     },
     {
-      "title": "LOSS OF CELL IDENTITY IS WHAT AGING CLOCKS ARE REALLY MEASURING, TWO LANDMARK PAPERS REVEAL",
+      "title": "LOSS OF CELL IDENTITY IS WHAT AGING ACTUALLY IS, TWO BOMBSHELL PAPERS REVEAL",
       "url": "https://erictopol.substack.com/p/loss-of-cell-identity-drives-human",
       "source": "Substack.com",
       "publishedAt": "2026-10-01T20:02:57Z",
       "category": "science"
     },
     {
-      "title": "ANTI-AGING SKIN DRUG ROLLS BACK BIOLOGICAL AGE TWO YEARS IN FOUR WEEKS — WIRED EXCLUSIVE",
-      "url": "https://www.wired.com/story/new-anti-aging-drug-trial-for-skin/",
-      "source": "Wired",
-      "publishedAt": "2026-10-12T10:30:00Z",
-      "category": "clinical"
-    },
-    {
-      "title": "OZEMPIC, ZEPBOUND MAKERS CLAIM DRUGS SLOW AGING CLOCKS — BUT DATA UNREVIEWED AND UNPROVEN",
-      "url": "https://www.medicaldaily.com/glp1-aging-clocks-novo-lilly-unreviewed-data-479718",
-      "source": "Medical Daily",
-      "publishedAt": "2026-10-08T21:30:42Z",
-      "category": "clinical"
-    },
-    {
-      "title": "AI-DESIGNED SENOLYTIC PEPTIDE COULD RESTORE IMMUNE SYSTEM'S POWER TO DESTROY ZOMBIE CELLS",
-      "url": "https://www.prnewswire.com/news-releases/immorta-bio-pioneers-ai-designed-senolytic-immunotherapy-targeting-diseases-of-aging-302905700.html",
-      "source": "PRNewswire",
-      "publishedAt": "2026-10-12T13:22:00Z",
-      "category": "science"
-    },
-    {
-      "title": "150-YEAR-OLD HUMAN ALREADY ALIVE? HARVARD SCIENTIST SAYS REPROGRAMMING MAY SHATTER LIFESPAN LIMITS",
+      "title": "HARVARD SCIENTIST: 150-YEAR-OLD HUMAN MAY ALREADY BE ALIVE — HIS EXPERIMENT COULD PROVE IT",
       "url": "https://economictimes.indiatimes.com/magazines/panache/150-year-old-human-might-already-be-among-us-claims-harvard-scientist-his-experiment-may-have-unlocked-how-long-we-can-really-live/articleshow/134642094.cms",
       "source": "The Times of India",
       "publishedAt": "2026-10-02T15:23:20Z",
       "category": "longevity"
     },
     {
-      "title": "CAN AI REVERSE AGING? NEW DRUGS AND LAB BREAKTHROUGHS FUEL HOPE — BUT SCIENTISTS WARN OF HYPE",
-      "url": "https://www.ibtimes.com.au/ai-longevity-research-drugs-proteins-aging-1876107",
-      "source": "Ibtimes.com.au",
-      "publishedAt": "2026-09-30T16:50:27Z",
-      "category": "longevity"
+      "title": "SKIN AGE REVERSED 2 YEARS IN 4 WEEKS: NEW ANTI-AGING DRUG TRIAL STUNS RESEARCHERS",
+      "url": "https://www.wired.com/story/new-anti-aging-drug-trial-for-skin/",
+      "source": "Wired",
+      "publishedAt": "2026-10-12T10:30:00Z",
+      "category": "clinical"
     },
     {
-      "title": "BIG PHARMA IS SUDDENLY TAKING LONGEVITY SERIOUSLY — FDA, LILLY, PFIZER MAP OUT FUTURE OF AGING DRUGS",
-      "url": "https://www.businessinsider.com/why-big-pharma-betting-longevity-drugs-2026-10#article",
-      "source": "Business Insider",
-      "publishedAt": "2026-10-08T10:09:01Z",
-      "category": "longevity"
+      "title": "AI-DESIGNED SENOLYTIC PEPTIDE TARGETS ZOMBIE CELLS — IMMORTA BIO BETS ON 9 AMINO ACIDS",
+      "url": "https://www.prnewswire.com/news-releases/immorta-bio-pioneers-ai-designed-senolytic-immunotherapy-targeting-diseases-of-aging-302905700.html",
+      "source": "PRNewswire",
+      "publishedAt": "2026-10-12T13:22:00Z",
+      "category": "science"
     },
     {
-      "title": "FOUR RED FLAGS IN THE PEPTIDE CRAZE: WHAT LONGEVITY PODCASTS WON'T TELL YOU",
+      "title": "OZEMPIC, ZEPBOUND SLOW AGING CLOCKS — BUT UNREVIEWED DATA LEAVE SCIENTISTS SKEPTICAL",
+      "url": "https://www.medicaldaily.com/glp1-aging-clocks-novo-lilly-unreviewed-data-479718",
+      "source": "Medical Daily",
+      "publishedAt": "2026-10-08T21:30:42Z",
+      "category": "clinical"
+    },
+    {
+      "title": "BUZZY LONGEVITY SUPPLEMENT FLOPS IN PARKINSON'S TRIAL — ACTUALLY MADE SYMPTOMS WORSE",
+      "url": "https://nypost.com/2026/10/29/health/buzzy-longevity-supplement-flops-in-major-parkinsons-trial/",
+      "source": "New York Post",
+      "publishedAt": "2026-10-29T15:10:08Z",
+      "category": "clinical"
+    },
+    {
+      "title": "PEPTIDE HYPE EXPOSED: FOUR RED FLAGS EXPERTS WARN LONGEVITY FANS TO WATCH",
       "url": "https://kffhealthnews.org/public-health/peptide-hype-experimental-unproven-drugs-red-flags/",
       "source": "Kffhealthnews.org",
       "publishedAt": "2026-10-19T09:00:00Z",
-      "category": "clinical"
+      "category": "longevity"
     },
     {
-      "title": "PEPTIDE USERS REPORT LASTING DAMAGE AS RFK JR. PUSHES FOR WIDER ACCESS TO UNREGULATED DRUGS",
-      "url": "https://www.yahoo.com/news/science/articles/taken-hyped-unregulated-peptides-regrets-103443715.html",
-      "source": "Yahoo Entertainment",
-      "publishedAt": "2026-10-13T10:34:43Z",
-      "category": "clinical"
-    },
-    {
-      "title": "HARVARD SYMPOSIUM: FROM PRECISION NUTRITION TO DOG BIOLOGY — SCIENTISTS CHART ROAD TO DISEASE-FREE AGING",
+      "title": "HARVARD SYMPOSIUM: PRECISION NUTRITION TO DOG BIOLOGY — THE NEW FRONTIERS OF LIVING LONGER",
       "url": "https://news.harvard.edu/gazette/story/2026/10/living-longer-disease-free/",
       "source": "Harvard School of Engineering and Applied Sciences",
       "publishedAt": "2026-10-13T19:09:42Z",
       "category": "longevity"
     },
     {
-      "title": "WEALTHY AMERICANS SPENDING $250K A YEAR ON LONGEVITY CLINICS — DOCTORS WEIGH IN ON WHETHER IT'S WORTH IT",
-      "url": "https://www.cnbc.com/2026/09/29/longevity-clinic-costs.html",
-      "source": "CNBC",
-      "publishedAt": "2026-09-29T13:09:15Z",
-      "category": "longevity"
-    },
-    {
-      "title": "CIALIS INGREDIENT BOOSTS MUSCLE STEM CELL SURVIVAL — COULD TADALAFIL BE AN ANTI-AGING DRUG?",
+      "title": "CIALIS INGREDIENT BOOSTS MUSCLE STEM CELLS IN AGING MEN — RESEARCHERS STUNNED",
       "url": "https://www.foxnews.com/health/popular-erectile-dysfunction-pill-may-deliver-additional-boost-aging-men",
       "source": "Fox News",
       "publishedAt": "2026-10-13T19:54:48Z",
+      "category": "science"
+    },
+    {
+      "title": "RFK JR. CLEARS SIX UNAPPROVED PEPTIDES — WHAT THEY DO AND WHY SCIENTISTS ARE WORRIED",
+      "url": "https://www.clarin.com/us-news/which-unapproved-peptides-were-cleared-by-rfk-jr-what-the-6-compounds-do-and-their-health-risks_0_b2EW8weLbk.html",
+      "source": "Clarín",
+      "publishedAt": "2026-10-29T23:41:09Z",
+      "category": "clinical"
+    },
+    {
+      "title": "REGENERATIVE MEDICINE MARKET TO HIT $62.69 BILLION BY 2031 — INDUSTRY EXPLODES",
+      "url": "https://www.prnewswire.co.uk/news-releases/regenerative-medicine-market-worth-62-69-billion-by-2031---exclusive-report-by-marketsandmarkets-302915368.html",
+      "source": "PR Newswire UK",
+      "publishedAt": "2026-10-21T14:30:00Z",
+      "category": "longevity"
+    },
+    {
+      "title": "NIH VETERANS LAUNCH 9-YEAR CANINE LONGEVITY STUDY — DOGS AS KEY TO HUMAN HEALTHSPAN",
+      "url": "https://www.prnewswire.com/news-releases/odacova-health-unveils-nine-year-canine-longevity-study-at-alos-2026-charting-a-new-path-to-extend-pet-healthspan-302909234.html",
+      "source": "PRNewswire",
+      "publishedAt": "2026-10-15T12:32:00Z",
       "category": "science"
     }
   ]
